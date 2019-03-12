@@ -1,7 +1,0 @@
-hermes-python>=0.3.3
-paho-mqtt
-toml
-# For tests: pytest, pyfakefs, pytest-mock, mock and pytest-cov
-# Test with: pytest --cov=src/snipskit
-# For docs: Sphinx
-# Create docs with: cd docs && make html
