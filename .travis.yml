@@ -1,0 +1,25 @@
+dist: xenial
+
+addons:
+  code_climate:
+    repo_token:
+      secure: "deLshsbwja19pAhmyPJir2CXl9rb/g0oM6j1myLzZbENEwHBOMDIl17hox/xkx7o+Hp6KViNXkMCreY6TAv7tyLZofkpKa5AFRRk4yBwQSO5BmzB8UvnRaGPTEfM5OodHg1pZQBGz9FVrseXT3iFBCTSI+Ru6QSMby6PuO/3AeadIkAYdmmBu1z8PJKLm4mNMCUGxbQGrie9kbdrp7TjA9Eaheo4LFbssAdf1HRCPWvlJNPxTuYum60UmdEyainIsWwwGbqiee3mszNjMJd7uwbNOfpIV51izO5HOwX01gPEJTydaZgxv3Op9A1ACrOrk8E+arcB0Io8BkEjou5OUi2aS7ajYYpWiy3Ju+SzrBshflZ7ELxjPMBfy7GGiTr+da/cVW00uCIpRdL93NbL3hDYmSrw3qZqLbLqf5OSpq9pRfN/RJGLAJk6AuzEXtujAutKPdXTEx1L5LhyxFriiFtU6eFKnnBKi+6a51V0F+wjHuV7WMjqbaVH4z8sEGriWZcp2GTxRFiusxMMmpOOiElEi+XCgqH/Yb6m/COD7lpj744gpV7uCKaBEpigzd6bYAo2X5BpNVE7aIB1gkpbBof7ssj3TiuwpUadQDMK1Tjf1kTWjMG+gP1LvisMjuyisBBAB+yOVkkTJz7vi69tcpBqBfuznn6x/Q6SjQDzYqQ="
+
+language: python
+python:
+  - 3.5
+  - 3.6
+
+install:
+  - pip3 install -r requirements/install.txt
+  - pip3 install -r requirements/tests.txt
+  - pip3 install -r requirements/docs.txt
+  - pip3 install codeclimate-test-reporter
+
+script:
+  - pytest --cov src --verbose
+  - cd docs && make html
+
+after_script:
+  - codeclimate-test-reporter
+

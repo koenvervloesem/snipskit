@@ -1,0 +1,5 @@
+mock
+pyfakefs
+pytest
+pytest-cov
+pytest-mock
