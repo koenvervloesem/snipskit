@@ -19,6 +19,7 @@ install:
 script:
   - pytest --cov src --verbose
   - cd docs && make html
+  - cd
 
 after_script:
   - codeclimate-test-reporter --file .coverage
