@@ -1,11 +1,6 @@
 """Tests for the `snipskit.config.apps.HermesSnipsApp` class."""
 
-import pytest
-
-from hermes_python.hermes import Hermes
 from snipskit.apps import HermesSnipsApp
-from snipskit.app_decorators import intent, intent_not_recognized, intents, \
-    session_ended, session_queued, session_started
 
 
 class SimpleHermesApp(HermesSnipsApp):
@@ -16,7 +11,7 @@ class SimpleHermesApp(HermesSnipsApp):
 
 def test_snips_app_hermes_connection_default(fs, mocker):
     """Test whether a `HermesSnipsApp` object with the default MQTT connection
-    settings sets up its `Hermes` object correctly. 
+    settings sets up its `Hermes` object correctly.
     """
 
     config_file = '/etc/snips.toml'
@@ -34,7 +29,7 @@ def test_snips_app_hermes_connection_default(fs, mocker):
     assert app.assistant['language'] == 'en'
     assert app.assistant.snips.mqtt.broker_address == 'localhost:1883'
 
-    # Check MQTT connection 
+    # Check MQTT connection
     assert app.hermes.mqtt_options == app.assistant.snips.mqtt
     assert app.hermes.loop_forever.call_count == 1
 
@@ -68,7 +63,7 @@ def test_snips_app_hermes_connection_with_authentication(fs, mocker):
     assert app.assistant.snips.mqtt.username == 'foobar'
     assert app.assistant.snips.mqtt.password == 'secretpassword'
 
-    # Check MQTT connection 
+    # Check MQTT connection
     assert app.hermes.mqtt_options == app.assistant.snips.mqtt
     assert app.hermes.loop_forever.call_count == 1
 
@@ -107,7 +102,7 @@ def test_snips_app_hermes_connection_with_tls_and_authentication(fs, mocker):
     assert app.assistant.snips.mqtt.tls_hostname == 'mqtt.example.com'
     assert app.assistant.snips.mqtt.tls_ca_file == '/etc/ssl/certs/ca-certificates.crt'
 
-    # Check MQTT connection 
+    # Check MQTT connection
     assert app.hermes.mqtt_options == app.assistant.snips.mqtt
     assert app.hermes.loop_forever.call_count == 1
 

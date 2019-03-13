@@ -2,7 +2,6 @@
 class.
 """
 
-import pytest
 from snipskit.config import SnipsConfig
 
 

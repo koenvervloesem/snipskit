@@ -1,7 +1,5 @@
 """Tests for the `snipskit.config.apps.HermesSnipsApp` class."""
 
-import pytest
-
 from snipskit.apps import HermesSnipsApp
 from snipskit.app_decorators import intent, intent_not_recognized, intents, \
     session_ended, session_queued, session_started
@@ -19,7 +17,7 @@ class DecoratedHermesApp(HermesSnipsApp):
 
     @intents
     def callback_intents(self, hermes, intent_message):
-        pass 
+        pass
 
     @session_ended
     def callback_session_ended(self, hermes, session_ended_message):
@@ -38,7 +36,7 @@ def test_snips_app_hermes_decorators(fs, mocker):
     """Test whether a `HermesSnipsApp` object with callbacks using decorators
     is initialized correctly.
     """
-    
+
     config_file = '/etc/snips.toml'
     assistant_file = '/usr/local/share/snips/assistant/assistant.json'
     fs.create_file(config_file, contents='[snips-common]\n')
@@ -61,15 +59,15 @@ def test_snips_app_hermes_decorators(fs, mocker):
     assert app.callback_intent_not_recognized.intent_not_recognized is True
     app.hermes.subscribe_intent_not_recognized.assert_called_once_with(app.callback_intent_not_recognized)
 
-    assert app.callback_intents.intents is True 
+    assert app.callback_intents.intents is True
     app.hermes.subscribe_intents.assert_called_once_with(app.callback_intents)
 
-    assert app.callback_session_ended.session_ended is True 
+    assert app.callback_session_ended.session_ended is True
     app.hermes.subscribe_session_ended.assert_called_once_with(app.callback_session_ended)
 
-    assert app.callback_session_queued.session_queued is True 
+    assert app.callback_session_queued.session_queued is True
     app.hermes.subscribe_session_queued.assert_called_once_with(app.callback_session_queued)
 
-    assert app.callback_session_started.session_started is True 
+    assert app.callback_session_started.session_started is True
     app.hermes.subscribe_session_started.assert_called_once_with(app.callback_session_started)
 

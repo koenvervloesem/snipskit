@@ -1,7 +1,5 @@
 """Tests for the `snipskit.config.apps.MQTTSnipsApp` class."""
 
-import pytest
-
 from snipskit.apps import MQTTSnipsApp
 from snipskit.app_decorators import topic
 
@@ -12,7 +10,7 @@ class DecoratedMQTTApp(MQTTSnipsApp):
     def initialize(self):
         pass
 
-    def do_something():
+    def do_something(self):
         pass
 
     @topic('hermes/intent/#')
@@ -46,7 +44,7 @@ def test_snips_app_mqtt_decorators(fs, mocker):
     # Simulate the call of `_subscribe_topics` when the client connects to MQTT
     app._subscribe_topics(None, None, None, None)
     # Check whether the right callback is called.
-    assert app._subscribe_topics.call_count == 1 
-    app.mqtt.subscribe.assert_called_once_with('hermes/intent/#') 
+    assert app._subscribe_topics.call_count == 1
+    app.mqtt.subscribe.assert_called_once_with('hermes/intent/#')
     app.mqtt.message_callback_add.assert_called_once_with('hermes/intent/#',
-                                                          app.handle_intents) 
+                                                          app.handle_intents)
