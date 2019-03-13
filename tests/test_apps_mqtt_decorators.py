@@ -10,7 +10,7 @@ class DecoratedMQTTApp(MQTTSnipsApp):
     def initialize(self):
         pass
 
-    def do_something():
+    def do_something(self):
         pass
 
     @topic('hermes/intent/#')
