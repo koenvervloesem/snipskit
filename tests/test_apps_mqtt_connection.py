@@ -1,10 +1,6 @@
 """Tests for the `snipskit.config.apps.MQTTSnipsApp` class."""
 
-import pytest
-
 from snipskit.apps import MQTTSnipsApp
-from snipskit.app_decorators import intent, intent_not_recognized, intents, \
-    session_ended, session_queued, session_started
 
 
 class SimpleMQTTApp(MQTTSnipsApp):

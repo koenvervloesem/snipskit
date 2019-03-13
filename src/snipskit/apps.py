@@ -9,12 +9,9 @@ Classes:
 
 """
 
-from collections import UserDict
-
-from hermes_python.ontology import MqttOptions
 from hermes_python.hermes import Hermes
 from paho.mqtt.client import Client
-from snipskit.config import AppConfig, AssistantConfig
+from snipskit.config import AssistantConfig
 
 
 class SnipsApp:
@@ -81,7 +78,7 @@ class MQTTSnipsApp(SnipsApp):
         else:
             host = host_port[0]
 
-        port = host_port[1] 
+        port = host_port[1]
 
         self.mqtt.connect(host, int(port), 60)
 

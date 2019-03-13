@@ -1,6 +1,5 @@
 """Tests for the `snipskit.config.AppConfig` class."""
 
-import pytest
 from snipskit.config import AppConfig
 
 
@@ -13,7 +12,7 @@ def test_app_config_default(fs):
                                          'api-key=foobar\n')
 
     app_config = AppConfig()
-    assert app_config.filename == config_file 
+    assert app_config.filename == config_file
     assert app_config['secret']['api-key'] == 'foobar'
 
 
@@ -26,7 +25,7 @@ def test_app_config_path(fs):
                                          'api-key=foobar\n')
 
     app_config = AppConfig(config_file)
-    assert app_config.filename == config_file 
+    assert app_config.filename == config_file
     assert app_config['secret']['api-key'] == 'foobar'
 
 

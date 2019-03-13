@@ -1,7 +1,5 @@
 """Tests for the `snipskit.config.apps.MQTTSnipsApp` class."""
 
-import pytest
-
 from snipskit.apps import MQTTSnipsApp
 from snipskit.app_decorators import topic
 
