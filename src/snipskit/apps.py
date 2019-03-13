@@ -29,7 +29,7 @@ class SnipsApp:
 
         Args:
             config (:obj:`AppConfig`, optional): an app configuration. If the
-                argument is not specified, the app has no configuration. 
+                argument is not specified, the app has no configuration.
 
             assistant (:obj:`AssistantConfig`, optional): an assistant
                 configuration. If the argument is not specified, a default

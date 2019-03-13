@@ -37,7 +37,7 @@ class AppConfig(ConfigParser):
         filename (str): The filename of the configuration file.
 
     Example:
-        >>> config = AppConfig()  # Use default file config.ini 
+        >>> config = AppConfig()  # Use default file config.ini
         >>> config['secret']['api-key']
         'foobar'
         >>> config['secret']['api-key'] = 'barfoo'

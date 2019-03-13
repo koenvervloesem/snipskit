@@ -35,14 +35,14 @@ def test_snips_app_mqtt_connection_default(fs, mocker):
     # Check MQTT connection
     assert app.mqtt.username_pw_set.call_count == 0
     assert app.mqtt.tls_set.call_count == 0
-    assert app.mqtt.loop_forever.call_count == 1 
+    assert app.mqtt.loop_forever.call_count == 1
     app.mqtt.connect.assert_called_once_with('localhost', 1883, 60)
 
     # Check whether `initialize()` method is called.
     assert app.initialize.call_count == 1
 
 def test_snips_app_mqtt_connection_with_authentication(fs, mocker):
-    """Test whether a `MQTTSnipsApp` object with MQTT authentication connects 
+    """Test whether a `MQTTSnipsApp` object with MQTT authentication connects
     to the MQTT broker correctly.
     """
 
@@ -70,9 +70,9 @@ def test_snips_app_mqtt_connection_with_authentication(fs, mocker):
 
     # Check MQTT connection
     app.mqtt.username_pw_set.assert_called_once_with('foobar',
-                                                     'secretpassword') 
+                                                     'secretpassword')
     assert app.mqtt.tls_set.call_count == 0
-    assert app.mqtt.loop_forever.call_count == 1 
+    assert app.mqtt.loop_forever.call_count == 1
     app.mqtt.connect.assert_called_once_with('mqtt.example.com', 8883, 60)
 
     # Check whether `initialize()` method is called.
@@ -85,7 +85,7 @@ def test_snips_app_mqtt_connection_with_tls_and_authentication(fs, mocker):
 
     config_file = '/etc/snips.toml'
     assistant_file = '/usr/local/share/snips/assistant/assistant.json'
-    fs.create_file(config_file, 
+    fs.create_file(config_file,
                    contents='[snips-common]\n'
                             'mqtt = "mqtt.example.com:4883"\n'
                             'mqtt_username = "foobar"\n'
@@ -113,11 +113,11 @@ def test_snips_app_mqtt_connection_with_tls_and_authentication(fs, mocker):
 
     # Check MQTT connection
     app.mqtt.username_pw_set.assert_called_once_with('foobar',
-                                                     'secretpassword') 
+                                                     'secretpassword')
     app.mqtt.tls_set.assert_called_once_with(ca_certs='/etc/ssl/certs/ca-certificates.crt',
                                              certfile=None,
                                              keyfile=None)
-    assert app.mqtt.loop_forever.call_count == 1 
+    assert app.mqtt.loop_forever.call_count == 1
     app.mqtt.connect.assert_called_once_with('mqtt.example.com', 4883, 60)
 
     # Check whether `initialize()` method is called.

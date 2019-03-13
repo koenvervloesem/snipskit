@@ -17,7 +17,7 @@ class DecoratedHermesApp(HermesSnipsApp):
 
     @intents
     def callback_intents(self, hermes, intent_message):
-        pass 
+        pass
 
     @session_ended
     def callback_session_ended(self, hermes, session_ended_message):
