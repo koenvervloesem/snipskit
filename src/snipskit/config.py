@@ -65,7 +65,6 @@ class AppConfig(ConfigParser):
         with config_path.open('rt') as config:
             self.read_file(config)
 
-
     def write(self, *args, **kwargs):
         """Write the current configuration to the app's configuration file.
 
