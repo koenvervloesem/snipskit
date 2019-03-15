@@ -13,7 +13,8 @@ from snipskit.config import SnipsConfig
 
 
 class SnipsComponent:
-    """This class gives access to a Snips configuration.
+    """This class connects with a Snips instance and gives access to a Snips
+    configuration.
 
     Attributes:
         snips (:obj:`SnipsConfig`): The Snips configuration.

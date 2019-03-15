@@ -23,8 +23,8 @@ from snipskit.tools import find_path
 import toml
 
 SEARCH_PATH_SNIPS = ['/etc/snips.toml', '/usr/local/etc/snips.toml']
-SEARCH_PATH_ASSISTANT = ['/usr/share/snips/assistant',
-                         '/usr/local/share/snips/assistant']
+SEARCH_PATH_ASSISTANT = ['/usr/share/snips/assistant/assistant.json',
+                         '/usr/local/share/snips/assistant/assistant.json']
 DEFAULT_BROKER = 'localhost:1883'
 
 
@@ -89,33 +89,27 @@ class AssistantConfig(UserDict):
     Attributes:
         filename (str): The filename of the configuration file.
 
-        snips (:obj:`SnipsConfig`): The Snips configuration linked to
-            this assistant.
-
     Example:
-        >>> assistant = AssistantConfig()  # Use default Snips configuration
+        >>> assistant = AssistantConfig('/opt/assistant/assistant.json')
         >>> assistant['language']
         'en'
     """
 
-    def __init__(self, snips=None):
+    def __init__(self, filename=None):
         """Initialize an :class:`AssistantConfig` object.
 
         Args:
-            snips (:obj:`SnipsConfig`, optional): A Snips configuration
-                where this assistant belongs to. The path of this assistant is
-                taken from the Snips configuration, or (when it's not specified
-                there) searched for in the following locations, in this order:
+            filename (:obj:`str`, optional): The path of the assistant's
+                configuration file.
+
+                If the argument is not specified, the configuration file is
+                searched for in the following locations, in this order:
 
                 - /usr/share/snips/assistant/assistant.json
                 - /usr/local/share/snips/assistant/assistant.json
 
-                If the argument is not specified, a default
-                :class:`SnipsConfig` object is created.
-
         Raises:
-            FileNotFoundError: If the assistant directory is specified in the
-                Snips configuration but doesn't exist.
+            FileNotFoundError: If the specified filename doesn't exist.
 
             AssistantConfigNotFoundError: If there's no assistant
                 configuration found in the search path.
@@ -124,23 +118,19 @@ class AssistantConfig(UserDict):
                 doesn't have a valid JSON syntax.
 
         Examples:
-            >>> assistant = AssistantConfig()  # default Snips configuration
-            >>> assistant2 = AssistantConfig(SnipsConfig('/etc/snips.toml'))
+            >>> assistant = AssistantConfig()  # default configuration
+            >>> assistant2 = AssistantConfig('/opt/assistant/assistant.json')
         """
-        if not snips:
-            snips = SnipsConfig()
-        self.snips = snips
+        if filename:
+            self.filename = filename
+            assistant_file = Path(filename)
+        else:
+            self.filename = find_path(SEARCH_PATH_ASSISTANT)
 
-        try:
-            assistant_directory = snips['snips-common']['assistant']
-        except KeyError:
-            assistant_directory = find_path(SEARCH_PATH_ASSISTANT)
+            if not self.filename:
+                raise AssistantConfigNotFoundError()
 
-        if not assistant_directory:
-            raise AssistantConfigNotFoundError()
-
-        assistant_file = Path(assistant_directory) / 'assistant.json'
-        self.filename = str(assistant_file)
+            assistant_file = Path(self.filename)
 
         # Open the assistant's file. This raises FileNotFoundError if the
         # file doesn't exist.
@@ -152,8 +142,7 @@ class AssistantConfig(UserDict):
 
 
 class SnipsConfig(UserDict):
-    """This class gives access to the configuration of a locally installed
-    instance of Snips as a dict.
+    """This class gives access to a snips.toml configuration file as a dict.
 
     Attributes:
         filename (str): The filename of the configuration file.

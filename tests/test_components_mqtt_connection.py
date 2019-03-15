@@ -1,6 +1,7 @@
 """Tests for the `snipskit.components.MQTTSnipsComponent` class."""
 
 from snipskit.components import MQTTSnipsComponent
+from snipskit.config import SnipsConfig
 
 
 class SimpleMQTTComponent(MQTTSnipsComponent):
@@ -34,6 +35,40 @@ def test_snips_component_mqtt_connection_default(fs, mocker):
     assert component.mqtt.tls_set.call_count == 0
     assert component.mqtt.loop_forever.call_count == 1
     component.mqtt.connect.assert_called_once_with('localhost', 1883, 60)
+
+    # Check whether `initialize()` method is called.
+    assert component.initialize.call_count == 1
+
+
+def test_snips_component_mqtt_with_snips_config(fs, mocker):
+    """Test whether a `MQTTSnipsComponent` object with a `SnipsConfig` object
+    passed to `__init__` uses the connection settings from the specified file.
+    """
+
+    config_file = 'snips.toml'
+    fs.create_file(config_file, contents='[snips-common]\n'
+                                         'mqtt = "mqtt.example.com:1883"\n')
+
+    mocker.patch('paho.mqtt.client.Client.connect')
+    mocker.patch('paho.mqtt.client.Client.loop_forever')
+    mocker.patch('paho.mqtt.client.Client.tls_set')
+    mocker.patch('paho.mqtt.client.Client.username_pw_set')
+    mocker.patch.object(SimpleMQTTComponent, 'initialize')
+
+    snips_config = SnipsConfig(config_file)
+    component = SimpleMQTTComponent(snips_config)
+
+    # Check configuration
+    assert component.snips == snips_config
+    assert component.snips.mqtt.broker_address == 'mqtt.example.com:1883'
+
+    # Check MQTT connection
+    assert component.mqtt.username_pw_set.call_count == 0
+    assert component.mqtt.tls_set.call_count == 0
+    assert component.mqtt.loop_forever.call_count == 1
+    component.mqtt.connect.assert_called_once_with('mqtt.example.com',
+                                                   1883,
+                                                   60)
 
     # Check whether `initialize()` method is called.
     assert component.initialize.call_count == 1

@@ -1,6 +1,7 @@
 """Tests for the `snipskit.components.HermesSnipsComponent` class."""
 
 from snipskit.components import HermesSnipsComponent
+from snipskit.config import SnipsConfig
 
 
 class SimpleHermesComponent(HermesSnipsComponent):
@@ -30,6 +31,37 @@ def test_snips_component_hermes_connection_default(fs, mocker):
     # Check MQTT connection
     assert component.hermes.mqtt_options == component.snips.mqtt
     assert component.hermes.loop_forever.call_count == 1
+
+    # Check whether `initialize()` method is called.
+    assert component.initialize.call_count == 1
+
+
+def test_snips_component_hermes_with_snips_config(fs, mocker):
+    """Test whether a `HermesSnipsComponent` object with a `SnipsConfig` object
+    passed to `__init__` uses the connection settings from the specified file.
+    """
+
+    config_file = 'snips.toml'
+    fs.create_file(config_file, contents='[snips-common]\n'
+                                         'mqtt = "mqtt.example.com:1883"\n')
+
+    mocker.patch('hermes_python.hermes.Hermes.connect')
+    mocker.patch('hermes_python.hermes.Hermes.loop_forever')
+    mocker.spy(SimpleHermesComponent, 'initialize')
+
+    snips_config = SnipsConfig(config_file)
+    component = SimpleHermesComponent(snips_config)
+
+    # Check configuration
+    assert component.snips == snips_config
+    assert component.snips.mqtt.broker_address == 'mqtt.example.com:1883'
+
+    # Check MQTT connection
+    assert component.hermes.mqtt_options == component.snips.mqtt
+    assert component.hermes.loop_forever.call_count == 1
+
+    # Check whether `initialize()` method is called.
+    assert component.initialize.call_count == 1
 
     # Check whether `initialize()` method is called.
     assert component.initialize.call_count == 1
