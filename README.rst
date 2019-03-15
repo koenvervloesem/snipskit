@@ -2,7 +2,7 @@ SnipsKit
 ========
 
 .. image:: https://api.travis-ci.com/koenvervloesem/snipskit.svg?branch=master
-   :target: https://api.travis-ci.com/koenvervloesem/snipskit
+   :target: https://travis-ci.com/koenvervloesem/snipskit
    :alt: Build status
 
 .. image:: https://api.codeclimate.com/v1/badges/46806611ac7c0e5c1613/maintainability
