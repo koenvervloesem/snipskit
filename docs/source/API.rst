@@ -1,5 +1,11 @@
+#############
+API reference
+#############
+
+********************
 Module snipskit.apps
-====================
+********************
+
 .. automodule:: snipskit.apps
 
 .. autoclass:: snipskit.apps.HermesSnipsApp
@@ -8,8 +14,10 @@ Module snipskit.apps
 .. autoclass:: snipskit.apps.MQTTSnipsApp
    :members:
 
+**************************
 Module snipskit.components
-==========================
+**************************
+
 .. automodule:: snipskit.components
 
 .. autoclass:: snipskit.components.SnipsComponent
@@ -21,8 +29,10 @@ Module snipskit.components
 .. autoclass:: snipskit.components.MQTTSnipsComponent
    :members:
 
+**********************
 Module snipskit.config
-======================
+**********************
+
 .. automodule:: snipskit.config
 
 .. autoclass:: snipskit.config.AppConfig
@@ -34,13 +44,17 @@ Module snipskit.config
 .. autoclass:: snipskit.config.SnipsConfig
    :members:
 
+**************************
 Module snipskit.decorators
-==========================
+**************************
+
 .. automodule:: snipskit.decorators
    :members:
 
+**************************
 Module snipskit.exceptions
-==========================
+**************************
+
 .. automodule:: snipskit.exceptions
 
 .. autoclass:: snipskit.exceptions.SnipsKitError
@@ -52,7 +66,9 @@ Module snipskit.exceptions
 .. autoclass:: snipskit.exceptions.SnipsConfigNotFoundError
    :members:
 
+*********************
 Module snipskit.tools
-=====================
+*********************
+
 .. automodule:: snipskit.tools
    :members:

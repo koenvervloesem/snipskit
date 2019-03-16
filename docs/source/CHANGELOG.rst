@@ -20,6 +20,7 @@ Added
 =====
 
 - Changelog.
+- Simple example in documentation.
 
 Changed
 =======
