@@ -18,9 +18,10 @@ Example:
             print('Component initialized')
 
         @topic('hermes/hotword/toggleOn')
-        def hotword_on(self, client, userdata, msg): 
+        def hotword_on(self, client, userdata, msg):
             print('Hotword activated')
 """
+
 from abc import ABCMeta, abstractmethod
 
 from hermes_python.hermes import Hermes
@@ -70,7 +71,7 @@ class SnipsComponent(metaclass=ABCMeta):
     def initialize(self):
         """If you have to initialize a component in your subclass of
         :class:`.SnipsComponent`, add your code in this method. It will be
-        called between the methods `connect` and `start`.
+        called between the methods :func:`.connect` and :func:`.start`.
         """
         pass
 
@@ -89,7 +90,7 @@ class MQTTSnipsComponent(SnipsComponent):
 
     Attributes:
         snips (:class:`.SnipsConfig`): The Snips configuration.
-        mqtt (:class:`.paho.mqtt.client.Client`): The MQTT client object.
+        mqtt (:class:`paho.mqtt.client.Client`): The MQTT client object.
     """
 
     def _connect(self):
