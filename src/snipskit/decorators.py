@@ -1,15 +1,29 @@
 """This module contains decorators to add to methods of a Snips component.
+
+By applying one of these decorators to a method of a :obj:`SnipsComponent`
+object, this method is registered as a callback to the corresponding event.
+When the event fires (e.g. an intent happens), the method is called.
+
+Example:
+
+.. code-block:: python
+
+    from snipskit.apps import HermesSnipsApp
+    from snipskit.decorators import intent
+
+    class SimpleSnipsApp(HermesSnipsApp):
+
+        @intent('User:ExampleIntent')
+        def example_intent(self, hermes, intent_message):
+            print('I received ExampleIntent')
 """
 
 
-# TODO: Better explain all these decorators: "Apply this decorator to a method
-# of class X to register it as... to be triggered when ..." or something like
-# that.
+# Decorators for MQTTSnipsComponent
 def topic(topic_name):
-    """A decorator that adds an attribute `topic` with the MQTT topic to a
-    function. This is used by the `MQTTSnipsComponent` class to register a
-    method as a callback to be triggered when the MQTT topic `topic_name` is
-    published.
+    """Apply this decorator to a method of class :obj:`MQTTSnipsComponent`
+    to register it as a callback to be triggered when the MQTT topic
+    `topic_name` is published.
     """
     def inner(function):
         function.topic = topic_name
@@ -17,10 +31,10 @@ def topic(topic_name):
     return inner
 
 
+# Decorators for HermesSnipsComponent
 def intent(intent_name):
-    """A decorator that adds an attribute `intent` with the intent name to a
-    function. This is used by the `HermesSnipsComponent` class to register a
-    method as a callback to be triggered when the intent `intent_name`
+    """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
+    to register it as a callback to be triggered when the intent `intent_name`
     is recognized.
     """
     def inner(function):
@@ -30,45 +44,45 @@ def intent(intent_name):
 
 
 def intent_not_recognized(function):
-    """A decorator that adds an attribute `intent_not_recognized` to a
-    function. This is used by the `HermesSnipsComponent` class to register a
-    method as a callback when the dialogue manager doesn't recognize an intent.
+    """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
+    to register it as a callback to be triggered when the dialogie manager
+    doesn't recognize an intent.
     """
     function.intent_not_recognized = True
     return function
 
 
 def intents(function):
-    """A decorator that adds an attribute `intents` to a function. This is used
-    by the `HermesSnipsComponent` class to register a method as a callback to
-    be triggered everytime an intent is recognized.
+    """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
+    to register it as a callback to be triggered everytime an intent is
+    recognized. 
     """
     function.intents = True
     return function
 
 
 def session_ended(function):
-    """A decorator that adds an attribute `session_ended` to a function. This
-    is used by the `HermesSnipsComponent` class to register a method as a
-    callback when the dialogue manager ends a session.
+    """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
+    to register it as a callback to be triggered when the dialogue manager ends
+    a session.
     """
     function.session_ended = True
     return function
 
 
 def session_queued(function):
-    """A decorator that adds an attribute `session_queued` to a function. This
-    is used by the `HermesSnipsComponent` class to register a method as a
-    callback when the dialogue manager queues the current session.
+    """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
+    to register it as a callback to be triggered when the dialogue manager
+    queues the current session.
     """
     function.session_queued = True
     return function
 
 
 def session_started(function):
-    """A decorator that adds an attribute `session_started` to a function. This
-    is used by the `HermesSnipsComponent` class to register a method as a
-    callback when the dialogue manager starts a new session.
+    """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
+    to register it as a callback to be triggered when the dialogue manager
+    queues starts a new session.
     """
     function.session_started = True
     return function
