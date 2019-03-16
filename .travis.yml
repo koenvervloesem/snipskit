@@ -11,8 +11,7 @@ python:
 
 install:
   - pip install -r requirements/install.txt
-  - pip install -r requirements/tests.txt
-  - pip install -r requirements/docs.txt
+  - pip install -r requirements/development.txt
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -21,8 +20,8 @@ before_script:
 
 script:
   - pytest --cov src --verbose --cov-report xml
-  - cd docs && make html
-  - cd ..
+  - scripts/generate_docs.sh
+  - scripts/build_package.sh
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

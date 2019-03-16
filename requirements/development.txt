@@ -1,0 +1,11 @@
+# Documentation
+Sphinx
+sphinx_rtd_theme
+# Tests
+mock
+pyfakefs
+pytest
+pytest-cov
+pytest-mock
+# Packaging
+wheel
