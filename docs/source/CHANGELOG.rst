@@ -4,13 +4,13 @@ Changelog
 
 All notable changes to the SnipsKit project are documented in this file.
 
-The format is based on `Keep a Changelog`, and this project adheres to the `Semantic Versioning` specification with major, minor and patch version.
+The format is based on `Keep a Changelog`_, and this project adheres to the `Semantic Versioning`_ specification with major, minor and patch version.
 
-.. attention: Note that major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
+.. attention:: Note that major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
 
-.. `Keep a Changelog`: https://keepachangelog.com/en/1.0.0/
+.. _`Keep a Changelog`: https://keepachangelog.com/en/1.0.0/
 
-.. `Semantic Versioning`: https://semver.org
+.. _`Semantic Versioning`: https://semver.org
 
 ************
 [Unreleased]
