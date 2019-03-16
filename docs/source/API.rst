@@ -2,11 +2,13 @@
 API reference
 #############
 
-********************
-Module snipskit.apps
-********************
+This is the API documentation of the SnipsKit package, covering all modules and classes.
 
-.. automodule:: snipskit.apps
+*************
+snipskit.apps
+*************
+
+.. module:: snipskit.apps
 
 .. autoclass:: snipskit.apps.HermesSnipsApp
    :members:
@@ -14,11 +16,11 @@ Module snipskit.apps
 .. autoclass:: snipskit.apps.MQTTSnipsApp
    :members:
 
-**************************
-Module snipskit.components
-**************************
+*******************
+snipskit.components
+*******************
 
-.. automodule:: snipskit.components
+.. module:: snipskit.components
 
 .. autoclass:: snipskit.components.SnipsComponent
    :members:
@@ -29,11 +31,11 @@ Module snipskit.components
 .. autoclass:: snipskit.components.MQTTSnipsComponent
    :members:
 
-**********************
-Module snipskit.config
-**********************
+***************
+snipskit.config
+***************
 
-.. automodule:: snipskit.config
+.. module:: snipskit.config
 
 .. autoclass:: snipskit.config.AppConfig
    :members:
@@ -44,18 +46,18 @@ Module snipskit.config
 .. autoclass:: snipskit.config.SnipsConfig
    :members:
 
-**************************
-Module snipskit.decorators
-**************************
+*******************
+snipskit.decorators
+*******************
 
 .. automodule:: snipskit.decorators
    :members:
 
-**************************
-Module snipskit.exceptions
-**************************
+*******************
+snipskit.exceptions
+*******************
 
-.. automodule:: snipskit.exceptions
+.. module:: snipskit.exceptions
 
 .. autoclass:: snipskit.exceptions.SnipsKitError
    :members:
@@ -66,9 +68,9 @@ Module snipskit.exceptions
 .. autoclass:: snipskit.exceptions.SnipsConfigNotFoundError
    :members:
 
-*********************
-Module snipskit.tools
-*********************
+**************
+snipskit.tools
+**************
 
 .. automodule:: snipskit.tools
    :members:
