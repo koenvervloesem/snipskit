@@ -1,17 +1,11 @@
-"""This module contains exceptions defined for the snipskit library.
-
-Classes:
-    :class:`SnipsKitError`: The base class for exceptions in snipskit.
-
-    :class:`AssistantConfigNotFoundError`: Raised when the assistant's
-        configuration file is not found.
-
-    :class:`SnipsConfigNotFoundError`: Raised when there's no snips.toml found.
-"""
+"""This module contains exceptions defined for the SnipsKit library."""
 
 
 class SnipsKitError(Exception):
-    """Base class for exceptions raised by snipskit code."""
+    """Base class for exceptions raised by SnipsKit code.
+
+    By catching this exception type, you catch all exceptions that are
+    defined by the SnipsKit library."""
     pass
 
 
