@@ -15,7 +15,7 @@ Example:
 
         @intent('User:ExampleIntent')
         def example_intent(self, hermes, intent_message):
-            print('I received ExampleIntent')
+            print('I received intent "User:ExampleIntent"')
 """
 
 
@@ -24,6 +24,9 @@ def topic(topic_name):
     """Apply this decorator to a method of class :obj:`MQTTSnipsComponent`
     to register it as a callback to be triggered when the MQTT topic
     `topic_name` is published.
+
+    Attributes:
+        topic_name (str): The MQTT topic you want to subscribe to.
     """
     def inner(function):
         function.topic = topic_name
@@ -36,6 +39,10 @@ def intent(intent_name):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
     to register it as a callback to be triggered when the intent `intent_name`
     is recognized.
+
+    Attributes:
+        intent_name (str): The intent you want to subscribe to.
+
     """
     def inner(function):
         function.intent = intent_name
