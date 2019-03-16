@@ -8,4 +8,5 @@ pytest
 pytest-cov
 pytest-mock
 # Packaging
+twine
 wheel

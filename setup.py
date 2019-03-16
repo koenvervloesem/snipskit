@@ -14,6 +14,10 @@ with open("VERSION", "r") as fh:
 setup(
     name="snipskit",
     version=version,
+    description="A library to help create apps for the voice assistant Snips",
+    long_description=long_description,
+    long_description_content_type="text/x-rst",
+    license="MIT",
     author="Koen Vervloesem",
     author_email="koen@vervloesem.eu",
     url="https://github.com/koenvervloesem/snipskit",
