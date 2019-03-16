@@ -1,31 +1,53 @@
 """This module contains classes to create components communicating with Snips.
 
-Classes:
-    SnipsComponent: The base class for all kinds of Snips components.
-    MQTTSnipsComponent: A Snips component using MQTT directly.
-    HermesSnipsComponent: A Snips component using the Hermes protocol.
+A Snips component (a subclass of :class:`.SnipsComponent`) can communicate with
+Snips services. If you want to create a Snips app with access to an assistant's
+configuration and a configuration for the app, you need to instantiate a
+:class:`.SnipsApp` object, which is a subclass of :class:`.SnipsComponent`.
 
+Example:
+
+.. code-block:: python
+
+    from snipskit.components import MQTTSnipsComponent
+    from snipskit.decorators import topic
+
+    class SimpleSnipsComponent(HermesSnipsComponent):
+
+        def initialize(self):
+            print('Component initialized')
+
+        @topic('hermes/hotword/toggleOn')
+        def hotword_on(self, client, userdata, msg): 
+            print('Hotword activated')
 """
+from abc import ABCMeta, abstractmethod
 
 from hermes_python.hermes import Hermes
 from paho.mqtt.client import Client
 from snipskit.config import SnipsConfig
 
 
-class SnipsComponent:
-    """This class connects with a Snips instance and gives access to a Snips
-    configuration.
+class SnipsComponent(metaclass=ABCMeta):
+    """Connect with a Snips instance and give access to a Snips configuration.
+
+    This is an `abstract base class`_. You don't instantiate an object of this
+    class, but an object of one of its subclasses:
+    :class:`.HermesSnipsComponent` or :class:`.MQTTSnipsComponent`
+
+    .. _`abstract base class`: https://docs.python.org/3/glossary.html#term-abstract-base-class
 
     Attributes:
-        snips (:obj:`SnipsConfig`): The Snips configuration.
+        snips (:class:`.SnipsConfig`): The Snips configuration.
     """
 
     def __init__(self, snips=None):
         """Initialize a Snips component.
 
         Args:
-            snips (:obj:`SnipsConfig`, optional): a Snips configuration.
-                If the argument is not specified, a default :obj:`SnipsConfig`
+            snips (:class:`.SnipsConfig`, optional): a Snips configuration.
+                If the argument is not specified, a default
+                :class:`.SnipsConfig`
                 object is created for a locally installed instance of Snips.
         """
         if not snips:
@@ -36,36 +58,38 @@ class SnipsComponent:
         self.initialize()
         self._start()
 
+    @abstractmethod
     def _connect(self):
         """Connect with Snips.
 
         This method should be implemented in a subclass of
-        :obj:'SnipsComponent`.
-        """
-        pass  # TODO: Raise exception if not implemented.
-
-    def initialize(self):
-        """If you have to initialize a component in your subclass of
-        :obj:'SnipsComponent`, add your code in this method. It will be called
-        between the methods `connect` and `start`.
+        :class:`.SnipsComponent`.
         """
         pass
 
+    def initialize(self):
+        """If you have to initialize a component in your subclass of
+        :class:`.SnipsComponent`, add your code in this method. It will be
+        called between the methods `connect` and `start`.
+        """
+        pass
+
+    @abstractmethod
     def _start(self):
         """Connect with Snips.
 
         This method should be implemented in a subclass of
-        :obj:'SnipsComponent`.
+        :class:`.SnipsComponent`.
         """
-        pass  # TODO: Raise exception if not implemented.
+        pass
 
 
 class MQTTSnipsComponent(SnipsComponent):
     """A Snips component using the MQTT protocol directly.
 
     Attributes:
-        snips (:obj:`SnipsConfig`): The Snips configuration.
-        mqtt (:obj:`paho.mqtt.client.Client`): The MQTT client object.
+        snips (:class:`.SnipsConfig`): The Snips configuration.
+        mqtt (:class:`.paho.mqtt.client.Client`): The MQTT client object.
     """
 
     def _connect(self):
@@ -123,8 +147,8 @@ class HermesSnipsComponent(SnipsComponent):
     """A Snips component using the Hermes protocol.
 
     Attributes:
-        snips (:obj:`SnipsConfig`): The Snips configuration.
-        hermes (:obj:`hermes_python.hermes.Hermes`): The Hermes object.
+        snips (:class:`.SnipsConfig`): The Snips configuration.
+        hermes (:class:`.hermes_python.hermes.Hermes`): The Hermes object.
     """
 
     def _connect(self):
