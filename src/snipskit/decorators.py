@@ -45,7 +45,7 @@ def intent(intent_name):
 
 def intent_not_recognized(function):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
-    to register it as a callback to be triggered when the dialogie manager
+    to register it as a callback to be triggered when the dialogue manager
     doesn't recognize an intent.
     """
     function.intent_not_recognized = True
@@ -55,7 +55,7 @@ def intent_not_recognized(function):
 def intents(function):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
     to register it as a callback to be triggered everytime an intent is
-    recognized. 
+    recognized.
     """
     function.intents = True
     return function
