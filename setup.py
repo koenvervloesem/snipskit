@@ -8,13 +8,12 @@ from setuptools import setup, find_packages
 with open("README.rst", "r") as fh:
     long_description = fh.read()
 
+with open("VERSION", "r") as fh:
+    version = fh.read().strip()
+
 setup(
     name="snipskit",
-    version="0.0.4",
-    description="A library to help create apps for the voice assistant Snips",
-    long_description=long_description,
-    long_description_content_type="text/x-rst",
-    license="MIT",
+    version=version,
     author="Koen Vervloesem",
     author_email="koen@vervloesem.eu",
     url="https://github.com/koenvervloesem/snipskit",
