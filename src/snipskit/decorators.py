@@ -25,7 +25,7 @@ def topic(topic_name):
     to register it as a callback to be triggered when the MQTT topic
     `topic_name` is published.
 
-    Attributes:
+    Args:
         topic_name (str): The MQTT topic you want to subscribe to.
     """
     def inner(function):
@@ -40,7 +40,7 @@ def intent(intent_name):
     to register it as a callback to be triggered when the intent `intent_name`
     is recognized.
 
-    Attributes:
+    Args:
         intent_name (str): The intent you want to subscribe to.
 
     """
