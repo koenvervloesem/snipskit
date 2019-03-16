@@ -10,68 +10,12 @@ Welcome to SnipsKit's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-Module snipskit.decorators
-==========================
-.. automodule:: snipskit.decorators
-   :members:
-
-Module snipskit.components
-==========================
-.. automodule:: snipskit.components
-
-.. autoclass:: snipskit.components.SnipsComponent
-   :members:
-
-.. autoclass:: snipskit.components.MQTTSnipsComponent
-   :members:
-
-.. autoclass:: snipskit.components.HermesSnipsComponent
-   :members:
-
-Module snipskit.apps
-====================
-.. automodule:: snipskit.apps
-
-.. autoclass:: snipskit.apps.MQTTSnipsApp
-   :members:
-
-.. autoclass:: snipskit.apps.HermesSnipsApp
-   :members:
-
-Module snipskit.config
-======================
-.. automodule:: snipskit.config
-
-.. autoclass:: snipskit.config.AppConfig
-   :members:
-
-.. autoclass:: snipskit.config.AssistantConfig
-   :members:
-
-.. autoclass:: snipskit.config.SnipsConfig
-   :members:
-
-Module snipskit.exceptions
-==========================
-.. automodule:: snipskit.exceptions
-
-.. autoclass:: snipskit.exceptions.SnipsKitError
-   :members:
-
-.. autoclass:: snipskit.exceptions.AssistantConfigNotFoundError
-   :members:
-
-.. autoclass:: snipskit.exceptions.SnipsConfigNotFoundError
-   :members:
-
-Module snipskit.tools
-=====================
-.. automodule:: snipskit.tools
-   :members:
+   API
+   CHANGELOG
 
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+- :ref:`genindex`
+- :ref:`modindex`
+- :ref:`search`
