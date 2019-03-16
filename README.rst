@@ -1,5 +1,6 @@
+########
 SnipsKit
-========
+########
 
 .. image:: https://api.travis-ci.com/koenvervloesem/snipskit.svg?branch=master
    :target: https://travis-ci.com/koenvervloesem/snipskit
@@ -17,6 +18,10 @@ SnipsKit
    :target: https://www.codacy.com/app/koenvervloesem/snipskit
    :alt: Code quality
 
+.. image:: https://readthedocs.org/projects/snipskit/badge/?version=latest
+   :target: https://snipskit.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation status
+
 .. image:: https://img.shields.io/pypi/v/snipskit.svg
    :target: https://pypi.python.org/pypi/snipskit
    :alt: PyPI package version
@@ -33,8 +38,18 @@ SnipsKit is a Python library with some helper tools to work with the voice assis
 
 .. _Snips: https://snips.ai/
 
+*************
+Documentation
+*************
+
+The `full documentation`_ can be found on Read the Docs.
+
+.. _`full documentation`: https://snipskit.readthedocs.io
+
+*********
 Copyright
----------
+*********
+
 This library is provided by `Koen Vervloesem`_ as open source software. See LICENSE_ for more information.
 
 .. _`Koen Vervloesem`: mailto:koen@vervloesem.eu
