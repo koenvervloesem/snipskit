@@ -12,11 +12,11 @@ def find_path(paths):
 
     Returns:
         string: The first path in the list `paths` that exists, or `None` if
-            none of the paths exists.
+        none of the paths exist.
 
     Example:
         The following example works if the file system has a file
-            /usr/local/etc/snips.toml (e.g. on macOS with Snips installed):
+        /usr/local/etc/snips.toml (e.g. on macOS with Snips installed):
 
         >>> find_path(['/etc/snips.toml', '/usr/local/etc/snips.toml'])
         '/usr/local/etc/snips.toml'
