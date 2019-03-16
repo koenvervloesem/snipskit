@@ -28,9 +28,9 @@ def topic(topic_name):
     Args:
         topic_name (str): The MQTT topic you want to subscribe to.
     """
-    def inner(function):
-        function.topic = topic_name
-        return function
+    def inner(method):
+        method.topic = topic_name
+        return method
     return inner
 
 
@@ -44,52 +44,52 @@ def intent(intent_name):
         intent_name (str): The intent you want to subscribe to.
 
     """
-    def inner(function):
-        function.intent = intent_name
-        return function
+    def inner(method):
+        method.intent = intent_name
+        return method
     return inner
 
 
-def intent_not_recognized(function):
+def intent_not_recognized(method):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager
     doesn't recognize an intent.
     """
-    function.intent_not_recognized = True
-    return function
+    method.intent_not_recognized = True
+    return method
 
 
-def intents(function):
+def intents(method):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
     to register it as a callback to be triggered everytime an intent is
     recognized.
     """
-    function.intents = True
-    return function
+    method.intents = True
+    return method
 
 
-def session_ended(function):
+def session_ended(method):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager ends
     a session.
     """
-    function.session_ended = True
-    return function
+    method.session_ended = True
+    return method
 
 
-def session_queued(function):
+def session_queued(method):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager
     queues the current session.
     """
-    function.session_queued = True
-    return function
+    method.session_queued = True
+    return method
 
 
-def session_started(function):
+def session_started(method):
     """Apply this decorator to a method of class :obj:`HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager
     queues starts a new session.
     """
-    function.session_started = True
-    return function
+    method.session_started = True
+    return method
