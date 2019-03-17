@@ -1,9 +1,18 @@
 """This module contains classes to create components communicating with Snips.
 
 A Snips component (a subclass of :class:`.SnipsComponent`) can communicate with
-Snips services. If you want to create a Snips app with access to an assistant's
-configuration and a configuration for the app, you need to instantiate a
-:class:`.SnipsApp` object, which is a subclass of :class:`.SnipsComponent`.
+Snips services. There are two subclasses of :class:`.SnipsComponent`:
+
+- :class:`.HermesSnipsComponent`: a Snips component using the Hermes protocol;
+- :class:`.MQTTSnipsComponent`: a Snips component using the MQTT protocol
+  directly.
+
+.. note::
+   If you want to create a Snips app with access to an assistant's
+   configuration and a configuration for the app, you need to instantiate a
+   :class:`.HermesSnipsApp` or :class:`.MQTTSnipsApp` object, which is a
+   subclass of :class:`.HermesSnipsComponent` or :class:`.MQTTSnipsComponent`,
+   respectively and adds `assistant` and `config` attributes.
 
 Example:
 
