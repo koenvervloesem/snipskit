@@ -4,7 +4,9 @@ SnipsKit
 
 Welcome to SnipsKit's documentation.
 
-.. include:: intro.rst
+.. include:: ../../README.rst
+   :start-after: inclusion-marker-start-intro
+   :end-before: inclusion-marker-end-intro
 
 ********
 Contents
