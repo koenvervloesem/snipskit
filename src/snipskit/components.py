@@ -57,8 +57,8 @@ class SnipsComponent(metaclass=ABCMeta):
         Args:
             snips (:class:`.SnipsConfig`, optional): a Snips configuration.
                 If the argument is not specified, a default
-                :class:`.SnipsConfig`
-                object is created for a locally installed instance of Snips.
+                :class:`.SnipsConfig` object is created for a locally installed
+                instance of Snips.
         """
         if not snips:
             snips = SnipsConfig()
