@@ -21,7 +21,7 @@ Example:
     from snipskit.components import MQTTSnipsComponent
     from snipskit.decorators import topic
 
-    class SimpleSnipsComponent(HermesSnipsComponent):
+    class SimpleSnipsComponent(MQTTSnipsComponent):
 
         def initialize(self):
             print('Component initialized')
