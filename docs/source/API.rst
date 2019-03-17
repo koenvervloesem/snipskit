@@ -56,6 +56,20 @@ snipskit.decorators
 .. automodule:: snipskit.decorators
    :members:
 
+**************************
+snipskit.decorators.hermes
+**************************
+
+.. automodule:: snipskit.decorators.hermes
+   :members:
+
+************************
+snipskit.decorators.mqtt
+************************
+
+.. automodule:: snipskit.decorators.mqtt
+   :members:
+
 *******************
 snipskit.exceptions
 *******************
