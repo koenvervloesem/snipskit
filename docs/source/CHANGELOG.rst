@@ -6,7 +6,13 @@ All notable changes to the SnipsKit project are documented in this file.
 
 The format is based on `Keep a Changelog`_, and this project adheres to the `Semantic Versioning`_ specification with major, minor and patch version.
 
-.. attention:: Note that major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable.
+Given a version number MAJOR.MINOR.PATCH, this project increments the:
+
+- MAJOR version when incompatible API changes are made;
+- MINOR version when functionality is added in a backwards-compatible manner;
+- PATCH version when backwards-compatible bug fixes are made.
+
+.. warning:: Note that major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable. Before SnipsKit reaches version 1.0.0, the API does not adhere to the above specification.
 
 .. _`Keep a Changelog`: https://keepachangelog.com/en/1.0.0/
 
@@ -19,13 +25,8 @@ The format is based on `Keep a Changelog`_, and this project adheres to the `Sem
 Added
 =====
 
-- Changelog.
-- Simple example in documentation.
-
 Changed
 =======
-
-- Modularized documentation.
 
 Deprecated
 ==========
@@ -39,9 +40,29 @@ Fixed
 Security
 ========
 
-********************
-[0.1.0] - 2019-03-16
-********************
+******************
+0.2.0 - 2019-03-17
+******************
+
+Added
+=====
+
+- Changelog.
+- Examples in documentation.
+
+Changed
+=======
+
+- Breaking change: Divided decorators module into two submodules: decorators.hermes and decorators.mqtt. 
+
+Fixed
+=====
+
+- Cleaned up API documentation.
+
+******************
+0.1.0 - 2019-03-16
+******************
 
 Added
 =====
