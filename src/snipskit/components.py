@@ -71,7 +71,7 @@ class SnipsComponent(metaclass=ABCMeta):
     def initialize(self):
         """If you have to initialize a component in your subclass of
         :class:`.SnipsComponent`, add your code in this method. It will be
-        called between the methods :func:`._connect` and :func:`._start`.
+        called between connecting to Snips and starting the event loop.
         """
         pass
 
@@ -90,11 +90,13 @@ class MQTTSnipsComponent(SnipsComponent):
 
     Attributes:
         snips (:class:`.SnipsConfig`): The Snips configuration.
-        mqtt (:class:`paho.mqtt.client.Client`): The MQTT client object.
+        mqtt (`paho.mqtt.client.Client`_): The MQTT client object.
+
+    .. _`paho.mqtt.client.Client`: https://github.com/eclipse/paho.mqtt.python#client
     """
 
     def _connect(self):
-        """Connect with the MQTT broker referenced in the snips configuration
+        """Connect with the MQTT broker referenced in the Snips configuration
         file.
         """
         self.mqtt = Client()
@@ -125,7 +127,7 @@ class MQTTSnipsComponent(SnipsComponent):
         self.mqtt.connect(host, int(port), 60)
 
     def _start(self):
-        """Start the connection loop to the MQTT broker so the component starts
+        """Start the event loop to the MQTT broker so the component starts
         listening to MQTT topics and the callback methods are called.
         """
         self.mqtt.loop_forever()
@@ -149,7 +151,9 @@ class HermesSnipsComponent(SnipsComponent):
 
     Attributes:
         snips (:class:`.SnipsConfig`): The Snips configuration.
-        hermes (:class:`.hermes_python.hermes.Hermes`): The Hermes object.
+        hermes (`hermes_python.hermes.Hermes`_): The Hermes object.
+
+    .. _`hermes_python.hermes.Hermes`: https://github.com/snipsco/hermes-protocol/tree/develop/platforms/hermes-python
     """
 
     def _connect(self):
@@ -161,7 +165,7 @@ class HermesSnipsComponent(SnipsComponent):
         self._register_callbacks()
 
     def _start(self):
-        """Start the connection loop to the Hermes object so the component
+        """Start the event loop to the Hermes object so the component
         starts listening to events and the callback methods are called.
         """
         self.hermes.loop_forever()
