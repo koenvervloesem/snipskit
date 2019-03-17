@@ -8,7 +8,7 @@ This is the API documentation of the SnipsKit package, covering all modules and 
 snipskit.apps
 *************
 
-.. module:: snipskit.apps
+.. automodule:: snipskit.apps
 
 .. autoclass:: snipskit.apps.HermesSnipsApp
    :members:
@@ -20,7 +20,7 @@ snipskit.apps
 snipskit.components
 *******************
 
-.. module:: snipskit.components
+.. automodule:: snipskit.components
 
 .. autoclass:: snipskit.components.SnipsComponent
    :members:
@@ -35,7 +35,7 @@ snipskit.components
 snipskit.config
 ***************
 
-.. module:: snipskit.config
+.. automodule:: snipskit.config
 
 .. autoclass:: snipskit.config.AppConfig
    :members:
@@ -57,7 +57,7 @@ snipskit.decorators
 snipskit.exceptions
 *******************
 
-.. module:: snipskit.exceptions
+.. automodule:: snipskit.exceptions
 
 .. autoclass:: snipskit.exceptions.SnipsKitError
    :members:
