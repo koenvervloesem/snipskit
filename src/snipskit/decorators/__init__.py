@@ -9,8 +9,8 @@ the method is called.
 
 The decorators are divided in two submodules:
 
-- :module:`.decorators.hermes`: Decorators you can apply to the methods of a
+- `decorators.hermes`: Decorators you can apply to the methods of a
   :class:`.HermesSnipsComponent` object.
-- :module:`.decorators.mqtt`: Decorators you can apply to the methods of a
+- `decorators.mqtt`: Decorators you can apply to the methods of a
   :class:`.MQTTSnipsComponent` object.
 """
