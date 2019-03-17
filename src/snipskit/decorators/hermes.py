@@ -1,17 +1,19 @@
-"""This module contains decorators_ to add to methods of a Snips component.
+"""This module contains decorators_ to apply to methods of a
+:class:`.HermesSnipsComponent` object.
 
 .. _decorators: https://docs.python.org/3/glossary.html#term-decorator
 
-By applying one of these decorators to a method of a :class:`SnipsComponent`
-object, this method is registered as a callback to the corresponding event.
-When the event fires (e.g. an intent happens), the method is called.
+By applying one of these decorators to a method of a
+:class:`.HermesSnipsComponent` object, this method is registered as a callback
+to the corresponding event. When the event fires (e.g. an intent happens), the
+method is called.
 
 Example:
 
 .. code-block:: python
 
     from snipskit.apps import HermesSnipsApp
-    from snipskit.decorators import intent
+    from snipskit.decorators.hermes import intent
 
     class SimpleSnipsApp(HermesSnipsApp):
 
@@ -21,24 +23,8 @@ Example:
 """
 
 
-# Decorators for MQTTSnipsComponent
-def topic(topic_name):
-    """Apply this decorator to a method of class :class:`MQTTSnipsComponent`
-    to register it as a callback to be triggered when the MQTT topic
-    `topic_name` is published.
-
-    Args:
-        topic_name (str): The MQTT topic you want to subscribe to.
-    """
-    def inner(method):
-        method.topic = topic_name
-        return method
-    return inner
-
-
-# Decorators for HermesSnipsComponent
 def intent(intent_name):
-    """Apply this decorator to a method of class :class:`HermesSnipsComponent`
+    """Apply this decorator to a method of class :class:`.HermesSnipsComponent`
     to register it as a callback to be triggered when the intent `intent_name`
     is recognized.
 
@@ -53,7 +39,7 @@ def intent(intent_name):
 
 
 def intent_not_recognized(method):
-    """Apply this decorator to a method of class :class:`HermesSnipsComponent`
+    """Apply this decorator to a method of class :class:`.HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager
     doesn't recognize an intent.
     """
@@ -62,7 +48,7 @@ def intent_not_recognized(method):
 
 
 def intents(method):
-    """Apply this decorator to a method of class :class:`HermesSnipsComponent`
+    """Apply this decorator to a method of class :class:`.HermesSnipsComponent`
     to register it as a callback to be triggered everytime an intent is
     recognized.
     """
@@ -71,7 +57,7 @@ def intents(method):
 
 
 def session_ended(method):
-    """Apply this decorator to a method of class :class:`HermesSnipsComponent`
+    """Apply this decorator to a method of class :class:`.HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager ends
     a session.
     """
@@ -80,7 +66,7 @@ def session_ended(method):
 
 
 def session_queued(method):
-    """Apply this decorator to a method of class :class:`HermesSnipsComponent`
+    """Apply this decorator to a method of class :class:`.HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager
     queues the current session.
     """
@@ -89,7 +75,7 @@ def session_queued(method):
 
 
 def session_started(method):
-    """Apply this decorator to a method of class :class:`HermesSnipsComponent`
+    """Apply this decorator to a method of class :class:`.HermesSnipsComponent`
     to register it as a callback to be triggered when the dialogue manager
     queues starts a new session.
     """

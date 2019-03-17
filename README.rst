@@ -45,13 +45,14 @@ With SnipsKit, you can create Snips apps without having to write much boilerplat
 .. code-block:: python
 
     from snipskit.apps import HermesSnipsApp
-    from snipskit.decorators import intent
+    from snipskit.decorators.hermes import intent
 
     class SimpleSnipsApp(HermesSnipsApp):
 
         @intent('User:ExampleIntent')
         def example_intent(self, hermes, intent_message):
-            hermes.publish_end_session(intent_message.session_id, "I received ExampleIntent")
+            hermes.publish_end_session(intent_message.session_id,
+                                       "I received ExampleIntent")
 
     if __name__ == "__main__":
         SimpleSnipsApp()

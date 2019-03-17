@@ -173,7 +173,7 @@ class SnipsConfig(UserDict):
         Raises:
             FileNotFoundError: If `filename` is specified but doesn't exist.
 
-            :class:`SnipsConfigNotFoundError`: If there's no snips.toml found
+            :class:`.SnipsConfigNotFoundError`: If there's no snips.toml found
                 in the search path.
 
             :class:`TomlDecodeError`: If `filename` doesn't have a valid TOML
