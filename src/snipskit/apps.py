@@ -47,7 +47,7 @@ class SnipsAppMixin:
 
         Returns:
             :class:`.AssistantConfig`: The configuration of the assistant
-                belonging to the Snips instance.
+            belonging to the Snips instance.
         """
 
         try:

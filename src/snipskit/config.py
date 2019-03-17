@@ -2,14 +2,14 @@
 instance of Snips, a Snips assistant and a Snips skill.
 
 Classes:
-    :class:`AppConfig`: Gives access to the configuration of a Snips app.
+    :class:`.AppConfig`: Gives access to the configuration of a Snips app,
+    stored in an INI file.
 
-    :class:`AssistantConfig`: Gives access to the configuration of a Snips
-        assistant.
+    :class:`.AssistantConfig`: Gives access to the configuration of a Snips
+    assistant, stored in a JSON file.
 
-    :class:`SnipsConfig`: Gives access to the configuration of a locally
-        installed instance of Snips.
-
+    :class:`.SnipsConfig`: Gives access to the configuration of a locally
+    installed instance of Snips, stored in a TOML file.
 """
 
 from collections import UserDict
@@ -18,7 +18,8 @@ import json
 from pathlib import Path
 
 from hermes_python.ontology import MqttOptions
-from snipskit.exceptions import AssistantConfigNotFoundError, SnipsConfigNotFoundError
+from snipskit.exceptions import AssistantConfigNotFoundError, \
+    SnipsConfigNotFoundError
 from snipskit.tools import find_path
 import toml
 
@@ -31,7 +32,7 @@ DEFAULT_BROKER = 'localhost:1883'
 class AppConfig(ConfigParser):
     """
     This class gives access to the configuration of a Snips app as a
-    ConfigParser object.
+    :class:`ConfigParser` object.
 
     Attributes:
         filename (str): The filename of the configuration file.
@@ -45,12 +46,12 @@ class AppConfig(ConfigParser):
     """
 
     def __init__(self, filename=None):
-        """Initialize an :class:`AppConfig` object.
+        """Initialize an :class:`.AppConfig` object.
 
         Args:
             filename (optional): A filename for the configuration file. If the
                 filename is not specified, the default filename 'config.ini'
-                is chosen.
+                in the current directory is chosen.
         """
 
         ConfigParser.__init__(self)
@@ -69,10 +70,10 @@ class AppConfig(ConfigParser):
         """Write the current configuration to the app's configuration file.
 
         If this method is called without any arguments, the configuration is
-        written to the `filename` attribute of this object.
+        written to the :attr:`filename` attribute of this object.
 
         If this method is called with any arguments, they are forwarded to the
-        `write` method of the superclass `ConfigParser`.
+        `write` method of the superclass :class:`ConfigParser`.
         """
         if len(args) + len(kwargs):
             super().write(*args, **kwargs)
@@ -84,7 +85,7 @@ class AppConfig(ConfigParser):
 class AssistantConfig(UserDict):
     """
     This class gives access to the configuration of a Snips assistant as a
-     dict.
+    dict.
 
     Attributes:
         filename (str): The filename of the configuration file.
@@ -96,11 +97,11 @@ class AssistantConfig(UserDict):
     """
 
     def __init__(self, filename=None):
-        """Initialize an :class:`AssistantConfig` object.
+        """Initialize an :class:`.AssistantConfig` object.
 
         Args:
-            filename (:obj:`str`, optional): The path of the assistant's
-                configuration file.
+            filename (str, optional): The path of the assistant's configuration
+                file.
 
                 If the argument is not specified, the configuration file is
                 searched for in the following locations, in this order:
@@ -111,10 +112,10 @@ class AssistantConfig(UserDict):
         Raises:
             FileNotFoundError: If the specified filename doesn't exist.
 
-            AssistantConfigNotFoundError: If there's no assistant
+            :class:`AssistantConfigNotFoundError`: If there's no assistant
                 configuration found in the search path.
 
-            JSONDecodeError: If the assistant's configuration file
+            :class:`JSONDecodeError`: If the assistant's configuration file
                 doesn't have a valid JSON syntax.
 
         Examples:
@@ -146,7 +147,10 @@ class SnipsConfig(UserDict):
 
     Attributes:
         filename (str): The filename of the configuration file.
-        mqtt (:obj:`MqttOptions`): The MQTT options of the Snips configuration.
+        mqtt (`hermes_python.ffi.utils.MqttOptions`_): The MQTT options of the
+            Snips configuration.
+
+    .. `hermes_python.ffi.utils.MqttOptions`: https://github.com/snipsco/hermes-protocol/blob/develop/platforms/hermes-python/hermes_python/ffi/utils.py
 
     Example:
         >>> snips = SnipsConfig()
@@ -155,14 +159,14 @@ class SnipsConfig(UserDict):
     """
 
     def __init__(self, filename=None):
-        """Initialize a :class:`SnipsConfig` object.
+        """Initialize a :class:`.SnipsConfig` object.
 
         The `mqtt` attribute is initialized with the MQTT connection settings
             from the configuration file, or the default value 'localhost:1883'
             for the broker address if the settings are not specified.
 
         Args:
-            filename (`str`, optional): The full path of the config file. If
+            filename (str, optional): The full path of the config file. If
                 the argument is not specified, the file snips.toml is searched
                 for in the following locations, in this order:
 
@@ -172,8 +176,8 @@ class SnipsConfig(UserDict):
         Raises:
             FileNotFoundError: If `filename` is specified but doesn't exist.
 
-            SnipsConfigNotFoundError: If there's no snips.toml found in the
-                search path.
+            :class:`SnipsConfigNotFoundError`: If there's no snips.toml found
+                in the search path.
 
             TomlDecodeError: If `filename` doesn't have a valid TOML syntax.
 
