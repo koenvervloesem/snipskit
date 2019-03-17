@@ -10,6 +10,9 @@ snipskit.apps
 
 .. automodule:: snipskit.apps
 
+.. autoclass:: snipskit.apps.SnipsAppMixin
+   :members:
+
 .. autoclass:: snipskit.apps.HermesSnipsApp
    :members:
 
