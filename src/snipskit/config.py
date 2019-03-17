@@ -2,14 +2,13 @@
 instance of Snips, a Snips assistant and a Snips skill.
 
 Classes:
-    :class:`.AppConfig`: Gives access to the configuration of a Snips app,
-    stored in an INI file.
 
-    :class:`.AssistantConfig`: Gives access to the configuration of a Snips
-    assistant, stored in a JSON file.
-
-    :class:`.SnipsConfig`: Gives access to the configuration of a locally
-    installed instance of Snips, stored in a TOML file.
+- :class:`.AppConfig`: Gives access to the configuration of a Snips app,
+  stored in an INI file.
+- :class:`.AssistantConfig`: Gives access to the configuration of a Snips
+  assistant, stored in a JSON file.
+- :class:`.SnipsConfig`: Gives access to the configuration of a locally
+  installed instance of Snips, stored in a TOML file.
 """
 
 from collections import UserDict
@@ -30,9 +29,8 @@ DEFAULT_BROKER = 'localhost:1883'
 
 
 class AppConfig(ConfigParser):
-    """
-    This class gives access to the configuration of a Snips app as a
-    :class:`ConfigParser` object.
+    """This class gives access to the configuration of a Snips app as a
+    :class:`configparser.ConfigParser` object.
 
     Attributes:
         filename (str): The filename of the configuration file.
@@ -73,7 +71,7 @@ class AppConfig(ConfigParser):
         written to the :attr:`filename` attribute of this object.
 
         If this method is called with any arguments, they are forwarded to the
-        `write` method of the superclass :class:`ConfigParser`.
+        `write` method of the superclass :class:`configparser.ConfigParser`.
         """
         if len(args) + len(kwargs):
             super().write(*args, **kwargs)
@@ -83,9 +81,8 @@ class AppConfig(ConfigParser):
 
 
 class AssistantConfig(UserDict):
-    """
-    This class gives access to the configuration of a Snips assistant as a
-    dict.
+    """This class gives access to the configuration of a Snips assistant as a
+    :class:`dict`.
 
     Attributes:
         filename (str): The filename of the configuration file.
@@ -112,11 +109,11 @@ class AssistantConfig(UserDict):
         Raises:
             FileNotFoundError: If the specified filename doesn't exist.
 
-            :class:`AssistantConfigNotFoundError`: If there's no assistant
+            :class:`.AssistantConfigNotFoundError`: If there's no assistant
                 configuration found in the search path.
 
-            :class:`JSONDecodeError`: If the assistant's configuration file
-                doesn't have a valid JSON syntax.
+            :class:`json.JSONDecodeError`: If the assistant's configuration
+                file doesn't have a valid JSON syntax.
 
         Examples:
             >>> assistant = AssistantConfig()  # default configuration
@@ -179,7 +176,8 @@ class SnipsConfig(UserDict):
             :class:`SnipsConfigNotFoundError`: If there's no snips.toml found
                 in the search path.
 
-            TomlDecodeError: If `filename` doesn't have a valid TOML syntax.
+            :class:`TomlDecodeError`: If `filename` doesn't have a valid TOML
+                syntax.
 
         Examples:
             >>> snips = SnipsConfig()  # Tries to find snips.toml.
