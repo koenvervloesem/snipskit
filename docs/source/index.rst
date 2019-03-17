@@ -24,7 +24,7 @@ With SnipsKit, you can create Snips apps without having to write much boilerplat
 
         @intent('User:ExampleIntent')
         def example_intent(self, hermes, intent_message):
-            self.hermes.publish_end_session(intent_message.session_id, "I received ExampleIntent")
+            hermes.publish_end_session(intent_message.session_id, "I received ExampleIntent")
 
     if __name__ == "__main__":
         SimpleSnipsApp()
@@ -34,7 +34,7 @@ And that's it! No need to connect to an MQTT broker, no need to register callbac
 - reads the MQTT connection settings from the snips.toml file;
 - connects to the MQTT broker;
 - registers the method with the @intent decorator as a callback method for the intent 'User:ExampleIntent';
-- starts the connection loop.
+- starts the event loop.
 
 SnipsKit also has decorators for other events, and there's also a class MQTTSnipsApp to listen to MQTT topics directly. Moreover, SnipsKit also gives the app easy access to:
 
