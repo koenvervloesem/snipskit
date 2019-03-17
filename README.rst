@@ -34,9 +34,7 @@ SnipsKit
    :target: https://github.com/koenvervloesem/snipskit/blob/master/LICENSE
    :alt: License
 
-SnipsKit is a Python library with some helper tools to work with the voice assistant Snips_. This can be used by Snips apps or other programs that work with Snips.
-
-.. _Snips: https://snips.ai/
+.. include:: docs/source/intro.rst
 
 *************
 Documentation
