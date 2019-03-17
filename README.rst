@@ -70,7 +70,33 @@ SnipsKit also has decorators for other events, and there's also a class MQTTSnip
 - the assistant's configuration;
 - the app's configuration.
 
+.. warning:: SnipsKit is currently alpha software. Anything may change at any time. The public API should not be considered stable.
+
 .. inclusion-marker-end-intro
+
+*******************
+System requirements
+*******************
+
+.. inclusion-marker-start-requirements
+
+SnipsKit is a Python 3-only library, requiring Python 3.5 or higher. It's currently tested on Python 3.5 and Python 3.6.
+
+.. inclusion-marker-end-requirements
+
+************
+Installation
+************
+
+.. inclusion-marker-start-installation
+
+SnipsKit can be installed with the following command:
+
+.. code-block:: sh
+
+    pip install snipskit
+
+.. inclusion-marker-end-installation
 
 *************
 Documentation
