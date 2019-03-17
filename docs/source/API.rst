@@ -59,13 +59,13 @@ snipskit.exceptions
 
 .. automodule:: snipskit.exceptions
 
-.. autoclass:: snipskit.exceptions.SnipsKitError
+.. autoexception:: snipskit.exceptions.SnipsKitError
    :members:
 
-.. autoclass:: snipskit.exceptions.AssistantConfigNotFoundError
+.. autoexception:: snipskit.exceptions.AssistantConfigNotFoundError
    :members:
 
-.. autoclass:: snipskit.exceptions.SnipsConfigNotFoundError
+.. autoexception:: snipskit.exceptions.SnipsConfigNotFoundError
    :members:
 
 **************
