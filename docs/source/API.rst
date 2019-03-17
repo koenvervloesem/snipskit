@@ -73,4 +73,24 @@ snipskit.tools
 **************
 
 .. automodule:: snipskit.tools
+
+.. autodecorator:: snipskit.decorators.intent
+   :members:
+
+.. autodecorator:: snipskit.decorators.intent_not_recognized
+   :members:
+
+.. autodecorator:: snipskit.decorators.intents
+   :members:
+
+.. autodecorator:: snipskit.decorators.session_ended
+   :members:
+
+.. autodecorator:: snipskit.decorators.session_queued
+   :members:
+
+.. autodecorator:: snipskit.decorators.session_started
+   :members:
+
+.. autodecorator:: snipskit.decorators.topic
    :members:
