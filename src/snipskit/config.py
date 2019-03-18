@@ -147,7 +147,7 @@ class SnipsConfig(UserDict):
         mqtt (`hermes_python.ffi.utils.MqttOptions`_): The MQTT options of the
             Snips configuration.
 
-    .. `hermes_python.ffi.utils.MqttOptions`: https://github.com/snipsco/hermes-protocol/blob/develop/platforms/hermes-python/hermes_python/ffi/utils.py
+    .. _`hermes_python.ffi.utils.MqttOptions`: https://github.com/snipsco/hermes-protocol/blob/develop/platforms/hermes-python/hermes_python/ffi/utils.py
 
     Example:
         >>> snips = SnipsConfig()
