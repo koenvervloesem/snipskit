@@ -12,15 +12,15 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 - MINOR version when functionality is added in a backwards-compatible manner;
 - PATCH version when backwards-compatible bug fixes are made.
 
-.. warning:: Note that major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable. Before SnipsKit reaches version 1.0.0, the API does not adhere to the above specification.
+.. warning:: Note that major version zero (0.y.z) is for initial development. Anything may change at any time. The public API should not be considered stable. Before SnipsKit reaches version 1.0.0, the API does not adhere to the above specification, but the minor version is incremented when incompatible API changes are made.
 
 .. _`Keep a Changelog`: https://keepachangelog.com/en/1.0.0/
 
 .. _`Semantic Versioning`: https://semver.org
 
-************
-[Unreleased]
-************
+*************
+`Unreleased`_
+*************
 
 Added
 =====
@@ -40,9 +40,11 @@ Fixed
 Security
 ========
 
-******************
-0.2.0 - 2019-03-17
-******************
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.2.0...HEAD
+
+*********************
+`0.2.0`_ - 2019-03-17
+*********************
 
 Added
 =====
@@ -59,6 +61,8 @@ Fixed
 =====
 
 - Cleaned up API documentation.
+
+.. _`0.2.0`: https://github.com/koenvervloesem/snipskit/releases/tag/0.2.0
 
 ******************
 0.1.0 - 2019-03-16
