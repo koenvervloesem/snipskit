@@ -159,8 +159,8 @@ class SnipsConfig(UserDict):
         """Initialize a :class:`.SnipsConfig` object.
 
         The `mqtt` attribute is initialized with the MQTT connection settings
-            from the configuration file, or the default value 'localhost:1883'
-            for the broker address if the settings are not specified.
+        from the configuration file, or the default value 'localhost:1883' for
+        the broker address if the settings are not specified.
 
         Args:
             filename (str, optional): The full path of the config file. If
