@@ -16,8 +16,9 @@ Contents
    :maxdepth: 2
 
    installation
-   tutorial
+   usage
    API
+   development
    CHANGELOG
 
 ******************
