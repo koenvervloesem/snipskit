@@ -19,7 +19,7 @@ Example:
 .. code-block:: python
 
     from snipskit.components import MQTTSnipsComponent
-    from snipskit.decorators import topic
+    from snipskit.decorators.mqtt import topic
 
     class SimpleSnipsComponent(MQTTSnipsComponent):
 
