@@ -2,3 +2,4 @@
 exclude_paths:
   - 'examples/**'
   - 'tests/**'
+  - 'docs/source/conf.py'
