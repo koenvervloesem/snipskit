@@ -45,5 +45,5 @@ A simple Snips app that listens to a specific intent and then says a message, is
 .. literalinclude :: ../../examples/hermes_listen_for_intent.py
    :language: python
    :linenos:
-   :lines: 1
    :start-at: from snipskit.apps
+   :append: #!/usr/bin/env/python3
