@@ -46,4 +46,4 @@ A simple Snips app that listens to a specific intent and then says a message, is
    :language: python
    :linenos:
    :start-at: from snipskit.apps
-   :append: #!/usr/bin/env/python3
+   :prepend: #!/usr/bin/env/python3
