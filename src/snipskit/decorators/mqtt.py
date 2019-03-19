@@ -32,6 +32,7 @@ def topic(topic_name):
         topic_name (str): The MQTT topic you want to subscribe to.
     """
     def inner(method):
+        """The method to apply the decorator to."""
         method.topic = topic_name
         return method
     return inner

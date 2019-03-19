@@ -33,6 +33,7 @@ def intent(intent_name):
 
     """
     def inner(method):
+        """The method to apply the decorator to."""
         method.intent = intent_name
         return method
     return inner
