@@ -20,6 +20,7 @@ before_script:
 
 script:
   - pytest --cov src --verbose --cov-report xml
+  - scripts/check_examples.sh
   - scripts/generate_docs.sh
   - scripts/build_package.sh
 

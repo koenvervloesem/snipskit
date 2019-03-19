@@ -2,7 +2,9 @@
 Sphinx
 sphinx_rtd_theme
 # Tests
+flake8
 mock
+pylint
 pyfakefs
 pytest
 pytest-cov
