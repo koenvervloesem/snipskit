@@ -28,6 +28,8 @@ Added
 Changed
 =======
 
+- Breaking change: Refactored :class:`.SnipsAppMixin`. Drop `get_assistant` method, add constructor.
+
 Deprecated
 ==========
 
@@ -55,7 +57,7 @@ Added
 Changed
 =======
 
-- Breaking change: Divided decorators module into two submodules: decorators.hermes and decorators.mqtt. 
+- Breaking change: Divided decorators module into two submodules: decorators.hermes and decorators.mqtt.
 
 Fixed
 =====
