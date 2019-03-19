@@ -6,16 +6,13 @@ class SnipsKitError(Exception):
 
     By catching this exception type, you catch all exceptions that are
     defined by the SnipsKit library."""
-    pass
 
 
 class AssistantConfigNotFoundError(SnipsKitError):
     """Raised when the assistant's configuration is not found in the search
     path.
     """
-    pass
 
 
 class SnipsConfigNotFoundError(SnipsKitError):
     """Raised when there's no snips.toml found in the search path."""
-    pass
