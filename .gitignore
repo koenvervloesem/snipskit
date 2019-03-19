@@ -5,5 +5,6 @@ docs/build/
 src/__pycache__/
 src/snipskit.egg-info/
 src/snipskit/__pycache__/
+src/snipskit/decorators/__pycache__/
 tests/__pycache__/
 venv/
