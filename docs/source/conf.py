@@ -203,5 +203,5 @@ napoleon_include_init_with_doc = True
 
 # -- Options for autodoc extension ------------------------------------------
 autodoc_default_options = {
-    'inherited-members': True
+    'show-inheritance': True
 }
