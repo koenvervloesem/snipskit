@@ -43,10 +43,15 @@ Creating a simple Snips app using Hermes Python
 A simple Snips app that listens to a specific intent and then says a message, is created like this:
 
 .. literalinclude :: ../../examples/hermes_listen_for_intent.py
+   :caption: hermes_listen_for_intent.py
    :language: python
    :linenos:
    :start-at: from snipskit.apps
    :prepend: #!/usr/bin/env python3
+
+You can download the file `hermes_listen_for_intent.py`_ from our GitHub repository.
+
+.. _`hermes_listen_for_intent.py`: https://github.com/koenvervloesem/snipskit/blob/master/examples/hermes_listen_for_intent.py
 
 Let's dissect this code. In line 1, we signal to the shell that this file is to be run by the Python 3 interpreter. In lines 2 and 3 we import the :class:`.HermesSnipsApp` class and the :func:`.intent` decorator_ that we use.
 
