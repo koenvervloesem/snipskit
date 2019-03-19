@@ -46,16 +46,18 @@ A simple Snips app that listens to a specific intent and then says a message, is
    :language: python
    :linenos:
    :start-at: from snipskit.apps
-   :prepend: #!/usr/bin/env/python3
+   :prepend: #!/usr/bin/env python3
 
-Let's dissect this code. In line 1, we signal to the shell that this file is to be run by the Python 3 interpreter. In lines 2 and 3 we import the :class:`.HermesSnipsApp` class and the :func:`.intent` decorator that we use.
+Let's dissect this code. In line 1, we signal to the shell that this file is to be run by the Python 3 interpreter. In lines 2 and 3 we import the :class:`.HermesSnipsApp` class and the :func:`.intent` decorator_ that we use.
 
-Beginning from line 6 we define a class for our Snips App, inheriting from the :class:`.HermesSnipsApp` app. By inheriting from this app, you get a lot of functionality for free, which we'll explain in a minute.
+.. _decorator: https://docs.python.org/3/glossary.html#term-decorator
 
-In line 9, we define a `callback method`_. This method will be called when an intent is recognized. For which intent? This is defined with the decorator :func:`.intent` in line 8. So this line says: "If the intent 'User:ExampleIntent' is recognized, call the method `example_intent`.
+Beginning from line 6 we define a class for our Snips App, inheriting from the :class:`.HermesSnipsApp` app. By inheriting from this class, you get a lot of functionality for free, which we'll explain in a minute.
+
+In line 9, we define a `callback method`_. This method will be called when an intent is recognized. Which intent? This is defined by the decorator :func:`.intent` in line 8. So this line says: "If the intent 'User:ExampleIntent' is recognized, call the method `example_intent`.
 
 .. _`callback method`: https://en.wikipedia.org/wiki/Callback_(computer_programming)
 
 Then inside the `example_intent` method, you can use the `hermes` and `intent_message` objects from the Hermes Python library. In this simple case, we end the session by saying a message.
 
-On line 14, we see if the Python file is run on the commandline. If so, we create a new object of the class we defined. When we initialize this object, it automatically reads the MQTT connection settings from the snips.toml file, connects to the MQTT broker, registers the method with the @intent decorator as a callback method for the intent 'User:ExampleIntent' and starts the event loop so the app starts listening to events from the Snips platform.
+In line 14, we check if the Python file is run on the commandline. If it is, we create a new object of the class we defined. When we initialize this object, it automatically reads the MQTT connection settings from the snips.toml file, connects to the MQTT broker, registers the method with the :func:`.intent` decorator as a callback method for the intent 'User:ExampleIntent' and starts the event loop so the app starts listening to events from the Snips platform.
