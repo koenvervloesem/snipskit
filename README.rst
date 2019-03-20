@@ -91,7 +91,9 @@ Installation
 
 .. inclusion-marker-start-installation
 
-SnipsKit can be installed with the following command:
+SnipsKit is `packaged on PyPI`_, so it can be installed with the following command:
+
+.. _`packaged on PyPI`: https://pypi.org/project/snipskit/
 
 .. code-block:: sh
 
