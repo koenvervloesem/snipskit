@@ -24,7 +24,9 @@ Install SnipsKit
    :start-after: inclusion-marker-start-installation
    :end-before: inclusion-marker-end-installation
 
-It is recommended to use a `virtual environment`_ and activate it before installing SnipsKit in order to manage your project dependencies properly. You can create a virtual environment with the name venv in the current directory and activate it like this:
+This will also install its dependencies.
+
+It is recommended to use a `virtual environment`_ and activate it before installing SnipsKit in order to manage your project dependencies properly. You can create a virtual environment with the name `venv` in the current directory and activate it like this:
 
 .. code-block:: sh
 
