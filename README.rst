@@ -61,7 +61,7 @@ And that's it! No need to connect to an MQTT broker, no need to register callbac
 
 - reads the MQTT connection settings from the snips.toml file;
 - connects to the MQTT broker;
-- registers the method with the @intent decorator as a callback method for the intent 'User:ExampleIntent';
+- registers the method with the intent decorator as a callback method for the intent 'User:ExampleIntent';
 - starts the event loop.
 
 SnipsKit also has decorators for other events, and there's also a class MQTTSnipsApp to listen to MQTT topics directly. Moreover, SnipsKit also gives the app easy access to:
@@ -105,9 +105,10 @@ SnipsKit is `packaged on PyPI`_, so the latest stable version can be installed w
 Documentation
 *************
 
-The `full documentation`_ can be found on Read the Docs.
+The full documentation can be found on Read the Docs, for both the `stable version`_ and the `development version`_.
 
-.. _`full documentation`: https://snipskit.readthedocs.io
+.. _`stable version`: https://snipskit.readthedocs.io/en/stable/
+.. _`development version`: https://snipskit.readthedocs.io/en/latest/
 
 *********
 Copyright
