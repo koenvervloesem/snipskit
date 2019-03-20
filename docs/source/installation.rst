@@ -10,6 +10,12 @@ System requirements
    :start-after: inclusion-marker-start-requirements
    :end-before: inclusion-marker-end-requirements
 
+SnipsKit requires the following Python packages:
+
+.. literalinclude:: ../../requirements/install.txt
+
+If your platform supports these packages, SnipsKit should also be supported.
+
 ****************
 Install SnipsKit
 ****************
