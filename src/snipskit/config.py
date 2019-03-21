@@ -144,10 +144,8 @@ class SnipsConfig(UserDict):
 
     Attributes:
         filename (str): The filename of the configuration file.
-        mqtt (`hermes_python.ffi.utils.MqttOptions`_): The MQTT options of the
-            Snips configuration.
-
-    .. _`hermes_python.ffi.utils.MqttOptions`: https://github.com/snipsco/hermes-protocol/blob/develop/platforms/hermes-python/hermes_python/ffi/utils.py
+        mqtt (:class:`hermes_python.ontology.MqttOptions`): The MQTT options
+            of the Snips configuration.
 
     Example:
         >>> snips = SnipsConfig()

@@ -17,7 +17,7 @@ This document presupposes that you:
 
 - know Python, in particular `Python 3`_;
 - have Snips running and have read the `Snips Platform documentation`_;
-- know how to interface with the Snips platform using `Hermes Python`_ or MQTT_.
+- know how to interface with the Snips platform using `Hermes Python`_ or MQTT_ (using `Paho MQTT`_).
 
 .. _Python: https://www.python.org/
 
@@ -28,6 +28,8 @@ This document presupposes that you:
 .. _`Hermes Python`: https://docs.snips.ai/articles/console/actions/actions/code-your-action/hermes-python
 
 .. _MQTT: https://docs.snips.ai/reference/hermes
+
+.. _`Paho MQTT`: https://www.eclipse.org/paho/clients/python/docs/
 
 ***************************************
 Creating Snips apps using Hermes Python

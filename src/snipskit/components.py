@@ -101,7 +101,7 @@ class MQTTSnipsComponent(SnipsComponent):
         snips (:class:`.SnipsConfig`): The Snips configuration.
         mqtt (`paho.mqtt.client.Client`_): The MQTT client object.
 
-    .. _`paho.mqtt.client.Client`: https://github.com/eclipse/paho.mqtt.python#client
+    .. _`paho.mqtt.client.Client`: https://www.eclipse.org/paho/clients/python/docs/#client
     """
 
     def _connect(self):
@@ -160,9 +160,8 @@ class HermesSnipsComponent(SnipsComponent):
 
     Attributes:
         snips (:class:`.SnipsConfig`): The Snips configuration.
-        hermes (`hermes_python.hermes.Hermes`_): The Hermes object.
+        hermes (:class:`hermes_python.hermes.Hermes`): The Hermes object.
 
-    .. _`hermes_python.hermes.Hermes`: https://github.com/snipsco/hermes-protocol/tree/develop/platforms/hermes-python
     """
 
     def _connect(self):
