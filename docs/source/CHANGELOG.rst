@@ -28,8 +28,6 @@ Added
 Changed
 =======
 
-- Breaking change: Refactored :class:`.SnipsAppMixin`. Drop :meth:`.SnipsAppMixin.get_assistant` method, add constructor.
-
 Deprecated
 ==========
 
@@ -42,7 +40,25 @@ Fixed
 Security
 ========
 
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.2.0...HEAD
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.3.0...HEAD
+
+*********************
+`0.3.0`_ - 2019-03-22
+*********************
+
+Added
+=====
+
+- Extra documentation about installation and usage.
+- Example code in directory `examples`.
+- Script `scripts/check_examples.sh` to check example code with pylint.
+
+Changed
+=======
+
+- Breaking change: Refactored :class:`.SnipsAppMixin`. Drop :meth:`.SnipsAppMixin.get_assistant` method, add constructor.
+
+.. _`0.3.0`: https://github.com/koenvervloesem/snipskit/compare/0.2.0...0.3.0
 
 *********************
 `0.2.0`_ - 2019-03-17
