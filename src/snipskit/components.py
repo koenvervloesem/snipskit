@@ -141,11 +141,12 @@ class MQTTSnipsComponent(SnipsComponent):
         """
         self.mqtt.loop_forever()
 
-    def _subscribe_topics(self, client, userdata, flags, rc):
+    def _subscribe_topics(self, client, userdata, flags, connection_result):
         """Subscribe to the MQTT topics we're interested in.
 
-        Each method with an attribute set by a @topic decorator is registered
-        as a callback for the corresponding topic.
+        Each method with an attribute set by a
+        :func:`snipskit.decorators.mqtt.topic` decorator is registered as a
+        callback for the corresponding topic.
         """
         for name in dir(self):
             callable_name = getattr(self, name)
