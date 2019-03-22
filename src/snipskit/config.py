@@ -157,7 +157,7 @@ class SnipsConfig(UserDict):
     def __init__(self, filename=None):
         """Initialize a :class:`.SnipsConfig` object.
 
-        The attr:`mqtt` attribute is initialized with the MQTT connection
+        The :attr:`mqtt` attribute is initialized with the MQTT connection
         settings from the configuration file, or the default value
         'localhost:1883' for the broker address if the settings are not
         specified.
