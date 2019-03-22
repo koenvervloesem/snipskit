@@ -48,12 +48,12 @@ class SnipsAppMixin:
     """
 
     def __init__(self, snips=None, config=None):
-        """Initialize the mixin by setting the `config`, `snips` and
-        `assistant` attributes.
+        """Initialize the mixin by setting the :attr:`config`, :attr:`snips`
+        and :attr:`assistant` attributes.
 
-        To initialize the `assistant` attribute, the location of the assistant
-        is read from the Snips configuration file. If the location is not
-        specified there, a default :class:`.AssistantConfig` object is
+        To initialize the :attr:`assistant` attribute, the location of the
+        assistant is read from the Snips configuration file. If the location is
+        not specified there, a default :class:`.AssistantConfig` object is
         created.
 
         Args:
@@ -65,6 +65,7 @@ class SnipsAppMixin:
             config (:class:`.AppConfig`, optional): an app configuration. If
                 the argument is not specified, the app has no configuration.
 
+        .. versionadded:: 0.3.0
         """
         self.config = config
 

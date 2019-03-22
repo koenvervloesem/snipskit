@@ -71,7 +71,7 @@ class AppConfig(ConfigParser):
         written to the :attr:`filename` attribute of this object.
 
         If this method is called with any arguments, they are forwarded to the
-        `write` method of the superclass :class:`configparser.ConfigParser`.
+        :meth:`configparser.ConfigParser.write` method of its superclass.
         """
         if len(args) + len(kwargs):
             super().write(*args, **kwargs)
@@ -107,12 +107,12 @@ class AssistantConfig(UserDict):
                 - /usr/local/share/snips/assistant/assistant.json
 
         Raises:
-            FileNotFoundError: If the specified filename doesn't exist.
+            :exc:`FileNotFoundError`: If the specified filename doesn't exist.
 
-            :class:`.AssistantConfigNotFoundError`: If there's no assistant
+            :exc:`.AssistantConfigNotFoundError`: If there's no assistant
                 configuration found in the search path.
 
-            :class:`json.JSONDecodeError`: If the assistant's configuration
+            :exc:`json.JSONDecodeError`: If the assistant's configuration
                 file doesn't have a valid JSON syntax.
 
         Examples:
@@ -140,7 +140,8 @@ class AssistantConfig(UserDict):
 
 
 class SnipsConfig(UserDict):
-    """This class gives access to a snips.toml configuration file as a dict.
+    """This class gives access to a snips.toml configuration file as a
+    :class:`dict`.
 
     Attributes:
         filename (str): The filename of the configuration file.
@@ -156,9 +157,10 @@ class SnipsConfig(UserDict):
     def __init__(self, filename=None):
         """Initialize a :class:`.SnipsConfig` object.
 
-        The `mqtt` attribute is initialized with the MQTT connection settings
-        from the configuration file, or the default value 'localhost:1883' for
-        the broker address if the settings are not specified.
+        The attr:`mqtt` attribute is initialized with the MQTT connection
+        settings from the configuration file, or the default value
+        'localhost:1883' for the broker address if the settings are not
+        specified.
 
         Args:
             filename (str, optional): The full path of the config file. If
@@ -169,13 +171,14 @@ class SnipsConfig(UserDict):
                 - /usr/local/etc/snips.toml
 
         Raises:
-            FileNotFoundError: If `filename` is specified but doesn't exist.
+            :exc:`FileNotFoundError`: If :attr:`filename` is specified but
+                doesn't exist.
 
-            :class:`.SnipsConfigNotFoundError`: If there's no snips.toml found
+            :exc:`.SnipsConfigNotFoundError`: If there's no snips.toml found
                 in the search path.
 
-            :class:`TomlDecodeError`: If `filename` doesn't have a valid TOML
-                syntax.
+            :exc:`TomlDecodeError`: If :attr:`filename` doesn't have a valid
+                TOML syntax.
 
         Examples:
             >>> snips = SnipsConfig()  # Tries to find snips.toml.
