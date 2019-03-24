@@ -203,7 +203,7 @@ napoleon_google_docstring = True
 napoleon_numpy_docstring = False
 napoleon_include_init_with_doc = True
 
-# -- Options for autodoc extension ------------------------------------------
+# -- Options for autodoc extension -------------------------------------------
 autodoc_default_options = {
     'show-inheritance': True
 }

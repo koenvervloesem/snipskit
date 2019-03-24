@@ -13,12 +13,6 @@ snipskit.apps
 .. autoclass:: snipskit.apps.SnipsAppMixin
    :members:
 
-.. autoclass:: snipskit.apps.HermesSnipsApp
-   :members:
-
-.. autoclass:: snipskit.apps.MQTTSnipsApp
-   :members:
-
 *******************
 snipskit.components
 *******************
@@ -26,12 +20,6 @@ snipskit.components
 .. automodule:: snipskit.components
 
 .. autoclass:: snipskit.components.SnipsComponent
-   :members:
-
-.. autoclass:: snipskit.components.HermesSnipsComponent
-   :members:
-
-.. autoclass:: snipskit.components.MQTTSnipsComponent
    :members:
 
 ***************
@@ -46,28 +34,10 @@ snipskit.config
 .. autoclass:: snipskit.config.AssistantConfig
    :members:
 
+.. autoclass:: snipskit.config.MQTTConfig
+   :members:
+
 .. autoclass:: snipskit.config.SnipsConfig
-   :members:
-
-*******************
-snipskit.decorators
-*******************
-
-.. automodule:: snipskit.decorators
-   :members:
-
-**************************
-snipskit.decorators.hermes
-**************************
-
-.. automodule:: snipskit.decorators.hermes
-   :members:
-
-************************
-snipskit.decorators.mqtt
-************************
-
-.. automodule:: snipskit.decorators.mqtt
    :members:
 
 *******************
@@ -83,6 +53,62 @@ snipskit.exceptions
    :members:
 
 .. autoexception:: snipskit.exceptions.SnipsConfigNotFoundError
+   :members:
+
+***************
+snipskit.hermes
+***************
+
+.. automodule:: snipskit.hermes
+   :members:
+
+********************
+snipskit.hermes.apps
+********************
+
+.. autoclass:: snipskit.hermes.apps.HermesSnipsApp
+   :members:
+
+**************************
+snipskit.hermes.components
+**************************
+
+.. autoclass:: snipskit.hermes.components.HermesSnipsComponent
+   :members:
+
+**************************
+snipskit.hermes.decorators
+**************************
+
+.. automodule:: snipskit.hermes.decorators
+   :members:
+
+*************
+snipskit.mqtt
+*************
+
+.. automodule:: snipskit.mqtt
+   :members:
+
+******************
+snipskit.mqtt.apps
+******************
+
+.. autoclass:: snipskit.mqtt.apps.MQTTSnipsApp
+   :members:
+
+************************
+snipskit.mqtt.components
+************************
+
+.. autoclass:: snipskit.mqtt.components.MQTTSnipsComponent
+   :members:
+
+************************
+snipskit.mqtt.decorators
+************************
+
+.. automodule:: snipskit.mqtt.decorators
    :members:
 
 **************

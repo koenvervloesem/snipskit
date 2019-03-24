@@ -1,11 +1,11 @@
-"""This module contains classes to create Snips apps.
+"""This module contains a class to create Snips apps.
 
 You can create a Snips app in two ways:
 
-- By subclassing :class:`.HermesSnipsApp`: This creates a Snips app using the
-  Hermes protocol.
-- By subclassing :class:`.MQTTSnipsApp`: This creates a Snips app using the
-  MQTT protocol directly.
+- By subclassing :class:`snipskit.hermes.apps.HermesSnipsApp`: This creates a
+  Snips app using the Hermes Python library.
+- By subclassing :class:`snipskit.mqtt.apps.MQTTSnipsApp`: This creates a Snips
+  app using the MQTT protocol directly.
 
 :class:`.HermesSnipsApp` is a subclass of :class:`.HermesSnipsComponent` and
 adds `assistant` and `config` attributes for access to the assistant's
@@ -15,13 +15,22 @@ configuration and the app's configuration, respectively.
 `assistant` and `config` attributes for access to the assistant's configuration
 and the app's configuration, respectively.
 
-Both classes of this module include the :class:`.SnipsAppMixin` mixin to read
+Both classes include the :class:`.SnipsAppMixin` mixin of this module to read
 the assistant's configuration from the location defined in snips.toml.
+
+.. note::
+   If you don't need access to the assistant's configuration nor an
+   app-specific configuration, you can create a subclass of
+   :class:`.SnipsComponent`.
+
+.. note::
+   If you only need access to the Snips configuration and the assistant's
+   configuration without the need to connect to the MQTT broker, you can use
+   the :class:`.SnipsAppMixin` class.
 """
 
 from pathlib import Path
 
-from snipskit.components import HermesSnipsComponent, MQTTSnipsComponent
 from snipskit.config import AssistantConfig, SnipsConfig
 
 
@@ -79,65 +88,3 @@ class SnipsAppMixin:
             self.assistant = AssistantConfig(assistant_file)
         except KeyError:
             self.assistant = AssistantConfig()
-
-
-class MQTTSnipsApp(SnipsAppMixin, MQTTSnipsComponent):
-    """A Snips app using the MQTT protocol directly.
-
-    Attributes:
-        assistant (:class:`.AssistantConfig`): The assistant configuration. Its
-            location is read from the Snips configuration file and otherwise a
-            default location is used.
-        config (:class:`.AppConfig`): The app configuration.
-        snips (:class:`.SnipsConfig`): The Snips configuration.
-        mqtt (`paho.mqtt.client.Client`_): The MQTT client object.
-
-    .. _`paho.mqtt.client.Client`: https://www.eclipse.org/paho/clients/python/docs/#client
-
-    """
-
-    def __init__(self, snips=None, config=None):
-        """Initialize a Snips app using the MQTT protocol.
-
-        Args:
-            snips (:class:`.SnipsConfig`, optional): a Snips configuration.
-                If the argument is not specified, a default
-                :class:`.SnipsConfig` object is created for a locally installed
-                instance of Snips.
-
-            config (:class:`.AppConfig`, optional): an app configuration. If
-                the argument is not specified, the app has no configuration.
-
-        """
-        SnipsAppMixin.__init__(self, snips, config)
-        MQTTSnipsComponent.__init__(self, snips)
-
-
-class HermesSnipsApp(SnipsAppMixin, HermesSnipsComponent):
-    """A Snips app using the Hermes protocol.
-
-    Attributes:
-        assistant (:class:`.AssistantConfig`): The assistant configuration. Its
-            location is read from the Snips configuration file and otherwise
-            a default location is used.
-        config (:class:`.AppConfig`): The app configuration.
-        snips (:class:`.SnipsConfig`): The Snips configuration.
-        hermes (:class:`hermes_python.hermes.Hermes`): The Hermes object.
-
-    """
-
-    def __init__(self, snips=None, config=None):
-        """Initialize a Snips app using the Hermes protocol.
-
-        Args:
-            snips (:class:`.SnipsConfig`, optional): a Snips configuration.
-                If the argument is not specified, a default
-                :class:`.SnipsConfig` object is created for a locally installed
-                instance of Snips.
-
-            config (:class:`.AppConfig`, optional): an app configuration. If
-                the argument is not specified, the app has no configuration.
-
-        """
-        SnipsAppMixin.__init__(self, snips, config)
-        HermesSnipsComponent.__init__(self, snips)

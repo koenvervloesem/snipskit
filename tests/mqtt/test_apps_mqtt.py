@@ -1,6 +1,6 @@
 """Tests for the `snipskit.apps.MQTTSnipsApp` class."""
 
-from snipskit.apps import MQTTSnipsApp
+from snipskit.mqtt.apps import MQTTSnipsApp
 from snipskit.config import AppConfig, SnipsConfig
 
 

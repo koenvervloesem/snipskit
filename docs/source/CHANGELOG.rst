@@ -28,6 +28,8 @@ Added
 Changed
 =======
 
+- Breaking change: Moved all Hermes Python-related classes to :mod:`snipskit.hermes` submodules and all MQTT-related classes to :mod:`snipskit.mqtt` submodules.
+
 Deprecated
 ==========
 

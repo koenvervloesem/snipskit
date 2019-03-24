@@ -1,6 +1,6 @@
 """Tests for the `snipskit.components.HermesSnipsComponent` class."""
 
-from snipskit.components import HermesSnipsComponent
+from snipskit.hermes.components import HermesSnipsComponent
 from snipskit.config import SnipsConfig
 
 
@@ -29,7 +29,7 @@ def test_snips_component_hermes_connection_default(fs, mocker):
     assert component.snips.mqtt.broker_address == 'localhost:1883'
 
     # Check MQTT connection
-    assert component.hermes.mqtt_options == component.snips.mqtt
+    assert component.hermes.mqtt_options.broker_address == component.snips.mqtt.broker_address
     assert component.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.
@@ -57,7 +57,7 @@ def test_snips_component_hermes_with_snips_config(fs, mocker):
     assert component.snips.mqtt.broker_address == 'mqtt.example.com:1883'
 
     # Check MQTT connection
-    assert component.hermes.mqtt_options == component.snips.mqtt
+    assert component.hermes.mqtt_options.broker_address == component.snips.mqtt.broker_address
     assert component.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.
@@ -90,7 +90,9 @@ def test_snips_component_hermes_connection_with_authentication(fs, mocker):
     assert component.snips.mqtt.password == 'secretpassword'
 
     # Check MQTT connection
-    assert component.hermes.mqtt_options == component.snips.mqtt
+    assert component.hermes.mqtt_options.broker_address == component.snips.mqtt.broker_address
+    assert component.hermes.mqtt_options.username == component.snips.mqtt.username
+    assert component.hermes.mqtt_options.password == component.snips.mqtt.password
     assert component.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.
@@ -125,7 +127,11 @@ def test_snips_component_hermes_connection_with_tls_and_authentication(fs, mocke
     assert component.snips.mqtt.tls_ca_file == '/etc/ssl/certs/ca-certificates.crt'
 
     # Check MQTT connection
-    assert component.hermes.mqtt_options == component.snips.mqtt
+    assert component.hermes.mqtt_options.broker_address == component.snips.mqtt.broker_address
+    assert component.hermes.mqtt_options.username == component.snips.mqtt.username
+    assert component.hermes.mqtt_options.password == component.snips.mqtt.password
+    assert component.hermes.mqtt_options.tls_hostname == component.snips.mqtt.tls_hostname
+    assert component.hermes.mqtt_options.tls_ca_file == component.snips.mqtt.tls_ca_file
     assert component.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.

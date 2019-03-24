@@ -12,8 +12,8 @@ Example:
 
 .. code-block:: python
 
-    from snipskit.apps import MQTTSnipsApp
-    from snipskit.decorators.mqtt import intent
+    from snipskit.mqtt.apps import MQTTSnipsApp
+    from snipskit.mqtt.decorators import topic
 
     class SimpleSnipsApp(MQTTSnipsApp):
 

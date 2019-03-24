@@ -2,8 +2,8 @@
 class.
 """
 
-from snipskit.components import HermesSnipsComponent
-from snipskit.decorators.hermes import intent, intent_not_recognized, \
+from snipskit.hermes.components import HermesSnipsComponent
+from snipskit.hermes.decorators import intent, intent_not_recognized, \
     intents, session_ended, session_queued, session_started
 
 
