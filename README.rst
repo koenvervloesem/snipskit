@@ -44,8 +44,8 @@ With SnipsKit, you can create Snips apps without having to write much boilerplat
 
 .. code-block:: python
 
-    from snipskit.apps import HermesSnipsApp
-    from snipskit.decorators.hermes import intent
+    from snipskit.hermes.apps import HermesSnipsApp
+    from snipskit.hermes.decorators import intent
 
     class SimpleSnipsApp(HermesSnipsApp):
 

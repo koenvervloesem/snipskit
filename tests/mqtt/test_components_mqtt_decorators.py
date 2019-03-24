@@ -2,8 +2,8 @@
 class.
 """
 
-from snipskit.components import MQTTSnipsComponent
-from snipskit.decorators.mqtt import topic
+from snipskit.mqtt.components import MQTTSnipsComponent
+from snipskit.mqtt.decorators import topic
 
 
 class DecoratedMQTTComponent(MQTTSnipsComponent):

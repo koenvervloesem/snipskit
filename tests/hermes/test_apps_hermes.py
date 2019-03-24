@@ -1,6 +1,6 @@
-"""Tests for the `snipskit.apps.HermesSnipsApp` class."""
+"""Tests for the `snipskit.apps.hermes.HermesSnipsApp` class."""
 
-from snipskit.apps import HermesSnipsApp
+from snipskit.hermes.apps import HermesSnipsApp
 from snipskit.config import AppConfig, SnipsConfig
 
 
@@ -38,7 +38,7 @@ def test_snips_app_hermes_default(fs, mocker):
     assert app.config is None
 
     # Check MQTT connection
-    assert app.hermes.mqtt_options == app.snips.mqtt
+    assert app.hermes.mqtt_options.broker_address == app.snips.mqtt.broker_address
     assert app.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.
@@ -73,7 +73,7 @@ def test_snips_app_hermes_default_with_assistant_path(fs, mocker):
     assert app.config is None
 
     # Check MQTT connection
-    assert app.hermes.mqtt_options == app.snips.mqtt
+    assert app.hermes.mqtt_options.broker_address == app.snips.mqtt.broker_address
     assert app.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.
@@ -110,7 +110,7 @@ def test_snips_app_hermes_snips_config(fs, mocker):
     assert app.config is None
 
     # Check MQTT connection
-    assert app.hermes.mqtt_options == app.snips.mqtt
+    assert app.hermes.mqtt_options.broker_address == app.snips.mqtt.broker_address
     assert app.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.
@@ -151,7 +151,7 @@ def test_snips_app_hermes_config(fs, mocker):
     assert app.config['secret']['api-key'] == 'foobar'
 
     # Check MQTT connection
-    assert app.hermes.mqtt_options == app.snips.mqtt
+    assert app.hermes.mqtt_options.broker_address == app.snips.mqtt.broker_address
     assert app.hermes.loop_forever.call_count == 1
 
     # Check whether `initialize()` method is called.

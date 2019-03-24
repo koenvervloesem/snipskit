@@ -9,6 +9,8 @@ Classes:
   assistant, stored in a JSON file.
 - :class:`.SnipsConfig`: Gives access to the configuration of a locally
   installed instance of Snips, stored in a TOML file.
+- :class:`.MQTTConfig`: Represents the configuration for a connection to an
+  MQTT broker.
 """
 
 from collections import UserDict
@@ -16,7 +18,6 @@ from configparser import ConfigParser
 import json
 from pathlib import Path
 
-from hermes_python.ontology import MqttOptions
 from snipskit.exceptions import AssistantConfigNotFoundError, \
     SnipsConfigNotFoundError
 from snipskit.tools import find_path
@@ -139,14 +140,60 @@ class AssistantConfig(UserDict):
             UserDict.__init__(self, json.load(json_file))
 
 
+class MQTTConfig:
+    """This class represents the configuration for a connection to an
+    MQTT broker.
+
+    Attributes:
+        broker_address (str): The address of the MQTT broker, in the form
+            'host:port'.
+        username (str): The username to authenticate to the MQTT broker. 'None'
+            if there's no authentication.
+        password (str): The password to authenticate to the MQTT broker. 'None'
+            if therea's no authentication.
+        tls_hostname (str): The TLS hostname of the MQTT broker. 'None' if no
+            TLS is used.
+        tls_ca_file (str): Path to the Certificate Authority file. Can be
+            'None'.
+        tls_ca_path (str): Path to the Certificate Authorify files. Can be
+            'None'.
+        tls_client_key (str): Path to the private key file. Can be 'None'.
+        tls_client_cert (str): Path to the client certificate file. Can be
+            'None'.
+        tls_disable_root_store (bool): Whether the TLS root store is disabled.
+    """
+
+    def __init__(self, broker_address='localhost:1883', username=None,
+                 password=None, tls_hostname=None, tls_ca_file=None,
+                 tls_ca_path=None, tls_client_key=None, tls_client_cert=None,
+                 tls_disable_root_store=False):
+        """Initialize a :class:`.MQTTConfig` object.
+
+        All arguments are optional. The default values are:
+
+        - `broker_address`: 'localhost:1883'
+        - `tls_disable_root_store`: `False`
+        - all other arguments: `None`
+        """
+        self.broker_address = broker_address
+        self.username = username
+        self.password = password
+        self.tls_hostname = tls_hostname
+        self.tls_ca_file = tls_ca_file
+        self.tls_ca_path = tls_ca_path
+        self.tls_client_key = tls_client_key
+        self.tls_client_cert = tls_client_cert
+        self.tls_disable_root_store = tls_disable_root_store
+
+
 class SnipsConfig(UserDict):
     """This class gives access to a snips.toml configuration file as a
     :class:`dict`.
 
     Attributes:
         filename (str): The filename of the configuration file.
-        mqtt (:class:`hermes_python.ontology.MqttOptions`): The MQTT options
-            of the Snips configuration.
+        mqtt (:class:`.MQTTConfig`): The MQTT options of the Snips
+            configuration.
 
     Example:
         >>> snips = SnipsConfig()
@@ -219,12 +266,12 @@ class SnipsConfig(UserDict):
             tls_disable_root_store = self['snips-common'].get('mqtt_tls_disable_root_store',
                                                               False)
 
-            # Store the MQTT connection settings in a MqttOptions object.
-            self.mqtt = MqttOptions(broker_address, username, password,
-                                    tls_hostname, tls_ca_file, tls_ca_path,
-                                    tls_client_key, tls_client_cert,
-                                    tls_disable_root_store)
+            # Store the MQTT connection settings in an MQTTConfig object.
+            self.mqtt = MQTTConfig(broker_address, username, password,
+                                   tls_hostname, tls_ca_file, tls_ca_path,
+                                   tls_client_key, tls_client_cert,
+                                   tls_disable_root_store)
         except KeyError:
             # The 'snips-common' section isn't in the configuration file, so we
             # use a sensible default: 'localhost:1883'.
-            self.mqtt = MqttOptions()
+            self.mqtt = MQTTConfig()

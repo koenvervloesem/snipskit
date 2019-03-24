@@ -8,8 +8,8 @@ You can find the documentation of this library in:
 
 https://snipskit.readthedocs.io/
 """
-from snipskit.apps import HermesSnipsApp
-from snipskit.decorators.hermes import intent
+from snipskit.hermes.apps import HermesSnipsApp
+from snipskit.hermes.decorators import intent
 
 
 class SimpleSnipsApp(HermesSnipsApp):

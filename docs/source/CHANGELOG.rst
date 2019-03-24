@@ -28,6 +28,9 @@ Added
 Changed
 =======
 
+- Breaking change: Moved all Hermes Python-related classes to :mod:`snipskit.hermes` submodules and all MQTT-related classes to :mod:`snipskit.mqtt` submodules.
+- Breaking change: Class :class:`.SnipsConfig` uses the new class :class:`.MQTTConfig` for its MQTT connection settings so it doesn't depend on Hermes Python.
+
 Deprecated
 ==========
 
