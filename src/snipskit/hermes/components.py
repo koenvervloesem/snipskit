@@ -28,7 +28,6 @@ Example:
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import MqttOptions
 from snipskit.components import SnipsComponent
-from snipskit.config import SnipsConfig
 
 
 class HermesSnipsComponent(SnipsComponent):

@@ -27,7 +27,6 @@ Example:
 
 from paho.mqtt.client import Client
 from snipskit.components import SnipsComponent
-from snipskit.config import SnipsConfig
 
 
 class MQTTSnipsComponent(SnipsComponent):
