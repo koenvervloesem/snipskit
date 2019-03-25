@@ -20,10 +20,10 @@ install:
   - pip install -r requirements/development.txt
 
 before_script:
-  - source scripts/travis/before_script.sh
+  - source scripts/travis/before_script.sh || travis_terminate 1
 
 script:
-  - scripts/travis/script.sh
+  - scripts/travis/script.sh || travis_terminate 1
 
 after_script:
-  - scripts/travis/after_script.sh
+  - scripts/travis/after_script.sh || travis_terminate 1
