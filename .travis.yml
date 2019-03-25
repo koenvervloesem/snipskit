@@ -9,20 +9,27 @@ python:
   - 3.5
   - 3.6
 
+env:
+  - SNIPSKIT_REQUIREMENTS=common
+  - SNIPSKIT_REQUIREMENTS=mqtt
+  - SNIPSKIT_REQUIREMENTS=hermes
+  - SNIPSKIT_REQUIREMENTS=all
+
 install:
-  - pip install -r requirements/install.txt
+  - pip install -r requirements/install/$REQUIREMENTS.txt
   - pip install -r requirements/development.txt
 
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && export PYTEST_ADDOPTS="--cov src --cov-report xml"
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && chmod +x ./cc-test-reporter
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && ./cc-test-reporter before-build
 
 script:
-  - pytest --cov src --verbose --cov-report xml
-  - scripts/check_examples.sh
-  - scripts/generate_docs.sh
-  - scripts/build_package.sh
+  - pytest --verbose
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && scripts/check_examples.sh
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && scripts/generate_docs.sh
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && scripts/build_package.sh
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

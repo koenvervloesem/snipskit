@@ -1,0 +1,3 @@
+hermes-python>=0.3.3
+paho-mqtt
+toml
