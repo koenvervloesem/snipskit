@@ -18,6 +18,8 @@ install:
   - pip install -r requirements/install/$SNIPSKIT_REQUIREMENTS.txt
   - pip install -r requirements/development.txt
 
+script: pytest --verbose
+
 stages:
   - before_test
   - test
@@ -33,9 +35,7 @@ jobs:
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
-    - stage: test
-      script: pytest --verbose
-    - stage: extra_tests 
+    - stage: extra_tests
       if: env(SNIPSKIT_REQUIREMENTS) = "all"
       script:
         - scripts/check_examples.sh
