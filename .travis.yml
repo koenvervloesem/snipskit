@@ -10,10 +10,10 @@ python:
   - 3.6
 
 env:
-  - SNIPSKIT_REQUIREMENTS=common
+  - SNIPSKIT_REQUIREMENTS=all
   - SNIPSKIT_REQUIREMENTS=mqtt
   - SNIPSKIT_REQUIREMENTS=hermes
-  - SNIPSKIT_REQUIREMENTS=all
+  - SNIPSKIT_REQUIREMENTS=common
 
 install:
   - pip install -r requirements/install/$SNIPSKIT_REQUIREMENTS.txt
