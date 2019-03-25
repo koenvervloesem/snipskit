@@ -1,29 +1,44 @@
 dist: xenial
 
 env:
-  global:
-    - CC_TEST_REPORTER_ID=b5260482480f0b98b0a18b0e7f7225664abc22d3b23fa3555fdf0de694aee213
+  - SNIPSKIT_REQUIREMENTS=all
+  - SNIPSKIT_REQUIREMENTS=mqtt
+  - SNIPSKIT_REQUIREMENTS=hermes
+  - SNIPSKIT_REQUIREMENTS=common
+  - CC_TEST_REPORTER_ID=b5260482480f0b98b0a18b0e7f7225664abc22d3b23fa3555fdf0de694aee213
 
 language: python
 python:
   - 3.5
   - 3.6
 
-env:
-  - SNIPSKIT_REQUIREMENTS=all
-  - SNIPSKIT_REQUIREMENTS=mqtt
-  - SNIPSKIT_REQUIREMENTS=hermes
-  - SNIPSKIT_REQUIREMENTS=common
-
 install:
   - pip install -r requirements/install/$SNIPSKIT_REQUIREMENTS.txt
   - pip install -r requirements/development.txt
 
-before_script:
-  - source scripts/travis/before_script.sh || travis_terminate 1
+stages:
+  - before_test
+  - test
+  - extra_tests
+  - after_test
 
-script:
-  - scripts/travis/script.sh || travis_terminate 1
-
-after_script:
-  - scripts/travis/after_script.sh || travis_terminate 1
+jobs:
+  include:
+    - stage: before_test
+      if: env(SNIPSKIT_REQUIREMENTS) = "all"
+      env: PYTEST_ADDOPTS="--cov src --cov-report xml"
+      script:
+        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+        - ./cc-test-reporter before-build
+    - stage: test
+      script: pytest --verbose
+    - stage: extra_tests 
+      if: env(SNIPSKIT_REQUIREMENTS) = "all"
+      script:
+        - scripts/check_examples.sh
+        - scripts/generate_docs.sh
+        - scripts/build_package.sh
+    - stage: after_test
+      if: env(SNIPSKIT_REQUIREMENTS) = "all"
+      script: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
