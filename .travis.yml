@@ -20,16 +20,10 @@ install:
   - pip install -r requirements/development.txt
 
 before_script:
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && export PYTEST_ADDOPTS="--cov src --cov-report xml"
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && chmod +x ./cc-test-reporter
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && ./cc-test-reporter before-build
+  - source scripts/travis/before_script.sh
 
 script:
-  - pytest --verbose
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && scripts/check_examples.sh
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && scripts/generate_docs.sh
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && scripts/build_package.sh
+  - scripts/travis/script.sh
 
 after_script:
-  - [ "$SNIPSKIT_REQUIREMENTS" == "all" ] && ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - scripts/travis/after_script.sh
