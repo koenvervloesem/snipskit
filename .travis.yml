@@ -18,6 +18,7 @@ python:
 install:
   - pip install -r requirements/install/$SNIPSKIT_REQUIREMENTS.txt
   - pip install -r requirements/development.txt
+  - pip install -r requirements/packaging.txt
 
 before_script:
   - source scripts/travis/before_script.sh
