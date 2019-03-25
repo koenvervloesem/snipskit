@@ -28,9 +28,6 @@ Added
 Changed
 =======
 
-- Breaking change: Moved all Hermes Python-related classes to :mod:`snipskit.hermes` submodules and all MQTT-related classes to :mod:`snipskit.mqtt` submodules.
-- Breaking change: Class :class:`.SnipsConfig` uses the new class :class:`.MQTTConfig` for its MQTT connection settings so it doesn't depend on Hermes Python.
-
 Deprecated
 ==========
 
@@ -44,6 +41,25 @@ Security
 ========
 
 .. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.3.0...HEAD
+
+*********************
+`0.4.0`_ - 2019-03-25
+*********************
+
+Added
+=====
+
+- Support for Python 3.7.
+- Extra documentation about installation and usage.
+
+Changed
+=======
+
+- Breaking change: Moved all Hermes Python-related classes to :mod:`snipskit.hermes` submodules and all MQTT-related classes to :mod:`snipskit.mqtt` submodules.
+- Breaking change: Class :class:`.SnipsConfig` uses the new class :class:`.MQTTConfig` for its MQTT connection settings so it doesn't depend on Hermes Python.
+- Breaking change: Use `pip install snipskit[hermes]` to install the Hermes Python dependency, and `pip install snipskit[mqtt]` to install the Paho MQTT dependency. This way you can use the :mod:`snipskit.hermes` module without pulling in the Paho MQTT dependency, or the :mod:`snipskit.mqtt` module without pulling in the Hermes Python dependency. 
+
+.. _`0.4.0`: https://github.com/koenvervloesem/snipskit/compare/0.3.0...0.4.0
 
 *********************
 `0.3.0`_ - 2019-03-22
