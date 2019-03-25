@@ -57,6 +57,8 @@ With SnipsKit, you can create Snips apps without having to write much boilerplat
     if __name__ == "__main__":
         SimpleSnipsApp()
 
+.. end-code-block
+
 And that's it! No need to connect to an MQTT broker, no need to register callbacks, because the HermesSnipsApp class:
 
 - reads the MQTT connection settings from the snips.toml file;
