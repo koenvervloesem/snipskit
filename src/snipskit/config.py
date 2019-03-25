@@ -7,10 +7,10 @@ Classes:
   stored in an INI file.
 - :class:`.AssistantConfig`: Gives access to the configuration of a Snips
   assistant, stored in a JSON file.
-- :class:`.SnipsConfig`: Gives access to the configuration of a locally
-  installed instance of Snips, stored in a TOML file.
 - :class:`.MQTTConfig`: Represents the configuration for a connection to an
   MQTT broker.
+- :class:`.SnipsConfig`: Gives access to the configuration of a locally
+  installed instance of Snips, stored in a TOML file.
 """
 
 from collections import UserDict
@@ -150,7 +150,7 @@ class MQTTConfig:
         username (str): The username to authenticate to the MQTT broker. 'None'
             if there's no authentication.
         password (str): The password to authenticate to the MQTT broker. 'None'
-            if therea's no authentication.
+            if there's no authentication.
         tls_hostname (str): The TLS hostname of the MQTT broker. 'None' if no
             TLS is used.
         tls_ca_file (str): Path to the Certificate Authority file. Can be
@@ -161,6 +161,8 @@ class MQTTConfig:
         tls_client_cert (str): Path to the client certificate file. Can be
             'None'.
         tls_disable_root_store (bool): Whether the TLS root store is disabled.
+
+    .. versionadded:: 0.4.0
     """
 
     def __init__(self, broker_address='localhost:1883', username=None,
