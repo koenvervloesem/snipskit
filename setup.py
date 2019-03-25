@@ -11,6 +11,17 @@ with open("README.rst", "r") as fh:
 with open("VERSION", "r") as fh:
     version = fh.read().strip()
 
+with open("requirements/install/common.txt", "r") as fh:
+    requirements_common = fh.read().splitlines()
+
+with open("requirements/install/hermes.txt", "r") as fh:
+    requirements_hermes = fh.read().splitlines()
+    extra_requirements_hermes = list(set(requirements_hermes) - set(requirements_common))
+
+with open("requirements/install/mqtt.txt", "r") as fh:
+    requirements_mqtt = fh.read().splitlines()
+    extra_requirements_mqtt = list(set(requirements_mqtt) - set(requirements_common))
+
 setup(
     name="snipskit",
     version=version,
@@ -24,9 +35,9 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
-    install_requires=['toml'],
-    extras_require={'hermes': ['hermes_python>=0.3.3'],
-                    'mqtt': ['paho-mqtt']},
+    install_requires=requirements_common,
+    extras_require={'hermes': extra_requirements_hermes,
+                    'mqtt': extra_requirements_mqtt},
     include_package_data=True,
     zip_safe=False,
     classifiers=[
