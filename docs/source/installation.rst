@@ -28,7 +28,7 @@ This will also install its dependencies:
 
 .. literalinclude:: ../../requirements/install/all.txt
 
-However, in many projects you don't need the complete functionality. Then you have the following options:
+However, in many projects you don't need the complete functionality. Then you have the following options to prevent pulling in unnecessary dependencies:
 
 The hermes module
 =================
