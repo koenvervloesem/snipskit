@@ -60,10 +60,11 @@ snipskit.hermes
 ***************
 
 .. automodule:: snipskit.hermes
-   :members:
 
 snipskit.hermes.apps
 ====================
+
+.. automodule:: snipskit.hermes.apps
 
 .. autoclass:: snipskit.hermes.apps.HermesSnipsApp
    :members:
@@ -71,11 +72,15 @@ snipskit.hermes.apps
 snipskit.hermes.components
 ==========================
 
+.. automodule:: snipskit.hermes.components
+
 .. autoclass:: snipskit.hermes.components.HermesSnipsComponent
    :members:
 
 snipskit.hermes.decorators
 ==========================
+
+.. automodule:: snipskit.hermes.decorators
 
 .. automodule:: snipskit.hermes.decorators
    :members:
@@ -85,10 +90,11 @@ snipskit.mqtt
 *************
 
 .. automodule:: snipskit.mqtt
-   :members:
 
 snipskit.mqtt.apps
 ==================
+
+.. automodule:: snipskit.mqtt.apps
 
 .. autoclass:: snipskit.mqtt.apps.MQTTSnipsApp
    :members:
@@ -96,11 +102,15 @@ snipskit.mqtt.apps
 snipskit.mqtt.components
 ========================
 
+.. automodule:: snipskit.mqtt.components
+
 .. autoclass:: snipskit.mqtt.components.MQTTSnipsComponent
    :members:
 
 snipskit.mqtt.decorators
 ========================
+
+.. automodule:: snipskit.mqtt.decorators
 
 .. automodule:: snipskit.mqtt.decorators
    :members:
