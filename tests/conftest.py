@@ -3,7 +3,7 @@ import sys
 
 try:
     # This environment variable is used by Travis CI to define which
-    # dependecies are installed. Pytest uses it to define which modules
+    # dependencies are installed. Pytest uses it to define which modules
     # are checked.
     requirements = os.environ['SNIPSKIT_REQUIREMENTS']
 

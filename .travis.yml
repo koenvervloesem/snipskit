@@ -25,4 +25,4 @@ script:
   - scripts/travis/script.sh
 
 after_script:
-- scripts/travis/after_script.sh
+  - scripts/travis/after_script.sh
