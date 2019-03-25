@@ -81,7 +81,7 @@ System requirements
 
 .. inclusion-marker-start-requirements
 
-SnipsKit is a Python 3-only library, requiring Python 3.5 or higher. It's currently tested on Python 3.5 and Python 3.6.
+SnipsKit is a Python 3-only library, requiring Python 3.5 or higher. It's currently tested on Python 3.5, 3.6 and 3.7.
 
 .. inclusion-marker-end-requirements
 
@@ -91,13 +91,13 @@ Installation
 
 .. inclusion-marker-start-installation
 
-SnipsKit is `packaged on PyPI`_, so the latest stable version can be installed with the following command:
+SnipsKit is `packaged on PyPI`_. The latest stable version with all functionality can be installed with the following command:
 
 .. _`packaged on PyPI`: https://pypi.org/project/snipskit/
 
 .. code-block:: sh
 
-    pip install snipskit
+    pip install snipskit[hermes,mqtt]
 
 .. inclusion-marker-end-installation
 
