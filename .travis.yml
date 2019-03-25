@@ -29,18 +29,18 @@ stages:
 jobs:
   include:
     - stage: before_test
-      if: env(SNIPSKIT_REQUIREMENTS) = "all"
+      if: env(SNIPSKIT_REQUIREMENTS) = all
       env: PYTEST_ADDOPTS="--cov src --cov-report xml"
       script:
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
     - stage: extra_tests
-      if: env(SNIPSKIT_REQUIREMENTS) = "all"
+      if: env(SNIPSKIT_REQUIREMENTS) = all
       script:
         - scripts/check_examples.sh
         - scripts/generate_docs.sh
         - scripts/build_package.sh
     - stage: after_test
-      if: env(SNIPSKIT_REQUIREMENTS) = "all"
+      if: env(SNIPSKIT_REQUIREMENTS) = all
       script: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
