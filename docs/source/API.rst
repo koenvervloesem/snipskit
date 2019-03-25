@@ -62,23 +62,20 @@ snipskit.hermes
 .. automodule:: snipskit.hermes
    :members:
 
-********************
 snipskit.hermes.apps
-********************
+====================
 
 .. autoclass:: snipskit.hermes.apps.HermesSnipsApp
    :members:
 
-**************************
 snipskit.hermes.components
-**************************
+==========================
 
 .. autoclass:: snipskit.hermes.components.HermesSnipsComponent
    :members:
 
-**************************
 snipskit.hermes.decorators
-**************************
+==========================
 
 .. automodule:: snipskit.hermes.decorators
    :members:
@@ -90,23 +87,20 @@ snipskit.mqtt
 .. automodule:: snipskit.mqtt
    :members:
 
-******************
 snipskit.mqtt.apps
-******************
+==================
 
 .. autoclass:: snipskit.mqtt.apps.MQTTSnipsApp
    :members:
 
-************************
 snipskit.mqtt.components
-************************
+========================
 
 .. autoclass:: snipskit.mqtt.components.MQTTSnipsComponent
    :members:
 
-************************
 snipskit.mqtt.decorators
-************************
+========================
 
 .. automodule:: snipskit.mqtt.decorators
    :members:

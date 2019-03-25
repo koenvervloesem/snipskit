@@ -24,7 +24,9 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
-    install_requires=['hermes_python>=0.3.3', 'paho-mqtt', 'toml'],
+    install_requires=['toml'],
+    extras_require={'hermes': ['hermes_python>=0.3.3'],
+                    'mqtt': ['paho-mqtt']},
     include_package_data=True,
     zip_safe=False,
     classifiers=[
