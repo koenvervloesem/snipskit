@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 if [ "$SNIPSKIT_REQUIREMENTS" == "all" ]
 then
   pytest --verbose

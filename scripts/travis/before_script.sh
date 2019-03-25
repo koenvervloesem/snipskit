@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 if [ "$SNIPSKIT_REQUIREMENTS" == "all" ]
 then
   export PYTEST_ADDOPTS="--cov src --cov-report xml"
