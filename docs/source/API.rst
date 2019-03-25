@@ -81,8 +81,6 @@ snipskit.hermes.decorators
 ==========================
 
 .. automodule:: snipskit.hermes.decorators
-
-.. automodule:: snipskit.hermes.decorators
    :members:
 
 *************
@@ -109,8 +107,6 @@ snipskit.mqtt.components
 
 snipskit.mqtt.decorators
 ========================
-
-.. automodule:: snipskit.mqtt.decorators
 
 .. automodule:: snipskit.mqtt.decorators
    :members:
