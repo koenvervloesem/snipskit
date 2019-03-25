@@ -12,7 +12,7 @@ System requirements
 
 SnipsKit requires the following Python packages if you want to use the complete functionality:
 
-.. literalinclude:: ../../requirements/install.txt
+.. literalinclude:: ../../requirements/install/all.txt
 
 If your platform supports these packages, SnipsKit should also be supported.
 
