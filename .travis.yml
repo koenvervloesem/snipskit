@@ -16,7 +16,7 @@ env:
   - SNIPSKIT_REQUIREMENTS=all
 
 install:
-  - pip install -r requirements/install/$REQUIREMENTS.txt
+  - pip install -r requirements/install/$SNIPSKIT_REQUIREMENTS.txt
   - pip install -r requirements/development.txt
 
 before_script:
