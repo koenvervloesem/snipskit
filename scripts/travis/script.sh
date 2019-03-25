@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -ev
 pytest --verbose
 if [ "$SNIPSKIT_REQUIREMENTS" == "all" ]
 then
