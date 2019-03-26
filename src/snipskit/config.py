@@ -144,6 +144,8 @@ class MQTTConfig:
     """This class represents the configuration for a connection to an
     MQTT broker.
 
+    .. versionadded:: 0.4.0
+
     Attributes:
         broker_address (str): The address of the MQTT broker, in the form
             'host:port'.
@@ -162,7 +164,6 @@ class MQTTConfig:
             'None'.
         tls_disable_root_store (bool): Whether the TLS root store is disabled.
 
-    .. versionadded:: 0.4.0
     """
 
     def __init__(self, broker_address='localhost:1883', username=None,
