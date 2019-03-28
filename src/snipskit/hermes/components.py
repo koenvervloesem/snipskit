@@ -71,19 +71,20 @@ class HermesSnipsComponent(SnipsComponent):
         for name in dir(self):
             callable_name = getattr(self, name)
 
-            if hasattr(callable_name, 'intent'):
-                self.hermes.subscribe_intent(getattr(callable_name, 'intent'),
-                                             callable_name)
-            self._check_callback(callable_name, 'intent_not_recognized')
-            self._check_callback(callable_name, 'intents')
-            self._check_callback(callable_name, 'session_ended')
-            self._check_callback(callable_name, 'session_queued')
-            self._check_callback(callable_name, 'session_started')
-
-    def _check_callback(self, method, event):
-        """Check if method `method` has an attribute `event`. If it has,
-        call the right subscribe method of our Hermes object to register the
-        method as a callback.
-        """
-        if hasattr(method, event):
-            getattr(self.hermes, 'subscribe_' + event)(method)
+            # If we have given the method a subscribe_method attribute by one
+            # of the decorators.
+            if hasattr(callable_name, 'subscribe_method'):
+                subscribe_method = getattr(callable_name, 'subscribe_method')
+                # If we have given the method a subscribe_parameter attribute
+                # by one of the decorators.
+                if hasattr(callable_name, 'subscribe_parameter'):
+                    subscribe_parameter = getattr(callable_name,
+                                                  'subscribe_parameter')
+                    # Register callable_name as a callback with
+                    # subscribe_method and subscribe_parameter as a parameter.
+                    getattr(self.hermes, subscribe_method)(subscribe_parameter,
+                                                           callable_name)
+                else:
+                    # Register callable_name as a callback with
+                    # subscribe_method.
+                    getattr(self.hermes, subscribe_method)(callable_name)

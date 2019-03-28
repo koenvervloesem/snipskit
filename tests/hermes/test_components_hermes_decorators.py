@@ -53,21 +53,22 @@ def test_snips_component_hermes_decorators(fs, mocker):
 
     component = DecoratedHermesComponent()
 
-    assert component.callback_intent1.intent == 'koan:Intent1'
+    assert component.callback_intent1.subscribe_method == 'subscribe_intent'
+    assert component.callback_intent1.subscribe_parameter == 'koan:Intent1'
     component.hermes.subscribe_intent.assert_called_once_with('koan:Intent1',
                                                               component.callback_intent1)
 
-    assert component.callback_intent_not_recognized.intent_not_recognized is True
+    assert component.callback_intent_not_recognized.subscribe_method == 'subscribe_intent_not_recognized'
     component.hermes.subscribe_intent_not_recognized.assert_called_once_with(component.callback_intent_not_recognized)
 
-    assert component.callback_intents.intents is True
+    assert component.callback_intents.subscribe_method == 'subscribe_intents'
     component.hermes.subscribe_intents.assert_called_once_with(component.callback_intents)
 
-    assert component.callback_session_ended.session_ended is True
+    assert component.callback_session_ended.subscribe_method == 'subscribe_session_ended'
     component.hermes.subscribe_session_ended.assert_called_once_with(component.callback_session_ended)
 
-    assert component.callback_session_queued.session_queued is True
+    assert component.callback_session_queued.subscribe_method == 'subscribe_session_queued'
     component.hermes.subscribe_session_queued.assert_called_once_with(component.callback_session_queued)
 
-    assert component.callback_session_started.session_started is True
+    assert component.callback_session_started.subscribe_method == 'subscribe_session_started'
     component.hermes.subscribe_session_started.assert_called_once_with(component.callback_session_started)

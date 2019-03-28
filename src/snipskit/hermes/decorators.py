@@ -34,7 +34,8 @@ def intent(intent_name):
     """
     def inner(method):
         """The method to apply the decorator to."""
-        method.intent = intent_name
+        method.subscribe_method = 'subscribe_intent'
+        method.subscribe_parameter = intent_name
         return method
     return inner
 
@@ -44,7 +45,7 @@ def intent_not_recognized(method):
     to register it as a callback to be triggered when the dialogue manager
     doesn't recognize an intent.
     """
-    method.intent_not_recognized = True
+    method.subscribe_method = 'subscribe_intent_not_recognized'
     return method
 
 
@@ -53,7 +54,7 @@ def intents(method):
     to register it as a callback to be triggered everytime an intent is
     recognized.
     """
-    method.intents = True
+    method.subscribe_method = 'subscribe_intents'
     return method
 
 
@@ -62,7 +63,7 @@ def session_ended(method):
     to register it as a callback to be triggered when the dialogue manager ends
     a session.
     """
-    method.session_ended = True
+    method.subscribe_method = 'subscribe_session_ended'
     return method
 
 
@@ -71,7 +72,7 @@ def session_queued(method):
     to register it as a callback to be triggered when the dialogue manager
     queues the current session.
     """
-    method.session_queued = True
+    method.subscribe_method = 'subscribe_session_queued'
     return method
 
 
@@ -80,5 +81,5 @@ def session_started(method):
     to register it as a callback to be triggered when the dialogue manager
     queues starts a new session.
     """
-    method.session_started = True
+    method.subscribe_method = 'subscribe_session_started'
     return method
