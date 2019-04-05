@@ -25,6 +25,8 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
+- Example code and documentation about accessing the app's configuration, the assistant's configuration and the configuration of Snips.
+
 Changed
 =======
 

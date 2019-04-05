@@ -12,6 +12,7 @@ You can find the documentation of this library in:
 https://snipskit.readthedocs.io/
 """
 from snipskit.hermes.apps import HermesSnipsApp
+from snipskit.hermes.config import AppConfig
 from snipskit.hermes.decorators import intent
 
 
@@ -40,4 +41,4 @@ class SimpleSnipsApp(HermesSnipsApp):
 
 
 if __name__ == "__main__":
-    SimpleSnipsApp()
+    SimpleSnipsApp(config=AppConfig())
