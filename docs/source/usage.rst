@@ -73,7 +73,7 @@ In line 14, we check if the Python file is run on the commandline. If it is, we 
 Reading the configuration of the app, the assistant and Snips
 *************************************************************
 
-Each :class:`.SnipsApp` object has attributes that give the app access to the app's configuration (:class:`.AppConfig`), the assistant's configuration (:class:`.AssistantConfig`) and the configuration of Snips (:class:`.SnipsConfig`). An example (for :class:`.HermesSnipsApp`, but it works the same for :class:`.MQTTSnipsApp`):
+Each :class:`.SnipsApp` object has attributes that give the app access to the app's configuration (:class:`.AppConfig`), the assistant's configuration (:class:`.AssistantConfig`) and the configuration of Snips (:class:`.SnipsConfig`). The following example (for :class:`.HermesSnipsApp`, but it works the same for :class:`.MQTTSnipsApp`) shows the use of these three attributes:
 
 .. literalinclude :: ../../examples/hermes_configuration.py
    :caption: hermes_configuration.py
@@ -94,6 +94,6 @@ With `self.config` you get access to this app's configuration as an :class:`.App
     [secret]
     switch=light1
 
-With `self.assistant` you get access to the assistant's configuration as an :class:`.AssistantConfig` object, which behaves like a `dict`. This reads the configuration from the assistant's directory, which is normally '/usr/share/snips/assistant/assistant.json' on a Raspbian system.
+With `self.assistant` you get access to the assistant's configuration as an :class:`.AssistantConfig` object, which behaves like a :class:`dict`. This reads the configuration from the assistant's directory, which is normally '/usr/share/snips/assistant/assistant.json' on a Raspbian system.
 
-And with `self.snips` you get access to the configuration of Snips, which also behaves like a `dict`. This reads the configuration from the Snips configuration file, which is normally '/etc/snips.toml' on a Raspbian system.
+And with `self.snips` you get access to the configuration of Snips, which also behaves like a :class:`dict`. This reads the configuration from the Snips configuration file, which is normally '/etc/snips.toml' on a Raspbian system.
