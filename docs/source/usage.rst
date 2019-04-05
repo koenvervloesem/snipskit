@@ -85,3 +85,15 @@ Each :class:`.SnipsApp` object has attributes that give the app access to the ap
 You can download the file `hermes_configuration.py`_ from our GitHub repository.
 
 .. _`hermes_listen_for_intent.py`: https://github.com/koenvervloesem/snipskit/blob/master/examples/hermes_configuration.py
+
+With `self.config` you get access to this app's configuration as an :class:`.AppConfig` object, which is a subclass of :class:`configparser.ConfigParser`. This example requires you to have a file 'config.ini' in the same directory as the app, with the following content:
+
+.. code-block:: ini
+
+    [global]
+    [secret]
+    switch=light1
+
+With `self.assistant` you get access to the assistant's configuration as an :class:`.AssistantConfig` object, which behaves like a `dict`. This reads the configuration from the assistant's directory, which is normally '/usr/share/snips/assistant/assistant.json' on a Raspbian system.
+
+And with `self.snips` you get access to the configuration of Snips, which also behaves like a `dict`. This reads the configuration from the Snips configuration file, which is normally '/etc/snips.toml' on a Raspbian system.
