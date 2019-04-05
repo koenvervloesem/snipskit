@@ -68,3 +68,20 @@ In line 9, we define a `callback method`_. This method will be called when an in
 Then inside the `example_intent` method, you can use the `hermes` and `intent_message` objects from the Hermes Python library. In this simple case, we end the session by saying a message.
 
 In line 14, we check if the Python file is run on the commandline. If it is, we create a new object of the class we defined. When we initialize this object, it automatically reads the MQTT connection settings from the snips.toml file, connects to the MQTT broker, registers the method with the :func:`.intent` decorator as a callback method for the intent 'User:ExampleIntent' and starts the event loop so the app starts listening to events from the Snips platform.
+
+*************************************************************
+Reading the configuration of the app, the assistant and Snips
+*************************************************************
+
+Each :class:`.SnipsApp` object has attributes that give the app access to the app's configuration (:class:`.AppConfig`), the assistant's configuration (:class:`.AssistantConfig`) and the configuration of Snips (:class:`.SnipsConfig`). An example (for :class:`.HermesSnipsApp`, but it works the same for :class:`.MQTTSnipsApp`):
+
+.. literalinclude :: ../../examples/hermes_configuration.py
+   :caption: hermes_configuration.py
+   :language: python
+   :linenos:
+   :start-at: from snipskit.hermes.apps
+   :prepend: #!/usr/bin/env python3
+
+You can download the file `hermes_configuration.py`_ from our GitHub repository.
+
+.. _`hermes_listen_for_intent.py`: https://github.com/koenvervloesem/snipskit/blob/master/examples/hermes_configuration.py
