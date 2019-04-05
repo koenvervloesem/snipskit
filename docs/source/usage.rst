@@ -45,7 +45,7 @@ Creating a simple Snips app using Hermes Python
 A simple Snips app that listens to a specific intent and then says a message, is created like this:
 
 .. literalinclude :: ../../examples/hermes_listen_for_intent.py
-   :caption: hermes_listen_for_intent.py
+   :caption: Example hermes_listen_for_intent.py
    :language: python
    :linenos:
    :start-at: from snipskit.hermes.apps
@@ -76,7 +76,7 @@ Reading the configuration of the app, the assistant and Snips
 Each :class:`.SnipsApp` object has attributes that give the app access to the app's configuration (:class:`.AppConfig`), the assistant's configuration (:class:`.AssistantConfig`) and the configuration of Snips (:class:`.SnipsConfig`). The following example (for :class:`.HermesSnipsApp`, but it works the same for :class:`.MQTTSnipsApp`) shows the use of these three attributes:
 
 .. literalinclude :: ../../examples/hermes_configuration.py
-   :caption: hermes_configuration.py
+   :caption: Example hermes_configuration.py
    :language: python
    :linenos:
    :start-at: from snipskit.hermes.apps
