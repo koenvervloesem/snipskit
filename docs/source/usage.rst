@@ -84,7 +84,7 @@ Each :class:`.SnipsApp` object has attributes that give the app access to the ap
 
 You can download the file `hermes_configuration.py`_ from our GitHub repository.
 
-.. _`hermes_listen_for_intent.py`: https://github.com/koenvervloesem/snipskit/blob/master/examples/hermes_configuration.py
+.. _`hermes_configuration.py`: https://github.com/koenvervloesem/snipskit/blob/master/examples/hermes_configuration.py
 
 With `self.config` you get access to this app's configuration as an :class:`.AppConfig` object, which is a subclass of :class:`configparser.ConfigParser`. This example requires you to have a file 'config.ini' in the same directory as the app, with the following content:
 
