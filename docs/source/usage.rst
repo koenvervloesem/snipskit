@@ -94,7 +94,7 @@ With `self.config` you get access to this app's configuration as an :class:`.App
     [secret]
     switch=light1
 
-.. note:: To use the app configuration, you need to add the argument `config=AppConfig()` when initializing your app. Without this argument, your app doesn't have access to the configuration.
+.. note:: To get access to the app configuration, don't forget to add the argument `config=AppConfig()` when initializing your app. If you don't need any app configuration, this argument can be left out.
 
 With `self.assistant` you get access to the assistant's configuration as an :class:`.AssistantConfig` object, which behaves like a :class:`dict`. This reads the configuration from the assistant's directory, which is normally '/usr/share/snips/assistant/assistant.json' on a Raspbian system.
 
