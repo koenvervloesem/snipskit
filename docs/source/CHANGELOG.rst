@@ -40,7 +40,7 @@ Fixed
 Security
 ========
 
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.3.0...HEAD
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.4.0...HEAD
 
 *********************
 `0.4.0`_ - 2019-03-25
