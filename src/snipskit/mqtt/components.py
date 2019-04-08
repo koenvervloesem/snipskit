@@ -21,9 +21,10 @@ Example:
             print('Component initialized')
 
         @topic('hermes/hotword/toggleOn')
-        def hotword_on(self, client, userdata, msg):
-            print('Hotword activated')
+        def hotword_on(self, topic, payload):
+            print('Hotword on {} is toggled on.'.format(payload['siteId']))
 """
+import json
 
 from paho.mqtt.client import Client
 from snipskit.components import SnipsComponent
@@ -89,3 +90,20 @@ class MQTTSnipsComponent(SnipsComponent):
                 self.mqtt.subscribe(getattr(callable_name, 'topic'))
                 self.mqtt.message_callback_add(getattr(callable_name, 'topic'),
                                                callable_name)
+
+    def publish(self, topic, payload, json_encode=True):
+        """Publish a payload on an MQTT topic on the MQTT broker of this object.
+
+        Args:
+            topic (str): The MQTT topic to publish the payload on.
+            payload (str): The payload to publish.
+            json_encode (bool, optional): Whether or not the payload will be
+                encoded as JSON. The default value is True. Set this to False
+                if you want to publish a binary payload as-is.
+
+        Returns: A :class:`paho.mqtt.MQTTMessageInfo` object.
+        """
+        if json_encode:
+            payload = json.dumps(payload)
+
+        return self.mqtt.publish(topic, payload)

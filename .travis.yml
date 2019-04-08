@@ -3,6 +3,7 @@ dist: xenial
 env:
   global:
     - CC_TEST_REPORTER_ID=b5260482480f0b98b0a18b0e7f7225664abc22d3b23fa3555fdf0de694aee213
+    - INTEGRATION_TESTS=true
   matrix:
     - SNIPSKIT_REQUIREMENTS=all
     - SNIPSKIT_REQUIREMENTS=mqtt

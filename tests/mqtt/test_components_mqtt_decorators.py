@@ -16,7 +16,7 @@ class DecoratedMQTTComponent(MQTTSnipsComponent):
         pass
 
     @topic('hermes/intent/#')
-    def handle_intents(self, client, userdata, msg):
+    def handle_intents(self, topic, payload):
         pass
 
 
