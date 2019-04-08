@@ -1,6 +1,4 @@
 #!/bin/bash
-set -e
-
 cd examples
 
 # Extract the example from README.rst
@@ -11,5 +9,5 @@ head -n $(grep -n 'end-code-block' README.example | cut -d: -f1) README.example 
 # Check the examples in the examples directory.
 pylint -E *.py
 
-# Clean up the files from the extracted code.
-rm README.example README.py
+# Clean up the files from the extracted code and return the exit code of the pylint command.
+eval "rm README.example README.py; exit $?"
