@@ -97,9 +97,10 @@ class MQTTSnipsComponent(SnipsComponent):
         Args:
             topic (str): The MQTT topic to publish the payload on.
             payload (str): The payload to publish.
-            json_encode (bool, optional): Whether or not the payload will be
-                encoded as JSON. The default value is True. Set this to False
-                if you want to publish a binary payload as-is.
+            json_encode (bool, optional): Whether or not the payload is a dict
+                that will be encoded as a JSON tring. The default value is
+                True. Set this to False if you want to publish a binary payload
+                as-is.
 
         Returns: A :class:`paho.mqtt.MQTTMessageInfo` object.
         """

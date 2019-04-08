@@ -26,9 +26,13 @@ Added
 =====
 
 - Example code and documentation about accessing the app's configuration, the assistant's configuration and the configuration of Snips.
+- Method :meth:`.MQTTSnipsComponent.publish` to publish a payload, optionally encoded as JSON.
 
 Changed
 =======
+
+- Breaking change: The callback signature for methods of :class:`.MQTTSnipsComponent` has changed to (self, topic, payload).
+- Breaking change: the decorator :func:`.snipskit.mqtt.decorators.topic` now has an optional argument 'json_decode' to decode a JSON payload to a dict, which is True by default.
 
 Deprecated
 ==========

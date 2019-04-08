@@ -37,8 +37,8 @@ def topic(topic_name, json_decode=True):
     Args:
         topic_name (str): The MQTT topic you want to subscribe to.
         json_decode (bool, optional): Whether or not the payload will be
-            decoded as JSON. The default value is True. Set this to False if
-            you want to subscribe to a topic with a binary payload.
+            decoded as JSON to a dict. The default value is True. Set this to
+            False if you want to subscribe to a topic with a binary payload.
     """
     def wrapper(method):
         def wrapped(self, client, userdata, msg):
