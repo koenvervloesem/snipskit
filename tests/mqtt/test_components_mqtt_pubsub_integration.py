@@ -62,10 +62,12 @@ def test_snips_component_mqtt_pubsub(fs):
     threading.Timer(DELAY, publish_hotword).start()
 
     message = subscribe.simple('hermes/tts/say')
-    assert message.payload == b'{"siteId": "default", "text": "I detected the hotword hey_snips on site ID default."}'
+    assert json.loads(message.payload.decode('utf-8')) == {'siteId': 'default',
+                                                           'text': 'I detected the hotword hey_snips on site ID default.'}
 
     # Test handle_audio method: 'Binary' payload (just a string here)
     threading.Timer(DELAY, publish_audio).start()
 
     message = subscribe.simple('hermes/tts/say')
-    assert message.payload == b'{"siteId": "default", "text": "I detected audio with request ID 1234 and payload foobar on site ID default."}'
+    assert json.loads(message.payload.decode('utf-8')) == {'siteId': 'default',
+                                                           'text': 'I detected audio with request ID 1234 and payload foobar on site ID default.'}
