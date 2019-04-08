@@ -15,8 +15,8 @@ Example:
             print('App initialized')
 
         @topic('hermes/hotword/toggleOn')
-        def hotword_on(self, client, userdata, msg):
-            print('Hotword activated')
+        def hotword_on(self, topic, payload):
+            print('Hotword on {} is toggled on.'.format(payload['siteId']))
 """
 
 from snipskit.apps import SnipsAppMixin
