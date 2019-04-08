@@ -2,6 +2,7 @@
 Sphinx
 sphinx_rtd_theme
 # Tests
+bashate
 flake8
 mock
 pylint
