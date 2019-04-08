@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+set -e
+
 cd examples
 
 # Extract the example from README.rst
