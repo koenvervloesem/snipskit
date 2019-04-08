@@ -25,14 +25,8 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
-- Example code and documentation about accessing the app's configuration, the assistant's configuration and the configuration of Snips.
-- Method :meth:`.MQTTSnipsComponent.publish` to publish a payload, optionally encoded as JSON.
-
 Changed
 =======
-
-- Breaking change: The callback signature for methods of :class:`.MQTTSnipsComponent` has changed to (self, topic, payload).
-- Breaking change: the decorator :func:`.snipskit.mqtt.decorators.topic` now has an optional argument 'json_decode' to decode a JSON payload to a dict, which is True by default.
 
 Deprecated
 ==========
@@ -46,7 +40,25 @@ Fixed
 Security
 ========
 
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.4.0...HEAD
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.0...HEAD
+
+*********************
+`0.5.0`_ - 2019-04-08
+*********************
+
+Added
+=====
+
+- Example code and documentation about accessing the app's configuration, the assistant's configuration and the configuration of Snips.
+- Method :meth:`.MQTTSnipsComponent.publish` to publish a payload, optionally encoded as JSON.
+
+Changed
+=======
+
+- Breaking change: The callback signature for methods of :class:`.MQTTSnipsComponent` has changed to (self, topic, payload).
+- Breaking change: the decorator :func:`.snipskit.mqtt.decorators.topic` now has an optional argument 'json_decode' to decode a JSON payload to a dict, which is True by default.
+
+.. _`0.5.0`: https://github.com/koenvervloesem/snipskit/compare/0.4.0...0.5.0
 
 *********************
 `0.4.0`_ - 2019-03-25
