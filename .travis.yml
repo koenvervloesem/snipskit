@@ -2,8 +2,14 @@ dist: xenial
 
 addons:
   apt:
+    sources:
+      - sourceline: 'deb https://debian.snips.ai/stretch stable main'
+        key_url: 'https://debian.snips.ai/stretch/dists/stable/Release.gpg'
     packages:
       - mosquitto
+      - snips-platform-common
+      - snips-dialogue
+      - snips-nlu
 
 env:
   global:
