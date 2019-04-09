@@ -111,6 +111,12 @@ snipskit.mqtt.decorators
 .. automodule:: snipskit.mqtt.decorators
    :members:
 
+snipskit.mqtt.dialogue
+======================
+
+.. automodule:: snipskit.mqtt.dialogue
+   :members:
+
 **************
 snipskit.tools
 **************

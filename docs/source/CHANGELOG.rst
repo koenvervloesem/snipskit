@@ -25,6 +25,8 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
+- New module :mod:`snipskit.mqtt.dialogue` with helper functions :func:`snipskit.mqtt.dialogue.continue_session` and :func:`snipskit.mqtt.dialogue.end_session` to continue and end a session.
+
 Changed
 =======
 
@@ -48,6 +50,7 @@ Security
 
 Fixed
 =====
+
 - Example code in documentation fixed to use the new callback signature for methods of :class:`.MQTTSnipsComponent`.
 - PyPi package was built incorrectly.
 
