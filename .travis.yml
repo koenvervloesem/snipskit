@@ -1,16 +1,5 @@
 dist: xenial
 
-addons:
-  apt:
-    sources:
-      - sourceline: 'deb https://debian.snips.ai/stretch stable main'
-        key_url: 'https://debian.snips.ai/stretch/dists/stable/Release.gpg'
-    packages:
-      - mosquitto
-      - snips-platform-common
-      - snips-dialogue
-      - snips-nlu
-
 env:
   global:
     - CC_TEST_REPORTER_ID=b5260482480f0b98b0a18b0e7f7225664abc22d3b23fa3555fdf0de694aee213
@@ -26,6 +15,13 @@ python:
   - 3.5
   - 3.6
   - 3.7
+
+before_install:
+  - sudo apt-get install -y dirmngr apt-transport-https
+  - sudo bash -c  'echo "deb https://debian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list'
+  - sudo apt-key adv --keyserver pgp.mit.edu --recv-keys F727C778CCB0A455
+  - sudo apt-get update -qq
+  - sudo apt-get install -y snips-platform-common snips-dialogue snips-nlu mosquitto
 
 install:
   - pip install -r requirements/install/$SNIPSKIT_REQUIREMENTS.txt
