@@ -103,6 +103,8 @@ class MQTTSnipsComponent(SnipsComponent):
                 as-is.
 
         Returns: A :class:`paho.mqtt.MQTTMessageInfo` object.
+
+        .. versionadded:: 0.5.0
         """
         if json_encode:
             payload = json.dumps(payload)

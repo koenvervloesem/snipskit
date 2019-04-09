@@ -19,7 +19,7 @@ Both classes include the :class:`.SnipsAppMixin` mixin of this module to read
 the assistant's configuration from the location defined in snips.toml.
 
 .. note::
-   This class requires you to have a Snips assistant installed.
+   These classes requires you to have a Snips assistant installed.
 
    If you don't need access to the assistant's configuration nor an
    app-specific configuration, you can create a subclass of
