@@ -40,7 +40,18 @@ Fixed
 Security
 ========
 
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.0...HEAD
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.1...HEAD
+
+*********************
+`0.5.1`_ - 2019-04-09
+*********************
+
+Fixed
+=====
+- Example code in documentation fixed to use the new callback signature for methods of :class:`.MQTTSnipsComponent`.
+- PyPi package was built incorrectly.
+
+.. _`0.5.1`: https://github.com/koenvervloesem/snipskit/compare/0.5.0...0.5.1
 
 *********************
 `0.5.0`_ - 2019-04-08
