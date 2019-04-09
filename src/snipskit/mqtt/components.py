@@ -59,6 +59,8 @@ class MQTTSnipsComponent(SnipsComponent):
 
         # Set up an MQTT TLS connection
         if mqtt_options.tls_hostname:
+
+
             # Set up TLS.
             self.mqtt.tls_set(ca_certs=mqtt_options.tls_ca_file,
                               certfile=mqtt_options.tls_client_cert,
@@ -102,7 +104,9 @@ class MQTTSnipsComponent(SnipsComponent):
                 True. Set this to False if you want to publish a binary payload
                 as-is.
 
-        Returns: A :class:`paho.mqtt.MQTTMessageInfo` object.
+        Returns:
+            :class:`paho.mqtt.MQTTMessageInfo`: Information about the
+            publication of the message.
 
         .. versionadded:: 0.5.0
         """
