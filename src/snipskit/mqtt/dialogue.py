@@ -11,7 +11,7 @@ def continue_session(session_id, text):
     """Return a tuple with a topic and payload for a `continueSession`_ message
     for the specified session ID and text.
 
-    .. _`continueSession`: https://docs.snips.ai/reference/dialogue#continue-session 
+    .. _`continueSession`: https://docs.snips.ai/reference/dialogue#continue-session
 
     Args:
         session_id (str): The session Id of the message.
@@ -36,6 +36,8 @@ def continue_session(session_id, text):
         >>> self.publish('hermes/dialogueManager/continueSession',
                          {'sessionId': 'mySessionId',
                           'text': 'myText'})
+
+        .. versionadded:: 0.5.2
     """
     return (DM_CONTINUE_SESSION, {'sessionId': session_id, 'text': text})
 
@@ -66,6 +68,8 @@ def end_session(session_id, text=None):
         >>> self.publish('hermes/dialogueManager/endSession',
                          {'sessionId': 'mySessionId',
                           'text': 'myText'})
+
+        .. versionadded:: 0.5.2
     """
     if text:
         payload = {'sessionId': session_id, 'text': text}

@@ -25,8 +25,6 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
-- New module :mod:`snipskit.mqtt.dialogue` with helper functions :func:`snipskit.mqtt.dialogue.continue_session` and :func:`snipskit.mqtt.dialogue.end_session` to continue and end a session.
-
 Changed
 =======
 
@@ -42,7 +40,18 @@ Fixed
 Security
 ========
 
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.1...HEAD
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.2...HEAD
+
+*********************
+`0.5.2`_ - 2019-04-09
+*********************
+
+Added
+=====
+
+- New module :mod:`snipskit.mqtt.dialogue` with helper functions :func:`snipskit.mqtt.dialogue.continue_session` and :func:`snipskit.mqtt.dialogue.end_session` to continue and end a session.
+
+.. _`0.5.2`: https://github.com/koenvervloesem/snipskit/compare/0.5.1...0.5.2
 
 *********************
 `0.5.1`_ - 2019-04-09
