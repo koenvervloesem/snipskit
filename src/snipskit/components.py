@@ -60,14 +60,12 @@ class SnipsComponent(metaclass=ABCMeta):
         This method should be implemented in a subclass of
         :class:`.SnipsComponent`.
         """
-        pass
 
     def initialize(self):
         """If you have to initialize a component in your subclass of
         :class:`.SnipsComponent`, add your code in this method. It will be
         called between connecting to Snips and starting the event loop.
         """
-        pass
 
     @abstractmethod
     def _start(self):
@@ -76,4 +74,3 @@ class SnipsComponent(metaclass=ABCMeta):
         This method should be implemented in a subclass of
         :class:`.SnipsComponent`.
         """
-        pass
