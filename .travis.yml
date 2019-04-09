@@ -19,7 +19,7 @@ python:
 before_install:
   - sudo apt-get install -y dirmngr apt-transport-https
   - sudo bash -c  'echo "deb https://debian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list'
-  - sudo apt-key adv --keyserver pgp.mit.edu --recv-keys F727C778CCB0A455
+  - sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys F727C778CCB0A455
   - sudo apt-get update -qq
   - sudo apt-get install -y snips-platform-common snips-dialogue snips-nlu mosquitto
 
