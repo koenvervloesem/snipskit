@@ -19,7 +19,7 @@ def continue_session(session_id, text):
 
     Returns:
         (str, dict): A tuple of the topic and the payload to call
-            :meth:`.MQTTSnipsComponent.publish` with.
+        :meth:`.MQTTSnipsComponent.publish` with.
 
     .. note:: The payload of a continueSession message can be much more
        complex. Other keys than sessionId and text are not supported by this
@@ -29,13 +29,13 @@ def continue_session(session_id, text):
         You would use this function like this in a callback method of an
         :class:`.MQTTSnipsApp` object:
 
-        >>>> self.publish(*continue_session('mySessionId', 'myText'))
+        >>> self.publish(*continue_session('mySessionId', 'myText'))
 
         This is equivalent to the much more wordy:
 
-        >>>> self.publish('hermes/dialogueManager/continueSession',
-                          {'sessionId': 'mySessionId',
-                           'text': 'myText'})
+        >>> self.publish('hermes/dialogueManager/continueSession',
+                         {'sessionId': 'mySessionId',
+                          'text': 'myText'})
     """
     return (DM_CONTINUE_SESSION, {'sessionId': session_id, 'text': text})
 
@@ -53,19 +53,19 @@ def end_session(session_id, text=None):
 
     Returns:
         (str, dict): A tuple of the topic and the payload to call
-            :meth:`.MQTTSnipsComponent.publish` with.
+        :meth:`.MQTTSnipsComponent.publish` with.
 
     Example:
         You would use this function like this in a callback method of an
         :class:`.MQTTSnipsApp` object:
 
-        >>>> self.publish(*end_session('mySessionId', 'myText'))
+        >>> self.publish(*end_session('mySessionId', 'myText'))
 
         This is equivalent to the much more wordy:
 
-        >>>> self.publish('hermes/dialogueManager/endSession',
-                          {'sessionId': 'mySessionId',
-                           'text': 'myText'})
+        >>> self.publish('hermes/dialogueManager/endSession',
+                         {'sessionId': 'mySessionId',
+                          'text': 'myText'})
     """
     if text:
         payload = {'sessionId': session_id, 'text': text}
