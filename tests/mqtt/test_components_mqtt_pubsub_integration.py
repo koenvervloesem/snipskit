@@ -23,15 +23,6 @@ pytestmark = pytest.mark.skipif(not os.environ.get('INTEGRATION_TESTS'),
 # Delay between subscribing and publishing an MQTT message.
 DELAY=1
 
-@pytest.fixture
-def mqtt_server():
-    print('Starting MQTT server')
-    mqtt_server = subprocess.Popen('mosquitto')
-    time.sleep(1)  # Let's wait a bit before it's started
-    yield mqtt_server
-    print('Tearing down MQTT server')
-    mqtt_server.kill()
-
 
 class DecoratedMQTTComponentPubSub(MQTTSnipsComponent):
     """A simple Snips component using MQTT directly to test."""
@@ -41,7 +32,7 @@ class DecoratedMQTTComponentPubSub(MQTTSnipsComponent):
         hotword = re.search('^hermes/hotword/(.*)/detected$', topic).group(1)
         siteId = payload['siteId']
         result_sentence = 'I detected the hotword {} on site ID {}.'.format(hotword, siteId)
-        self.publish('hermes/tts/say', {'siteId': siteId, 'text': result_sentence})
+        self.publish('hermes-test/tts/say', {'siteId': siteId, 'text': result_sentence})
 
     @topic('hermes/audioServer/+/playBytes/+', json_decode=False)
     def handle_audio(self, topic, payload):
@@ -49,7 +40,7 @@ class DecoratedMQTTComponentPubSub(MQTTSnipsComponent):
         siteId = parsed_topic.group(1)
         requestId = parsed_topic.group(2)
         result_sentence = 'I detected audio with request ID {} and payload {} on site ID {}.'.format(requestId, payload.decode('utf-8'), siteId)
-        self.publish('hermes/tts/say', {'siteId': siteId, 'text': result_sentence})
+        self.publish('hermes-test/tts/say', {'siteId': siteId, 'text': result_sentence})
 
 
 def test_snips_component_mqtt_pubsub(mqtt_server):
@@ -69,13 +60,13 @@ def test_snips_component_mqtt_pubsub(mqtt_server):
 
     threading.Timer(DELAY, publish_hotword).start()
 
-    message = subscribe.simple('hermes/tts/say')
+    message = subscribe.simple('hermes-test/tts/say')
     assert json.loads(message.payload.decode('utf-8')) == {'siteId': 'default',
                                                            'text': 'I detected the hotword hey_snips on site ID default.'}
 
     # Test handle_audio method: 'Binary' payload (just a string here)
     threading.Timer(DELAY, publish_audio).start()
 
-    message = subscribe.simple('hermes/tts/say')
+    message = subscribe.simple('hermes-test/tts/say')
     assert json.loads(message.payload.decode('utf-8')) == {'siteId': 'default',
                                                            'text': 'I detected audio with request ID 1234 and payload foobar on site ID default.'}

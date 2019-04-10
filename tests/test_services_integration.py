@@ -17,16 +17,13 @@ pytestmark = pytest.mark.skipif(not os.environ.get('INTEGRATION_TESTS'),
                                 reason='Integration test')
 
 @pytest.fixture
-def snips_tts():
+def snips_tts(mqtt_server):
     print('Starting Snips TTS')
-    mosquitto = subprocess.Popen('mosquitto')
-    time.sleep(1)  # Let's wait a bit before it's started
     snips_tts = subprocess.Popen('snips-tts')
     time.sleep(1)  # Let's wait a bit before it's started
     yield snips_tts
     print('Tearing down Snips TTS')
     snips_tts.kill()
-    mosquitto.kill()
 
 def test_version_output():
     """Test whether the `_version_output` function returns the right result."""

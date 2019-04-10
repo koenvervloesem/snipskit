@@ -1,5 +1,19 @@
 import os
+import subprocess
 import sys
+import time
+
+import pytest
+
+
+@pytest.fixture
+def mqtt_server():
+    print('Starting MQTT server')
+    mosquitto = subprocess.Popen('mosquitto')
+    time.sleep(1)  # Let's wait a bit before it's started
+    yield mosquitto 
+    print('Tearing down MQTT server')
+    mosquitto.kill()
 
 
 try:
