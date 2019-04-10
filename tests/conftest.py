@@ -1,19 +1,6 @@
 import os
-import subprocess
 import sys
-import time
 
-import pytest
-
-
-@pytest.fixture
-def mqtt_server():
-    print('Starting MQTT server')
-    mqtt_server = subprocess.Popen('mosquitto')
-    time.sleep(1)  # Let's wait a bit before it's started
-    yield mqtt_server
-    print('Tearing down MQTT server')
-    mqtt_server.kill()
 
 try:
     # This environment variable is used by Travis CI to define which
