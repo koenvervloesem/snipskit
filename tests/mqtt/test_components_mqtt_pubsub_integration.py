@@ -5,6 +5,7 @@ This needs mosquitto running on localhost:1883.
 """
 import json
 import os
+import subprocess
 import re
 import threading
 import time
@@ -41,7 +42,7 @@ class DecoratedMQTTComponentPubSub(MQTTSnipsComponent):
         self.publish('hermes/tts/say', {'siteId': siteId, 'text': result_sentence})
 
 
-def test_snips_component_mqtt_pubsub(fs):
+def test_snips_component_mqtt_pubsub(mqtt_server):
     """Test whether a :class:`MQTTSnipsComponent` object executes the right
     callback after a topic it's subscribed to gets published on the MQTT bus
     and publishes the right payload.
@@ -52,9 +53,6 @@ def test_snips_component_mqtt_pubsub(fs):
 
     def publish_hotword():
         publish.single('hermes/hotword/hey_snips/detected', '{"siteId": "default"}')
-
-    config_file = '/etc/snips.toml'
-    fs.create_file(config_file, contents='[snips-common]\n')
 
     # Test handle_hotword method: JSON payload
     threading.Thread(target=DecoratedMQTTComponentPubSub, daemon=True).start()
