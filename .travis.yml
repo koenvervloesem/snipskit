@@ -10,18 +10,22 @@ env:
     - SNIPSKIT_REQUIREMENTS=hermes
     - SNIPSKIT_REQUIREMENTS=common
 
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb https://debian.snips.ai/stretch stable main'
+        key_url: 'snips.gpg.key'
+    packages:
+      - mosquitto
+      - snips-platform-common
+      - snips-dialogue
+      - snips-nlu
+
 language: python
 python:
   - 3.5
   - 3.6
   - 3.7
-
-before_install:
-  - sudo apt-get install -y dirmngr apt-transport-https
-  - sudo bash -c  'echo "deb https://debian.snips.ai/stretch stable main" > /etc/apt/sources.list.d/snips.list'
-  - sudo apt-key add snips.gpg.key
-  - sudo apt-get update -qq
-  - sudo apt-get install -y snips-platform-common snips-dialogue snips-nlu mosquitto
 
 install:
   - pip install -r requirements/install/$SNIPSKIT_REQUIREMENTS.txt
