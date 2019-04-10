@@ -117,6 +117,13 @@ snipskit.mqtt.dialogue
 .. automodule:: snipskit.mqtt.dialogue
    :members:
 
+*****************
+snipskit.services
+*****************
+
+.. automodule:: snipskit.services
+   :members:
+
 **************
 snipskit.tools
 **************

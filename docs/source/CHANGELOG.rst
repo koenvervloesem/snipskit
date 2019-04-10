@@ -25,6 +25,8 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
+- New module :mod:`snipskit.services` with functions to check the versions of Snips services, whether a Snips service is installed or running and what the model version of Snips NLU is.
+
 Changed
 =======
 
