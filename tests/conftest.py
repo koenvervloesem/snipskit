@@ -7,7 +7,7 @@ import pytest
 
 
 @pytest.fixture
-def mqtt_server(scope='session'):
+def mqtt_server():
     print('Starting MQTT server')
     mqtt_server = subprocess.Popen('mosquitto')
     time.sleep(1)  # Let's wait a bit before it's started
