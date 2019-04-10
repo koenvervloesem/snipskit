@@ -21,7 +21,7 @@ from snipskit.mqtt.decorators import topic
 pytestmark = pytest.mark.skipif(not os.environ.get('INTEGRATION_TESTS'),
                                 reason='Integration test')
 # Delay between subscribing and publishing an MQTT message.
-DELAY=0.1
+DELAY=0.2
 
 class DecoratedMQTTComponentPubSub(MQTTSnipsComponent):
     """A simple Snips component using MQTT directly to test."""
