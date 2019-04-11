@@ -1,6 +1,12 @@
 """This module contains some useful tools for the snipskit library."""
 
 from pathlib import Path
+import re
+from urllib.error import URLError
+from urllib.request import urlopen
+
+_RELEASE_NOTES_URL = 'https://docs.snips.ai/additional-resources/release-notes'
+_LATEST_VERSION_REGEX = r'<span data-offset-key="\S*">Platform Update (\d*\.\d*\.\d*)\s'
 
 
 def find_path(paths):
@@ -29,3 +35,18 @@ def find_path(paths):
     # If none of the paths in the search path are found in the file system,
     # return None.
     return None
+
+def latest_snips_version():
+    """Return the latest version of Snips, as published in the release notes.
+
+    Returns:
+        str: The latest version of Snips.
+
+    Raises:
+        URLError: When the function runs into a problem downloading the release
+        notes.
+    """
+    url = urlopen(_RELEASE_NOTES_URL)
+    release_notes = url.read().decode('utf-8')
+    versions = re.findall(_LATEST_VERSION_REGEX, release_notes)
+    return max(versions)

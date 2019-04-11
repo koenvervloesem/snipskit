@@ -4,12 +4,10 @@ import psutil
 import re
 from subprocess import check_output
 
-
 SNIPS_SERVICES = ['snips-analytics', 'snips-asr', 'snips-asr-google',
                   'snips-audio-server', 'snips-dialogue', 'snips-hotword',
                   'snips-injection', 'snips-nlu', 'snips-skill-server',
                   'snips-tts']
-
 VERSION_FLAG = '--version'
 
 

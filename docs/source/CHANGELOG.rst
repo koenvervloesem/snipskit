@@ -25,7 +25,10 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
+- New function :func:`.snipskit.tools.latest_snips_version` that returns the latest version of the Snips platform, as published in the `release notes`_.
 - Documented the use of :attr:`.SnipsAppMixin.assistant` to get access to the assistant's configuration outside of an app.
+
+.. _`release notes`: https://docs.snips.ai/additional-resources/release-notes
 
 Changed
 =======

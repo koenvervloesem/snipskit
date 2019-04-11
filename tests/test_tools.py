@@ -1,7 +1,7 @@
 """Tests for the `snipskit.tools` module."""
 
 import pytest
-from snipskit.tools import find_path
+from snipskit.tools import find_path, latest_snips_version
 
 # Variables for some file paths we test."""
 etc = '/etc/snips.toml'
@@ -35,3 +35,13 @@ def test_find_path(file_system, files, expected, fs):
         fs.create_file(filename)
 
     assert find_path(files) == expected
+
+def test_latest_snips_version():
+    """Test whether the `latest_snips_version` function returns the current
+    latest version of Snips.
+
+    Because a real test would just reimplement the function, we compare to a
+    hardcoded string. Update this string when a new version of Snips is
+    published."""
+
+    assert latest_snips_version() == '1.1.2'
