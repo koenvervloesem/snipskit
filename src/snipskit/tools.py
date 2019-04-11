@@ -5,6 +5,10 @@ import re
 from urllib.error import URLError
 from urllib.request import urlopen
 
+# Workaround for occasional errors when downloading the release notes.
+import http.client
+http.client._MAXHEADERS = 1000
+
 _RELEASE_NOTES_URL = 'https://docs.snips.ai/additional-resources/release-notes'
 _LATEST_VERSION_REGEX = r'<span data-offset-key="\S*">Platform Update (\d*\.\d*\.\d*)\s'
 
