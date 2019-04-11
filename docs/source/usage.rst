@@ -73,7 +73,7 @@ In line 14, we check if the Python file is run on the commandline. If it is, we 
 Reading the configuration of the app, the assistant and Snips
 *************************************************************
 
-Each :class:`.SnipsApp` object has attributes that give the app access to the app's configuration (:class:`.AppConfig`), the assistant's configuration (:class:`.AssistantConfig`) and the configuration of Snips (:class:`.SnipsConfig`). The following example (for :class:`.HermesSnipsApp`, but it works the same for :class:`.MQTTSnipsApp`) shows the use of these three attributes:
+Each :class:`.HermesSnipsApp` or :class:`.MQTTSnipsApp` object has attributes that give the app access to the app's configuration (:class:`.AppConfig`), the assistant's configuration (:class:`.AssistantConfig`) and the configuration of Snips (:class:`.SnipsConfig`). The following example (for :class:`.HermesSnipsApp`, but it works the same for :class:`.MQTTSnipsApp`) shows the use of these three attributes:
 
 .. literalinclude :: ../../examples/hermes_configuration.py
    :caption: Example hermes_configuration.py
@@ -104,9 +104,9 @@ And with `self.snips` you get access to the configuration of Snips, which also b
 Reading the assistant's configuration outside an app
 ****************************************************
 
-When you create a :class:`.SnipsApp` object, it reads the location of the assistant from 'snips.toml' and creates an :class:`.AssistantConfig` object with the correct path, which gives you access to the assistant's configuration. See the previous section for an example.
+When you create a :class:`.HermesSnipsApp` or :class:`.MQTTSnipsApp` object, it reads the location of the assistant from 'snips.toml' and creates an :class:`.AssistantConfig` object with the correct path, which gives you access to the assistant's configuration. See the previous section for an example.
 
-You can also create an :class:`.AssistantConfig` object outside a :class:`.SnipsApp` object, reading its configuration from a specified file:
+You can also create an :class:`.AssistantConfig` object outside an app object, reading its configuration from a specified file:
 
 .. code-block:: python
 
@@ -117,9 +117,9 @@ The file argument is optional. If you leave it empty, the :class:`.AssistantConf
 - /usr/share/snips/assistant/assistant.json
 - /usr/local/share/snips/assistant/assistant.json
 
-Note that he :class:`.AssistantConfig` object doesn't read its location from 'snips.toml' in this case.
+Note that the :class:`.AssistantConfig` object doesn't read its location from 'snips.toml' in this case.
 
-If you want to create an :class:`.AssistantConfig` object outside a :class:`.SnipsApp` object and initialize it from the location specified in 'snips.toml', you need to use :attr:`.SnipsAppMixin().assistant` to get an :class:`.AssistantConfig` object with the correct path.
+If you want to create an :class:`.AssistantConfig` object outside an app object and initialize it from the location specified in 'snips.toml', you need to use the :attr:`.SnipsAppMixin.assistant` attribute to get an :class:`.AssistantConfig` object with the correct path.
 
 For instance, this could interesting if you want to know the language of the user's assistant before initializing your app:
 
