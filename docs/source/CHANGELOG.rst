@@ -25,6 +25,8 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
+- Documented the use of :attr:`.SnipsAppMixin().assistant` to get access to the assistant's configuration outside of an app.
+
 Changed
 =======
 

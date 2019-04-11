@@ -99,3 +99,30 @@ With `self.config` you get access to this app's configuration as an :class:`.App
 With `self.assistant` you get access to the assistant's configuration as an :class:`.AssistantConfig` object, which behaves like a :class:`dict`. This reads the configuration from the assistant's directory, which is normally '/usr/share/snips/assistant/assistant.json' on a Raspbian system.
 
 And with `self.snips` you get access to the configuration of Snips, which also behaves like a :class:`dict`. This reads the configuration from the Snips configuration file, which is normally '/etc/snips.toml' on a Raspbian system.
+
+****************************************************
+Reading the assistant's configuration outside an app
+****************************************************
+
+When you create a :class:`.SnipsApp` object, it reads the location of the assistant from 'snips.toml' and creates an :class:`.AssistantConfig` object with the correct path, which gives you access to the assistant's configuration. See the previous section for an example.
+
+You can also create an :class:`.AssistantConfig` object outside a :class:`.SnipsApp` object, reading its configuration from a specified file:
+
+.. code-block:: python
+
+   assistant = AssistantConfig('/opt/assistant/assistant.json')
+
+The file argument is optional. If you leave it empty, the :class:`.AssistantConfig` object tries to read its configuration from the following files, in this order:
+
+- /usr/share/snips/assistant/assistant.json
+- /usr/local/share/snips/assistant/assistant.json
+
+Note that he :class:`.AssistantConfig` object doesn't read its location from 'snips.toml' in this case.
+
+If you want to create an :class:`.AssistantConfig` object outside a :class:`.SnipsApp` object and initialize it from the location specified in 'snips.toml', you need to use :attr:`.SnipsAppMixin().assistant` to get an :class:`.AssistantConfig` object with the correct path.
+
+For instance, this could interesting if you want to know the language of the user's assistant before initializing your app:
+
+.. code-block:: python
+
+   language = SnipsAppMixin().assistant['language']
