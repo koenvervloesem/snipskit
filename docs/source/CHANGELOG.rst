@@ -25,8 +25,6 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
-- New module :mod:`snipskit.services` with functions to check the versions of Snips services, whether a Snips service is installed or running and what the model version of Snips NLU is.
-
 Changed
 =======
 
@@ -42,7 +40,25 @@ Fixed
 Security
 ========
 
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.2...HEAD
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.3...HEAD
+
+*********************
+`0.5.3`_ - 2019-04-11
+*********************
+
+Added
+=====
+
+- New module :mod:`snipskit.services` with functions to check the versions of Snips services, whether a Snips service is installed or running and what the model version of Snips NLU is.
+
+.. _`0.5.3`: https://github.com/koenvervloesem/snipskit/compare/0.5.2...0.5.3
+
+Fixed
+=====
+
+- Added '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This fixes a bug reported in `issue #4`_.
+
+.. _`issue #4`: https://github.com/koenvervloesem/snipskit/issues/4
 
 *********************
 `0.5.2`_ - 2019-04-09
