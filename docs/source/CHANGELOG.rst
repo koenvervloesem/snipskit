@@ -25,11 +25,6 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
-- New function :func:`.snipskit.tools.latest_snips_version` that returns the latest version of the Snips platform, as published in the `release notes`_.
-- Documented the use of :attr:`.SnipsAppMixin.assistant` to get access to the assistant's configuration outside of an app.
-
-.. _`release notes`: https://docs.snips.ai/additional-resources/release-notes
-
 Changed
 =======
 
@@ -42,12 +37,29 @@ Removed
 Fixed
 =====
 
-- Removed '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This was added erroneously in version 0.5.3.
-
 Security
 ========
 
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.3...HEAD
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.4...HEAD
+
+*********************
+`0.5.4`_ - 2019-04-11
+*********************
+
+Added
+=====
+
+- New function :func:`.snipskit.tools.latest_snips_version` that returns the latest version of the Snips platform, as published in the `release notes`_.
+- Documented the use of :attr:`.SnipsAppMixin.assistant` to get access to the assistant's configuration outside of an app.
+
+.. _`release notes`: https://docs.snips.ai/additional-resources/release-notes
+
+Fixed
+=====
+
+- Removed '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This was added erroneously in version 0.5.3.
+
+.. _`0.5.4`: https://github.com/koenvervloesem/snipskit/compare/0.5.3...0.5.4
 
 *********************
 `0.5.3`_ - 2019-04-11
