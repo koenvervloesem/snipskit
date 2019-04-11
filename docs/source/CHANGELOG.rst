@@ -25,7 +25,7 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
-- Documented the use of :attr:`.SnipsAppMixin().assistant` to get access to the assistant's configuration outside of an app.
+- Documented the use of :attr:`.SnipsAppMixin.assistant` to get access to the assistant's configuration outside of an app.
 
 Changed
 =======
@@ -36,12 +36,10 @@ Deprecated
 Removed
 =======
 
-- Removed '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This was added erroneously in `commit 3d55e5613ab86c2e56c2361b14d57ff9ae40ece9`_.
-
-.. _`commit 3d55e5613ab86c2e56c2361b14d57ff9ae40ece9`: https://github.com/koenvervloesem/snipskit/commit/3d55e5613ab86c2e56c2361b14d57ff9ae40ece9
-
 Fixed
 =====
+
+- Removed '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This was added erroneously in version 0.5.3.
 
 Security
 ========
@@ -62,7 +60,7 @@ Added
 Fixed
 =====
 
-- Added '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This fixes a bug reported in `issue #4`_.
+- Added '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This was meant to fix a bug reported in `issue #4`_.
 
 .. _`issue #4`: https://github.com/koenvervloesem/snipskit/issues/4
 
