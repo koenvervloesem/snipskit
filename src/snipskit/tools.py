@@ -2,7 +2,6 @@
 
 from pathlib import Path
 import re
-from urllib.error import URLError
 from urllib.request import urlopen
 
 # Workaround for occasional errors when downloading the release notes.
