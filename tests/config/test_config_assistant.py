@@ -11,7 +11,7 @@ def test_assistant_config_default(fs):
     """Test whether a default `AssistantConfig` object is initialized
     correctly.
     """
-    assistant_file = '/usr/local/share/snips/assistant/assistant.json'
+    assistant_file = '/usr/local/etc/assistant/assistant.json'
     fs.create_file(assistant_file, contents='{"language": "en"}')
 
     assistant_config = AssistantConfig()
