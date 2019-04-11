@@ -25,8 +25,8 @@ import toml
 
 SEARCH_PATH_SNIPS = ['/etc/snips.toml', '/usr/local/etc/snips.toml']
 SEARCH_PATH_ASSISTANT = ['/usr/share/snips/assistant/assistant.json',
-                         '/usr/local/share/snips/assistant/assistant.json',
-                         '/usr/local/etc/assistant/assistant.json']
+                         '/usr/local/share/snips/assistant/assistant.json']
+
 DEFAULT_BROKER = 'localhost:1883'
 
 
@@ -107,7 +107,6 @@ class AssistantConfig(UserDict):
 
                 - /usr/share/snips/assistant/assistant.json
                 - /usr/local/share/snips/assistant/assistant.json
-                - /usr/local/etc/assistant/assistant.json
 
         Raises:
             :exc:`FileNotFoundError`: If the specified filename doesn't exist.

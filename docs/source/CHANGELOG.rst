@@ -36,6 +36,10 @@ Deprecated
 Removed
 =======
 
+- Removed '/usr/local/etc/assistant/assistant.json' as a default path for :class:`.AssistantConfig`. This was added erroneously in `commit 3d55e5613ab86c2e56c2361b14d57ff9ae40ece9`_.
+
+.. _`commit 3d55e5613ab86c2e56c2361b14d57ff9ae40ece9`: https://github.com/koenvervloesem/snipskit/commit/3d55e5613ab86c2e56c2361b14d57ff9ae40ece9
+
 Fixed
 =====
 
