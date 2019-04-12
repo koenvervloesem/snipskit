@@ -20,7 +20,7 @@ def find_path(paths):
         paths (list): A list of strings with absolute paths.
 
     Returns:
-        string: The first path in the list `paths` that exists, or `None` if
+        str: The first path in the list `paths` that exists, or `None` if
         none of the paths exist.
 
     Example:
@@ -47,7 +47,7 @@ def latest_snips_version():
 
     Raises:
         URLError: When the function runs into a problem downloading the release
-        notes.
+            notes.
     """
     url = urlopen(_RELEASE_NOTES_URL)
     release_notes = url.read().decode('utf-8')
