@@ -46,8 +46,8 @@ def latest_snips_version():
         str: The latest version of Snips.
 
     Raises:
-        URLError: When the function runs into a problem downloading the release
-            notes.
+        urllib.error.URLError: When the function runs into a problem
+            downloading the release notes.
     """
     url = urlopen(_RELEASE_NOTES_URL)
     release_notes = url.read().decode('utf-8')
