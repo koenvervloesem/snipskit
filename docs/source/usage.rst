@@ -121,7 +121,7 @@ Note that the :class:`.AssistantConfig` object doesn't read its location from 's
 
 If you want to create an :class:`.AssistantConfig` object outside an app object and initialize it from the location specified in 'snips.toml', you need to use the :attr:`.SnipsAppMixin.assistant` attribute to get an :class:`.AssistantConfig` object with the correct path.
 
-For instance, this could interesting if you want to know the language of the user's assistant before initializing your app:
+For instance, this could be interesting if you want to know the language of the user's assistant before initializing your app:
 
 .. code-block:: python
 
