@@ -1,6 +1,6 @@
 """This module contains some functions related to Snips services."""
 
-import psutil
+from psutil import process_iter, NoSuchProcess
 import re
 from subprocess import check_output
 
@@ -66,7 +66,16 @@ def is_running(service):
         >>> is_running('snips-nlu')
         True
     """
-    return service in (process.name() for process in psutil.process_iter())
+    service_found = False
+    for process in process_iter():
+        try:
+            if service == process.name():
+                service_found = True
+                break
+        except NoSuchProcess:  ## Happens when the process no longer exists.
+            pass
+
+    return service_found
 
 def model_version():
     """Return the model version of Snips NLU.

@@ -189,7 +189,8 @@ epub_exclude_files = ['search.html']
 # -- Options for intersphinx extension ---------------------------------------
 
 intersphinx_mapping = {
-    'hermes_python': ('https://hermespython.readthedocs.io/en/latest', None),
+    'hermes_python': ('https://hermespython.readthedocs.io', None),
+    'psutil': ('https://psutil.readthedocs.io', None),
     'python': ('https://docs.python.org', None)
 }
 

@@ -37,6 +37,10 @@ Removed
 Fixed
 =====
 
+- :func:`snipskit.services.is_running` sometimes threw a :exc:`psutil.NoSuchProcess` exception when it tried to get the name of a process that no longer existed. Caught by Travis CI in `job #201.4`_.
+
+.. _`job #201.4`: https://travis-ci.com/koenvervloesem/snipskit/jobs/192421610
+
 Security
 ========
 
@@ -49,7 +53,7 @@ Security
 Added
 =====
 
-- New function :func:`.snipskit.tools.latest_snips_version` that returns the latest version of the Snips platform, as published in the `release notes`_.
+- New function :func:`snipskit.tools.latest_snips_version` that returns the latest version of the Snips platform, as published in the `release notes`_.
 - Documented the use of :attr:`.SnipsAppMixin.assistant` to get access to the assistant's configuration outside of an app.
 
 .. _`release notes`: https://docs.snips.ai/additional-resources/release-notes
