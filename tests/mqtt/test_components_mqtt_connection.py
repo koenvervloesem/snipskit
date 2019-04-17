@@ -34,7 +34,7 @@ def test_snips_component_mqtt_connection_default(fs, mocker):
     assert component.mqtt.username_pw_set.call_count == 0
     assert component.mqtt.tls_set.call_count == 0
     assert component.mqtt.loop_forever.call_count == 1
-    component.mqtt.connect.assert_called_once_with('localhost', 1883, 60)
+    component.mqtt.connect.assert_called_once_with('localhost', 1883, 60, '')
 
     # Check whether `initialize()` method is called.
     assert component.initialize.call_count == 1
@@ -66,9 +66,8 @@ def test_snips_component_mqtt_with_snips_config(fs, mocker):
     assert component.mqtt.username_pw_set.call_count == 0
     assert component.mqtt.tls_set.call_count == 0
     assert component.mqtt.loop_forever.call_count == 1
-    component.mqtt.connect.assert_called_once_with('mqtt.example.com',
-                                                   1883,
-                                                   60)
+    component.mqtt.connect.assert_called_once_with('mqtt.example.com', 1883,
+                                                   60, '')
 
     # Check whether `initialize()` method is called.
     assert component.initialize.call_count == 1
@@ -103,9 +102,8 @@ def test_snips_component_mqtt_connection_with_authentication(fs, mocker):
                                                            'secretpassword')
     assert component.mqtt.tls_set.call_count == 0
     assert component.mqtt.loop_forever.call_count == 1
-    component.mqtt.connect.assert_called_once_with('mqtt.example.com',
-                                                   8883,
-                                                   60)
+    component.mqtt.connect.assert_called_once_with('mqtt.example.com', 8883,
+                                                   60, '')
 
     # Check whether `initialize()` method is called.
     assert component.initialize.call_count == 1
@@ -147,9 +145,8 @@ def test_snips_component_mqtt_connection_with_tls_and_authentication(fs, mocker)
                                                    certfile=None,
                                                    keyfile=None)
     assert component.mqtt.loop_forever.call_count == 1
-    component.mqtt.connect.assert_called_once_with('mqtt.example.com',
-                                                   4883,
-                                                   60)
+    component.mqtt.connect.assert_called_once_with('mqtt.example.com', 4883,
+                                                   60, '')
 
     # Check whether `initialize()` method is called.
     assert component.initialize.call_count == 1

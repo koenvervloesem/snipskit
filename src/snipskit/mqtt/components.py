@@ -28,6 +28,7 @@ import json
 
 from paho.mqtt.client import Client
 from snipskit.components import SnipsComponent
+from snipskit.mqtt.client import connect
 
 
 class MQTTSnipsComponent(SnipsComponent):
@@ -46,32 +47,7 @@ class MQTTSnipsComponent(SnipsComponent):
         """
         self.mqtt = Client()
         self.mqtt.on_connect = self._subscribe_topics
-
-        mqtt_options = self.snips.mqtt
-        host_port = mqtt_options.broker_address.split(':')
-
-        # Set up MQTT authentication
-        if mqtt_options.username and mqtt_options.password:
-            # The parameters mqtt_username and mqtt_password are both specified
-            # in the Snips configuration, so we use them for authentication.
-            self.mqtt.username_pw_set(mqtt_options.username,
-                                      mqtt_options.password)
-
-        # Set up an MQTT TLS connection
-        if mqtt_options.tls_hostname:
-
-
-            # Set up TLS.
-            self.mqtt.tls_set(ca_certs=mqtt_options.tls_ca_file,
-                              certfile=mqtt_options.tls_client_cert,
-                              keyfile=mqtt_options.tls_client_key)
-            host = mqtt_options.tls_hostname
-        else:
-            host = host_port[0]
-
-        port = host_port[1]
-
-        self.mqtt.connect(host, int(port), 60)
+        connect(self.mqtt, self.snips.mqtt)
 
     def _start(self):
         """Start the event loop to the MQTT broker so the component starts

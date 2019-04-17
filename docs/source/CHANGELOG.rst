@@ -25,6 +25,8 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
+- New module :mod:`snipskit.mqtt.client` with helper functions to use the MQTT protocol with the MQTT broker defined in a :class:`.MQTTConfig` object.
+
 Changed
 =======
 
