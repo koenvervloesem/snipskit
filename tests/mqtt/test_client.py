@@ -2,8 +2,7 @@
 """
 
 from snipskit.config import MQTTConfig
-from snipskit.mqtt.client import auth_params, hostname, port, tls_params, \
-    connect, publish_single
+from snipskit.mqtt.client import auth_params, host_port, tls_params
 
 
 # Test auth_params
@@ -30,27 +29,21 @@ def test_client_auth_params_without_auth():
     assert auth is None
 
 
-# Test hostname
-def test_client_hostname():
+# Test host_port
+def test_client_host_port():
     config = MQTTConfig()
-    host = hostname(config)
+    host, port = host_port(config)
 
     assert host == 'localhost'
+    assert port == 1883
 
 
-def test_client_hostname_tls():
+def test_client_host_port_tls():
     config = MQTTConfig(tls_hostname='example.com')
-    mqtt_host = hostname(config)
+    host, port = host_port(config)
 
-    assert mqtt_host == 'example.com'
-
-
-# Test port
-def test_client_port():
-    config = MQTTConfig()
-    mqtt_port = port(config)
-
-    assert mqtt_port == 1883 
+    assert host == 'example.com'
+    assert port == 1883
 
 
 # Test tls_params

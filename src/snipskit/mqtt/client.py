@@ -26,32 +26,26 @@ def auth_params(mqtt_config):
         return None
 
 
-def hostname(mqtt_config):
-    """Return the hostname from a :class:`.MQTTConfig` object.
+def host_port(mqtt_config):
+    """Return the host and port from a :class:`.MQTTConfig` object.
 
     Args:
         mqtt_config (:class:`.MQTTConfig`): The MQTT connection settings.
 
     Returns:
-        str: The hostname defined in the MQTT connection settings, without the
-        port number.
+        (str, int): A tuple with the host and port defined in the MQTT
+        connection settings.
     """
+    host_port = mqtt_config.broker_address.split(':')
+
     if mqtt_config.tls_hostname:
-        return mqtt_config.tls_hostname
+        host = mqtt_config.tls_hostname
     else:
-        return mqtt_config.broker_address.split(':')[0]
+        host = host_port[0]
 
+    port = int(host_port[1])
 
-def port(mqtt_config):
-    """Return the port from a :class:`.MQTTConfig` object.
-
-    Args:
-        mqtt_config (:class:`.MQTTConfig`): The MQTT connection settings.
-
-    Returns:
-        int: The port defined in the MQTT connection settings.
-    """
-    return int(mqtt_config.broker_address.split(':')[1])
+    return (host, port)
 
 
 def tls_params(mqtt_config):
@@ -92,8 +86,7 @@ def connect(client, mqtt_config, keepalive=60, bind_address=''):
 
     .. _`paho.mqtt.client.Client`: https://www.eclipse.org/paho/clients/python/docs/#client
     """
-    mqtt_host = hostname(mqtt_config)
-    mqtt_port = port(mqtt_config)
+    host, port = host_port(mqtt_config)
 
     # Set up MQTT authentication.
     auth = auth_params(mqtt_config)
@@ -107,7 +100,7 @@ def connect(client, mqtt_config, keepalive=60, bind_address=''):
                        certfile=tls['certfile'],
                        keyfile=tls['keyfile'])
 
-    client.connect(mqtt_host, mqtt_port, keepalive, bind_address)
+    client.connect(host, port, keepalive, bind_address)
 
 
 def publish_single(mqtt_config, topic, payload=None, qos=0, retain=False, client_id='', keepalive=60, will=None, protocol=MQTTv311, transport='tcp'):
@@ -133,9 +126,8 @@ def publish_single(mqtt_config, topic, payload=None, qos=0, retain=False, client
         transport (str): Set to 'websockets' to send MQTT over WebSockets.
             Leave at the default of 'tcp' to use raw TCP.
     """
-    mqtt_host = hostname(mqtt_config)
-    mqtt_port = port(mqtt_config)
+    host, port = host_port(mqtt_config)
     auth = auth_params(mqtt_config)
     tls = tls_params(mqtt_config)
 
-    single(topic, payload, qos, retain, mqtt_host, mqtt_port, client_id, keepalive, will, auth, tls, protocol, transport)
+    single(topic, payload, qos, retain, host, port, client_id, keepalive, will, auth, tls, protocol, transport)

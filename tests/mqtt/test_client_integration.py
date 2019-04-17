@@ -12,8 +12,8 @@ import time
 import paho.mqtt.subscribe as subscribe
 import pytest
 
-from snipskit.config import MQTTConfig 
-from snipskit.mqtt.client import publish_single 
+from snipskit.config import MQTTConfig
+from snipskit.mqtt.client import publish_single
 
 # Only run these tests if the environment variable INTEGRATION_TESTS is set.
 pytestmark = pytest.mark.skipif(not os.environ.get('INTEGRATION_TESTS'),
