@@ -43,7 +43,7 @@ def test_snips_app_mqtt_default(fs, mocker):
     assert app.mqtt.username_pw_set.call_count == 0
     assert app.mqtt.tls_set.call_count == 0
     assert app.mqtt.loop_forever.call_count == 1
-    app.mqtt.connect.assert_called_once_with('localhost', 1883, 60)
+    app.mqtt.connect.assert_called_once_with('localhost', 1883, 60, '')
 
     # Check whether `initialize()` method is called.
     assert app.initialize.call_count == 1
@@ -82,7 +82,7 @@ def test_snips_app_mqtt_default_with_assistant_path(fs, mocker):
     assert app.mqtt.username_pw_set.call_count == 0
     assert app.mqtt.tls_set.call_count == 0
     assert app.mqtt.loop_forever.call_count == 1
-    app.mqtt.connect.assert_called_once_with('localhost', 1883, 60)
+    app.mqtt.connect.assert_called_once_with('localhost', 1883, 60, '')
 
     # Check whether `initialize()` method is called.
     assert app.initialize.call_count == 1
@@ -123,7 +123,7 @@ def test_snips_app_mqtt_snips_config(fs, mocker):
     assert app.mqtt.username_pw_set.call_count == 0
     assert app.mqtt.tls_set.call_count == 0
     assert app.mqtt.loop_forever.call_count == 1
-    app.mqtt.connect.assert_called_once_with('mqtt.example.com', 1883, 60)
+    app.mqtt.connect.assert_called_once_with('mqtt.example.com', 1883, 60, '')
 
     # Check whether `initialize()` method is called.
     assert app.initialize.call_count == 1
@@ -168,7 +168,7 @@ def test_snips_app_mqtt_config(fs, mocker):
     assert app.mqtt.username_pw_set.call_count == 0
     assert app.mqtt.tls_set.call_count == 0
     assert app.mqtt.loop_forever.call_count == 1
-    app.mqtt.connect.assert_called_once_with('localhost', 1883, 60)
+    app.mqtt.connect.assert_called_once_with('localhost', 1883, 60, '')
 
     # Check whether `initialize()` method is called.
     assert app.initialize.call_count == 1

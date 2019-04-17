@@ -97,6 +97,12 @@ snipskit.mqtt.apps
 .. autoclass:: snipskit.mqtt.apps.MQTTSnipsApp
    :members:
 
+snipskit.mqtt.client
+====================
+
+.. automodule:: snipskit.mqtt.client
+   :members:
+
 snipskit.mqtt.components
 ========================
 
