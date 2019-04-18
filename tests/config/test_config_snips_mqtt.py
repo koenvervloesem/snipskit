@@ -15,14 +15,14 @@ def test_snips_config_mqtt_default(fs):
 
     snips_config = SnipsConfig()
     assert snips_config.mqtt.broker_address == 'localhost:1883'
-    assert snips_config.mqtt.username is None
-    assert snips_config.mqtt.password is None
-    assert snips_config.mqtt.tls_hostname is None
-    assert snips_config.mqtt.tls_ca_file is None
-    assert snips_config.mqtt.tls_ca_path is None
-    assert snips_config.mqtt.tls_client_key is None
-    assert snips_config.mqtt.tls_client_cert is None
-    assert snips_config.mqtt.tls_disable_root_store is False
+    assert snips_config.mqtt.auth.username is None
+    assert snips_config.mqtt.auth.password is None
+    assert snips_config.mqtt.tls.hostname is None
+    assert snips_config.mqtt.tls.ca_file is None
+    assert snips_config.mqtt.tls.ca_path is None
+    assert snips_config.mqtt.tls.client_key is None
+    assert snips_config.mqtt.tls.client_cert is None
+    assert snips_config.mqtt.tls.disable_root_store is False
 
 
 def test_snips_config_mqtt_hostname(fs):
@@ -36,14 +36,14 @@ def test_snips_config_mqtt_hostname(fs):
 
     snips_config = SnipsConfig()
     assert snips_config.mqtt.broker_address == 'mqtt.example.com:8883'
-    assert snips_config.mqtt.username is None
-    assert snips_config.mqtt.password is None
-    assert snips_config.mqtt.tls_hostname is None
-    assert snips_config.mqtt.tls_ca_file is None
-    assert snips_config.mqtt.tls_ca_path is None
-    assert snips_config.mqtt.tls_client_key is None
-    assert snips_config.mqtt.tls_client_cert is None
-    assert snips_config.mqtt.tls_disable_root_store is False
+    assert snips_config.mqtt.auth.username is None
+    assert snips_config.mqtt.auth.password is None
+    assert snips_config.mqtt.tls.hostname is None
+    assert snips_config.mqtt.tls.ca_file is None
+    assert snips_config.mqtt.tls.ca_path is None
+    assert snips_config.mqtt.tls.client_key is None
+    assert snips_config.mqtt.tls.client_cert is None
+    assert snips_config.mqtt.tls.disable_root_store is False
 
 
 def test_snips_config_mqtt_hostname_authentication(fs):
@@ -59,14 +59,14 @@ def test_snips_config_mqtt_hostname_authentication(fs):
 
     snips_config = SnipsConfig()
     assert snips_config.mqtt.broker_address == 'mqtt.example.com:8883'
-    assert snips_config.mqtt.username == 'foobar'
-    assert snips_config.mqtt.password == 'secretpassword'
-    assert snips_config.mqtt.tls_hostname is None
-    assert snips_config.mqtt.tls_ca_file is None
-    assert snips_config.mqtt.tls_ca_path is None
-    assert snips_config.mqtt.tls_client_key is None
-    assert snips_config.mqtt.tls_client_cert is None
-    assert snips_config.mqtt.tls_disable_root_store is False
+    assert snips_config.mqtt.auth.username == 'foobar'
+    assert snips_config.mqtt.auth.password == 'secretpassword'
+    assert snips_config.mqtt.tls.hostname is None
+    assert snips_config.mqtt.tls.ca_file is None
+    assert snips_config.mqtt.tls.ca_path is None
+    assert snips_config.mqtt.tls.client_key is None
+    assert snips_config.mqtt.tls.client_cert is None
+    assert snips_config.mqtt.tls.disable_root_store is False
 
 
 def test_snips_config_mqtt_tls(fs):
@@ -84,11 +84,11 @@ def test_snips_config_mqtt_tls(fs):
 
     snips_config = SnipsConfig()
     assert snips_config.mqtt.broker_address == 'mqtt.example.com:4883'
-    assert snips_config.mqtt.username == 'foobar'
-    assert snips_config.mqtt.password == 'secretpassword'
-    assert snips_config.mqtt.tls_hostname == 'mqtt.example.com'
-    assert snips_config.mqtt.tls_ca_file == '/etc/ssl/certs/ca-certificates.crt'
-    assert snips_config.mqtt.tls_ca_path is None
-    assert snips_config.mqtt.tls_client_key is None
-    assert snips_config.mqtt.tls_client_cert is None
-    assert snips_config.mqtt.tls_disable_root_store is False
+    assert snips_config.mqtt.auth.username == 'foobar'
+    assert snips_config.mqtt.auth.password == 'secretpassword'
+    assert snips_config.mqtt.tls.hostname == 'mqtt.example.com'
+    assert snips_config.mqtt.tls.ca_file == '/etc/ssl/certs/ca-certificates.crt'
+    assert snips_config.mqtt.tls.ca_path is None
+    assert snips_config.mqtt.tls.client_key is None
+    assert snips_config.mqtt.tls.client_cert is None
+    assert snips_config.mqtt.tls.disable_root_store is False

@@ -45,14 +45,14 @@ class HermesSnipsComponent(SnipsComponent):
         """
         mqtt_options = self.snips.mqtt
         self.hermes = Hermes(mqtt_options=MqttOptions(mqtt_options.broker_address,
-                                                      mqtt_options.username,
-                                                      mqtt_options.password,
-                                                      mqtt_options.tls_hostname,
-                                                      mqtt_options.tls_ca_file,
-                                                      mqtt_options.tls_ca_path,
-                                                      mqtt_options.tls_client_key,
-                                                      mqtt_options.tls_client_cert,
-                                                      mqtt_options.tls_disable_root_store))
+                                                      mqtt_options.auth.username,
+                                                      mqtt_options.auth.password,
+                                                      mqtt_options.tls.hostname,
+                                                      mqtt_options.tls.ca_file,
+                                                      mqtt_options.tls.ca_path,
+                                                      mqtt_options.tls.client_key,
+                                                      mqtt_options.tls.client_cert,
+                                                      mqtt_options.tls.disable_root_store))
         self.hermes.connect()
         self._register_callbacks()
 

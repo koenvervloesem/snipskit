@@ -94,8 +94,8 @@ def test_snips_component_mqtt_connection_with_authentication(fs, mocker):
 
     # Check configuration
     assert component.snips.mqtt.broker_address == 'mqtt.example.com:8883'
-    assert component.snips.mqtt.username == 'foobar'
-    assert component.snips.mqtt.password == 'secretpassword'
+    assert component.snips.mqtt.auth.username == 'foobar'
+    assert component.snips.mqtt.auth.password == 'secretpassword'
 
     # Check MQTT connection
     component.mqtt.username_pw_set.assert_called_once_with('foobar',
@@ -133,10 +133,10 @@ def test_snips_component_mqtt_connection_with_tls_and_authentication(fs, mocker)
 
     # Check configuration
     assert component.snips.mqtt.broker_address == 'mqtt.example.com:4883'
-    assert component.snips.mqtt.username == 'foobar'
-    assert component.snips.mqtt.password == 'secretpassword'
-    assert component.snips.mqtt.tls_hostname == 'mqtt.example.com'
-    assert component.snips.mqtt.tls_ca_file == '/etc/ssl/certs/ca-certificates.crt'
+    assert component.snips.mqtt.auth.username == 'foobar'
+    assert component.snips.mqtt.auth.password == 'secretpassword'
+    assert component.snips.mqtt.tls.hostname == 'mqtt.example.com'
+    assert component.snips.mqtt.tls.ca_file == '/etc/ssl/certs/ca-certificates.crt'
 
     # Check MQTT connection
     component.mqtt.username_pw_set.assert_called_once_with('foobar',

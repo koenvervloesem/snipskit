@@ -19,10 +19,10 @@ def auth_params(mqtt_config):
         authentication parameters, or None if no authentication is used.
     """
     # Set up a dict containing authentication parameters for the MQTT client.
-    if mqtt_config.username:
+    if mqtt_config.auth.username:
         # The password can be None.
-        return {'username': mqtt_config.username,
-                'password': mqtt_config.password}
+        return {'username': mqtt_config.auth.username,
+                'password': mqtt_config.auth.password}
     # Or use no authentication.
     else:
         return None
@@ -40,8 +40,8 @@ def host_port(mqtt_config):
     """
     host_port = mqtt_config.broker_address.split(':')
 
-    if mqtt_config.tls_hostname:
-        host = mqtt_config.tls_hostname
+    if mqtt_config.tls.hostname:
+        host = mqtt_config.tls.hostname
     else:
         host = host_port[0]
 
@@ -64,10 +64,10 @@ def tls_params(mqtt_config):
     """
     # Set up a dict containing TLS configuration parameters for the MQTT
     # client.
-    if mqtt_config.tls_hostname:
-        return {'ca_certs': mqtt_config.tls_ca_file,
-                'certfile': mqtt_config.tls_client_cert,
-                'keyfile': mqtt_config.tls_client_key}
+    if mqtt_config.tls.hostname:
+        return {'ca_certs': mqtt_config.tls.ca_file,
+                'certfile': mqtt_config.tls.client_cert,
+                'keyfile': mqtt_config.tls.client_key}
     # Or don't use TLS.
     else:
         return None

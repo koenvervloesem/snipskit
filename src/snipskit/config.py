@@ -141,6 +141,79 @@ class AssistantConfig(UserDict):
             UserDict.__init__(self, json.load(json_file))
 
 
+class MQTTAuthConfig:
+    """This class represents the authentication settings for a connection to an
+    MQTT broker.
+
+    Attributes:
+        username (str): The username to authenticate to the MQTT broker. `None`
+            if there's no authentication.
+        password (str): The password to authenticate to the MQTT broker. Can be
+            `None`.
+    """
+
+    def __init__(self, username=None, password=None):
+        """Initialize a :class:`.MQTTAuthConfig` object.
+
+        Args:
+            username (str, optional): The username to authenticate to the MQTT
+                broker. `None` if there's no authentication.
+            password (str, optional): The password to authenticate to the MQTT
+                broker. Can be `None`.
+
+        All arguments are optional.
+        """
+        self.username = username
+        self.password = password
+
+
+class MQTTTLSConfig:
+    """This class represents the TLS settings for a connection to an MQTT
+    broker.
+
+    Attributes:
+        hostname (str, optional): The TLS hostname of the MQTT broker.
+            `None` if no TLS is used.
+        ca_file (str, optional): Path to the Certificate Authority file.
+            Can be `None`.
+        ca_path (str, optional): Path to the Certificate Authority files.
+            Can be `None`.
+        client_key (str, optional): Path to the private key file. Can be
+           `None`.
+        client_cert (str, optional): Path to the client certificate file.
+            Can be `None`.
+        disable_root_store (bool, optional): Whether the TLS root store is
+            disabled.
+    """
+
+    def __init__(self, hostname=None, ca_file=None, ca_path=None,
+                 client_key=None, client_cert=None, disable_root_store=False):
+        """Initialize a :class:`.MQTTTLSConfig` object.
+
+        Args:
+            hostname (str, optional): The TLS hostname of the MQTT broker.
+                `None` if no TLS is used.
+            ca_file (str, optional): Path to the Certificate Authority
+                file. Can be `None`.
+            ca_path (str, optional): Path to the Certificate Authority
+                files. Can be `None`.
+            client_key (str, optional): Path to the private key file. Can
+                be `None`.
+            client_cert (str, optional): Path to the client certificate
+                file. Can be `None`.
+            disable_root_store (bool, optional): Whether the TLS root store
+                is disabled. Defaults to `False`.
+
+        All arguments are optional.
+        """
+        self.hostname = hostname
+        self.ca_file = ca_file
+        self.ca_path = ca_path
+        self.client_key = client_key
+        self.client_cert = client_cert
+        self.disable_root_store = disable_root_store
+
+
 class MQTTConfig:
     """This class represents the configuration for a connection to an
     MQTT broker.
@@ -148,46 +221,40 @@ class MQTTConfig:
     .. versionadded:: 0.4.0
 
     Attributes:
-        broker_address (str): The address of the MQTT broker, in the form
-            'host:port'.
-        username (str): The username to authenticate to the MQTT broker. 'None'
-            if there's no authentication.
-        password (str): The password to authenticate to the MQTT broker. 'None'
-            if there's no authentication.
-        tls_hostname (str): The TLS hostname of the MQTT broker. 'None' if no
-            TLS is used.
-        tls_ca_file (str): Path to the Certificate Authority file. Can be
-            'None'.
-        tls_ca_path (str): Path to the Certificate Authorify files. Can be
-            'None'.
-        tls_client_key (str): Path to the private key file. Can be 'None'.
-        tls_client_cert (str): Path to the client certificate file. Can be
-            'None'.
-        tls_disable_root_store (bool): Whether the TLS root store is disabled.
+        broker_address (str, optional): The address of the MQTT broker, in the
+            form 'host:port'.
+        auth (:class:`.MQTTAuthConfig`, optional): The authentication
+            settings (username and password) for the MQTT broker.
+        tls (:class:`.MQTTTLSConfig`, optional): The TLS settings for the MQTT
+            broker.
 
     """
-
-    def __init__(self, broker_address='localhost:1883', username=None,
-                 password=None, tls_hostname=None, tls_ca_file=None,
-                 tls_ca_path=None, tls_client_key=None, tls_client_cert=None,
-                 tls_disable_root_store=False):
+    def __init__(self, broker_address='localhost:1883', auth=None, tls=None):
         """Initialize a :class:`.MQTTConfig` object.
+    
+        Args:
+            broker_address (str, optional): The address of the MQTT broker, in
+                the form 'host:port'.
+            auth (:class:`.MQTTAuthConfig`, optional): The authentication
+                settings (username and password) for the MQTT broker. Defaults
+                to a default :class:`.MQTTAuthConfig` object.
+            tls (:class:`.MQTTTLSConfig`, optional): The TLS settings for the
+                MQTT broker. Defaults to a default :class:`.MQTTTLSConfig`
+                object.
 
-        All arguments are optional. The default values are:
-
-        - `broker_address`: 'localhost:1883'
-        - `tls_disable_root_store`: `False`
-        - all other arguments: `None`
+        All arguments are optional.
         """
         self.broker_address = broker_address
-        self.username = username
-        self.password = password
-        self.tls_hostname = tls_hostname
-        self.tls_ca_file = tls_ca_file
-        self.tls_ca_path = tls_ca_path
-        self.tls_client_key = tls_client_key
-        self.tls_client_cert = tls_client_cert
-        self.tls_disable_root_store = tls_disable_root_store
+
+        if auth is None:
+            self.auth = MQTTAuthConfig()
+        else:
+            self.auth = auth
+
+        if tls is None:
+            self.tls = MQTTTLSConfig()
+        else:
+            self.tls = tls
 
 
 class SnipsConfig(UserDict):
@@ -271,10 +338,12 @@ class SnipsConfig(UserDict):
                                                               False)
 
             # Store the MQTT connection settings in an MQTTConfig object.
-            self.mqtt = MQTTConfig(broker_address, username, password,
-                                   tls_hostname, tls_ca_file, tls_ca_path,
-                                   tls_client_key, tls_client_cert,
-                                   tls_disable_root_store)
+            self.mqtt = MQTTConfig(broker_address,
+                                   MQTTAuthConfig(username, password),
+                                   MQTTTLSConfig(tls_hostname, tls_ca_file,
+                                                 tls_ca_path, tls_client_key,
+                                                 tls_client_cert,
+                                                 tls_disable_root_store))
         except KeyError:
             # The 'snips-common' section isn't in the configuration file, so we
             # use a sensible default: 'localhost:1883'.
