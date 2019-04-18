@@ -1,5 +1,5 @@
-"""This module contains helper functions to use the MQTT protocol with the MQTT
-broker defined in a :class:`.MQTTConfig` object.
+"""This module contains helper functions to use the Paho MQTT library with the
+MQTT broker defined in a :class:`.MQTTConfig` object.
 """
 import json
 
