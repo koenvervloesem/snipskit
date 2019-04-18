@@ -1,6 +1,8 @@
 """This module contains helper functions to use the MQTT protocol with the MQTT
 broker defined in a :class:`.MQTTConfig` object.
 """
+import json
+
 from paho.mqtt.client import MQTTv311
 from paho.mqtt.publish import single
 
@@ -103,7 +105,7 @@ def connect(client, mqtt_config, keepalive=60, bind_address=''):
     client.connect(host, port, keepalive, bind_address)
 
 
-def publish_single(mqtt_config, topic, payload=None):
+def publish_single(mqtt_config, topic, payload=None, json_encode=True):
     """Publish a single message to the MQTT broker with the connection settings
     defined in an :class:`.MQTTConfig` object, and then disconnect cleanly.
 
@@ -117,9 +119,16 @@ def publish_single(mqtt_config, topic, payload=None):
         topic (str): The topic string to which the payload will be published.
         payload (str, optional): The payload to be published. If '' or None, a
             zero length payload will be published.
+        json_encode (bool, optional): Whether or not the payload is a dict
+            that will be encoded as a JSON string. The default value is
+            True. Set this to False if you want to publish a binary payload
+            as-is.
     """
     host, port = host_port(mqtt_config)
     auth = auth_params(mqtt_config)
     tls = tls_params(mqtt_config)
+
+    if json_encode:
+        payload = json.dumps(payload)
 
     single(topic, payload, hostname=host, port=port, auth=auth, tls=tls)

@@ -22,12 +22,28 @@ pytestmark = pytest.mark.skipif(not os.environ.get('INTEGRATION_TESTS'),
 DELAY=1
 
 
-def test_client_publish_single(mqtt_server):
+def test_client_publish_single_json(mqtt_server):
 
     config = MQTTConfig()
 
     def publish_test():
-        publish_single(config, 'snipskit-test/topic', 'foobar')
+        publish_single(config, 'snipskit-test/topic', {'foo': 'bar',
+                                                       'foobar': True})
+
+    threading.Timer(DELAY, publish_test).start()
+
+    message = subscribe.simple('snipskit-test/topic')
+    assert json.loads(message.payload.decode('utf-8')) == {'foo': 'bar',
+                                                           'foobar': True}
+
+
+def test_client_publish_single_binary(mqtt_server):
+
+    config = MQTTConfig()
+
+    def publish_test():
+        publish_single(config, 'snipskit-test/topic', 'foobar',
+                       json_encode=False)
 
     threading.Timer(DELAY, publish_test).start()
 
