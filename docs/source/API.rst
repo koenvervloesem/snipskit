@@ -34,7 +34,13 @@ snipskit.config
 .. autoclass:: snipskit.config.AssistantConfig
    :members:
 
+.. autoclass:: snipskit.config.MQTTAuthConfig
+   :members:
+
 .. autoclass:: snipskit.config.MQTTConfig
+   :members:
+
+.. autoclass:: snipskit.config.MQTTTLSConfig
    :members:
 
 .. autoclass:: snipskit.config.SnipsConfig

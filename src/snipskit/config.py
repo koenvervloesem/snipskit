@@ -7,7 +7,11 @@ Classes:
   stored in an INI file.
 - :class:`.AssistantConfig`: Gives access to the configuration of a Snips
   assistant, stored in a JSON file.
+- :class:`.MQTTAuthConfig`: Represents the authentication settings for a
+  connection to an MQTT broker.
 - :class:`.MQTTConfig`: Represents the configuration for a connection to an
+  MQTT broker.
+- :class:`.MQTTTLSConfig`: Represents the TLS settings for a connection to an
   MQTT broker.
 - :class:`.SnipsConfig`: Gives access to the configuration of a locally
   installed instance of Snips, stored in a TOML file.

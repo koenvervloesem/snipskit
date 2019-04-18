@@ -30,6 +30,8 @@ Added
 Changed
 =======
 
+- Breaking change: Refactored the :class:`.MQTTConfig` object. It now has `auth` and `tls` attributes for the authentication and TLS settings, respectively.
+
 Deprecated
 ==========
 
