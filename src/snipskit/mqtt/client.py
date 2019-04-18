@@ -103,31 +103,23 @@ def connect(client, mqtt_config, keepalive=60, bind_address=''):
     client.connect(host, port, keepalive, bind_address)
 
 
-def publish_single(mqtt_config, topic, payload=None, qos=0, retain=False, client_id='', keepalive=60, will=None, protocol=MQTTv311, transport='tcp'):
+def publish_single(mqtt_config, topic, payload=None):
     """Publish a single message to the MQTT broker with the connection settings
     defined in an :class:`.MQTTConfig` object, and then disconnect cleanly.
+
+    .. note:: The Paho MQTT library supports many more arguments when
+       publishing a single message. Other arguments than `topic` and `payload`
+       are not supported by this helper function: it’s aimed at just the
+       simplest use cases.
 
     Args:
         mqtt_config (:class:`.MQTTConfig`): The MQTT connection settings.
         topic (str): The topic string to which the payload will be published.
         payload (str, optional): The payload to be published. If '' or None, a
             zero length payload will be published.
-        qos (int, optional): The qos to use when publishing. Defaults to 0.
-        retain (bool, optional): Set the message to be retained (True) or not
-            (False, default).
-        client_id (str, optional): The MQTT client id to use. If '' or None,
-            the Paho MQTT library will generate a client id automatically.
-        keepalive (int, optional): The keepalive timeout value for the client.
-            Defaults to 60 seconds.
-        will (dict, optional): A dict containing will parameters for the
-            client. Defaults to None, which indicates no will should be used.
-        protocol (int, optional): The version of the MQTT protocol to use.
-            Use either MQTTv31 or MQTTv311. Defaults to MQTTv311.
-        transport (str): Set to 'websockets' to send MQTT over WebSockets.
-            Leave at the default of 'tcp' to use raw TCP.
     """
     host, port = host_port(mqtt_config)
     auth = auth_params(mqtt_config)
     tls = tls_params(mqtt_config)
 
-    single(topic, payload, qos, retain, host, port, client_id, keepalive, will, auth, tls, protocol, transport)
+    single(topic, payload, hostname=host, port=port, auth=auth, tls=tls)
