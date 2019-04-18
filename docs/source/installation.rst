@@ -37,7 +37,7 @@ If you don't need the :mod:`snipskit.mqtt` module because you're using the :mod:
 
 .. code-block:: sh
 
-    pip install snipskit[hermes]
+    pip3 install snipskit[hermes]
 
 This will install the complete library and the following dependencies:
 
@@ -50,7 +50,7 @@ If you don't need the :mod:`snipskit.hermes` module because you're using the :mo
 
 .. code-block:: sh
 
-    pip install snipskit[mqtt]
+    pip3 install snipskit[mqtt]
 
 This will install the complete library and the following dependencies:
 
@@ -63,7 +63,7 @@ If you only need the basic modules because you don't need the :mod:`snipskit.her
 
 .. code-block:: sh
 
-    pip install snipskit
+    pip3 install snipskit
 
 This will install the complete library and the following dependencies:
 
@@ -83,3 +83,27 @@ It is recommended to use a `virtual environment`_ and activate it before install
 After this, you can install SnipsKit in the virtual environment.
 
 .. _`virtual environment`: https://docs.python.org/3/library/venv.html
+
+****************
+Requirements.txt
+****************
+
+Because the public API of SnipsKit should not be considered stable yet, it's best to define a specific version (major.minor.patch) in the `requirements.txt` file of your project, e.g.:
+
+.. code-block:: none
+
+    snipskit[hermes]==0.5.3
+
+Then you can install the specified version with:
+
+.. code-block:: sh
+
+    pip3 install -r requirements.txt
+
+Alternatively, you can define a version like:
+
+.. code-block:: none
+
+    snipskit[hermes]~=0.5.0
+
+This will install the latest available SnipsKit version compatible with 0.5.0, but not a higher version such as 0.6.0. Because the minor version is incremented when incompatible API changes are made, this prevents your code from breaking because of breaking changes in the SnipsKit API. Have a look at the :doc:`CHANGELOG` for the versions and their changes.

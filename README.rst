@@ -99,7 +99,7 @@ SnipsKit is `packaged on PyPI`_. The latest stable version with all functionalit
 
 .. code-block:: sh
 
-    pip install snipskit[hermes,mqtt]
+    pip3 install snipskit[hermes,mqtt]
 
 .. inclusion-marker-end-installation
 
