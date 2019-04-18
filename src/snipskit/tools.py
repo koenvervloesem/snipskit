@@ -39,6 +39,7 @@ def find_path(paths):
     # return None.
     return None
 
+
 def latest_snips_version():
     """Return the latest version of Snips, as published in the release notes.
 

@@ -3,7 +3,6 @@ broker defined in a :class:`.MQTTConfig` object.
 """
 import json
 
-from paho.mqtt.client import MQTTv311
 from paho.mqtt.publish import single
 
 

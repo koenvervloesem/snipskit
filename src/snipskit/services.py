@@ -36,6 +36,7 @@ def _version_output(service):
 
     return version_output
 
+
 def is_installed(service):
     """Check whether the Snips service `service` is installed.
 
@@ -51,6 +52,7 @@ def is_installed(service):
         True
     """
     return bool(_version_output(service))
+
 
 def is_running(service):
     """Check whether the Snips service `service` is running.
@@ -72,10 +74,11 @@ def is_running(service):
             if service == process.name():
                 service_found = True
                 break
-        except NoSuchProcess:  ## Happens when the process no longer exists.
+        except NoSuchProcess:  # Happens when the process no longer exists.
             pass
 
     return service_found
+
 
 def model_version():
     """Return the model version of Snips NLU.
@@ -98,6 +101,7 @@ def model_version():
 
     return model_version
 
+
 def installed():
     """Return a dict with the installation state of all Snips services.
 
@@ -108,6 +112,7 @@ def installed():
     installation_states = [is_installed(service) for service in SNIPS_SERVICES]
 
     return dict(zip(SNIPS_SERVICES, installation_states))
+
 
 def running():
     """Return a dict with the running state of all Snips services.
@@ -120,6 +125,7 @@ def running():
 
     return dict(zip(SNIPS_SERVICES, running_states))
 
+
 def versions():
     """Return a dict with the version numbers of all Snips services.
 
@@ -131,6 +137,7 @@ def versions():
     versions = [version(service) for service in SNIPS_SERVICES]
 
     return dict(zip(SNIPS_SERVICES, versions))
+
 
 def version(service=None):
     """Return the version number of a Snips service or the Snips platform.

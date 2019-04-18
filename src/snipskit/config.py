@@ -231,7 +231,7 @@ class MQTTConfig:
     """
     def __init__(self, broker_address='localhost:1883', auth=None, tls=None):
         """Initialize a :class:`.MQTTConfig` object.
-    
+
         Args:
             broker_address (str, optional): The address of the MQTT broker, in
                 the form 'host:port'.

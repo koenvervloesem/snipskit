@@ -7,6 +7,7 @@ the `Snips dialogue API`_.
 DM_CONTINUE_SESSION = 'hermes/dialogueManager/continueSession'
 DM_END_SESSION = 'hermes/dialogueManager/endSession'
 
+
 def continue_session(session_id, text):
     """Return a tuple with a topic and payload for a `continueSession`_ message
     for the specified session ID and text.
@@ -40,6 +41,7 @@ def continue_session(session_id, text):
         .. versionadded:: 0.5.2
     """
     return (DM_CONTINUE_SESSION, {'sessionId': session_id, 'text': text})
+
 
 def end_session(session_id, text=None):
     """Return a tuple with a topic and payload for an `endSession`_ message for
