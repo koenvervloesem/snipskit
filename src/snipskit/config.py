@@ -170,6 +170,15 @@ class MQTTAuthConfig:
         self.username = username
         self.password = password
 
+    @property
+    def enabled(self):
+        """Check whether authentication is enabled.
+
+        Returns:
+            bool: True if the username is not `None`.
+        """
+        return self.username is not None
+
 
 class MQTTTLSConfig:
     """This class represents the TLS settings for a connection to an MQTT
@@ -216,6 +225,15 @@ class MQTTTLSConfig:
         self.client_key = client_key
         self.client_cert = client_cert
         self.disable_root_store = disable_root_store
+
+    @property
+    def enabled(self):
+        """Check whether TLS is enabled.
+
+        Returns:
+            bool: True if the hostname is not `None`.
+        """
+        return self.hostname is not None
 
 
 class MQTTConfig:
