@@ -149,13 +149,13 @@ class MQTTAuthConfig:
     """This class represents the authentication settings for a connection to an
     MQTT broker.
 
+    .. versionadded:: 0.6.0
+
     Attributes:
         username (str): The username to authenticate to the MQTT broker. `None`
             if there's no authentication.
         password (str): The password to authenticate to the MQTT broker. Can be
             `None`.
-
-    .. versionadded:: 0.6.0
     """
 
     def __init__(self, username=None, password=None):
@@ -186,6 +186,8 @@ class MQTTTLSConfig:
     """This class represents the TLS settings for a connection to an MQTT
     broker.
 
+    .. versionadded:: 0.6.0
+
     Attributes:
         hostname (str, optional): The TLS hostname of the MQTT broker.
             `None` if no TLS is used.
@@ -199,8 +201,6 @@ class MQTTTLSConfig:
             Can be `None`.
         disable_root_store (bool, optional): Whether the TLS root store is
             disabled.
-
-    .. versionadded:: 0.6.0
     """
 
     def __init__(self, hostname=None, ca_file=None, ca_path=None,
