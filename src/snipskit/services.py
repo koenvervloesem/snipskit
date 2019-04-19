@@ -11,6 +11,19 @@ SNIPS_SERVICES = ['snips-analytics', 'snips-asr', 'snips-asr-google',
 VERSION_FLAG = '--version'
 
 
+def _state(state_function):
+    """Return a dict with the state of all Snips Services.
+
+    Args:
+        state_function: A function that returns a state for a Snips service.
+
+    Returns:
+        dict: A dict with all Snips services as keys and their state as value.
+    """
+    states = [state_function(service) for service in SNIPS_SERVICES]
+    return dict(zip(SNIPS_SERVICES, states))
+
+
 def _version_output(service):
     """Return the output of the command `service` with the argument
     '--version'.
@@ -109,9 +122,7 @@ def installed():
         dict: A dict with all Snips services as keys and their installation
         state (True or False) as value.
     """
-    installation_states = [is_installed(service) for service in SNIPS_SERVICES]
-
-    return dict(zip(SNIPS_SERVICES, installation_states))
+    return _state(is_installed)
 
 
 def running():
@@ -121,9 +132,7 @@ def running():
         dict: A dict with all Snips services as keys and their running state
         (True or False) as value.
     """
-    running_states = [is_running(service) for service in SNIPS_SERVICES]
-
-    return dict(zip(SNIPS_SERVICES, running_states))
+    return _state(is_running)
 
 
 def versions():
@@ -134,9 +143,7 @@ def versions():
         as value. Services that are not installed have an empty string as their
         value.
     """
-    versions = [version(service) for service in SNIPS_SERVICES]
-
-    return dict(zip(SNIPS_SERVICES, versions))
+    return _state(version)
 
 
 def version(service=None):
