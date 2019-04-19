@@ -63,6 +63,8 @@ def is_installed(service):
 
         >>> is_installed('snips-nlu')
         True
+
+    .. versionadded:: 0.5.3
     """
     return bool(_version_output(service))
 
@@ -80,6 +82,8 @@ def is_running(service):
 
         >>> is_running('snips-nlu')
         True
+
+    .. versionadded:: 0.5.3
     """
     service_found = False
     for process in process_iter():
@@ -104,6 +108,8 @@ def model_version():
 
         >>> model_version()
         '0.19.0'
+
+    .. versionadded:: 0.5.3
     """
     version_output = _version_output('snips-nlu')
     try:
@@ -121,6 +127,8 @@ def installed():
     Returns:
         dict: A dict with all Snips services as keys and their installation
         state (True or False) as value.
+
+    .. versionadded:: 0.5.3
     """
     return _state(is_installed)
 
@@ -131,6 +139,8 @@ def running():
     Returns:
         dict: A dict with all Snips services as keys and their running state
         (True or False) as value.
+
+    .. versionadded:: 0.5.3
     """
     return _state(is_running)
 
@@ -142,6 +152,8 @@ def versions():
         dict: A dict with all Snips services as keys and their version numbers
         as value. Services that are not installed have an empty string as their
         value.
+
+    .. versionadded:: 0.5.3
     """
     return _state(version)
 
@@ -167,6 +179,8 @@ def version(service=None):
         '1.1.2'
         >>> version('snips-nlu')
         '1.1.2'
+
+    .. versionadded:: 0.5.3
     """
     if service:
         try:

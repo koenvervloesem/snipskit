@@ -154,6 +154,8 @@ class MQTTAuthConfig:
             if there's no authentication.
         password (str): The password to authenticate to the MQTT broker. Can be
             `None`.
+
+    .. versionadded:: 0.6.0
     """
 
     def __init__(self, username=None, password=None):
@@ -197,6 +199,8 @@ class MQTTTLSConfig:
             Can be `None`.
         disable_root_store (bool, optional): Whether the TLS root store is
             disabled.
+
+    .. versionadded:: 0.6.0
     """
 
     def __init__(self, hostname=None, ca_file=None, ca_path=None,

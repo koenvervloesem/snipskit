@@ -16,6 +16,8 @@ def auth_params(mqtt_config):
     Returns:
         dict: A dict {'username': username, 'password': password} with the
         authentication parameters, or None if no authentication is used.
+
+    .. versionadded:: 0.6.0
     """
     # Set up a dict containing authentication parameters for the MQTT client.
     if mqtt_config.auth.username:
@@ -36,6 +38,8 @@ def host_port(mqtt_config):
     Returns:
         (str, int): A tuple with the host and port defined in the MQTT
         connection settings.
+
+    .. versionadded:: 0.6.0
     """
     host_port = mqtt_config.broker_address.split(':')
 
@@ -60,6 +64,8 @@ def tls_params(mqtt_config):
         dict: A dict {'ca_certs': ca_certs, 'certfile': certfile,
         'keyfile': keyfile} with the TLS configuration parameters, or None if
         no TLS connection is used.
+
+    .. versionadded:: 0.6.0
     """
     # Set up a dict containing TLS configuration parameters for the MQTT
     # client.
@@ -86,6 +92,8 @@ def connect(client, mqtt_config, keepalive=60, bind_address=''):
             exist. Defaults to ''.
 
     .. _`paho.mqtt.client.Client`: https://www.eclipse.org/paho/clients/python/docs/#client
+
+    .. versionadded:: 0.6.0
     """
     host, port = host_port(mqtt_config)
 
@@ -122,6 +130,8 @@ def publish_single(mqtt_config, topic, payload=None, json_encode=True):
             that will be encoded as a JSON string. The default value is
             True. Set this to False if you want to publish a binary payload
             as-is.
+
+    .. versionadded:: 0.6.0
     """
     host, port = host_port(mqtt_config)
     auth = auth_params(mqtt_config)
