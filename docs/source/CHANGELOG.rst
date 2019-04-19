@@ -25,12 +25,8 @@ Given a version number MAJOR.MINOR.PATCH, this project increments the:
 Added
 =====
 
-- New module :mod:`snipskit.mqtt.client` with helper functions to use the Paho MQTT library with the MQTT broker defined in a :class:`.MQTTConfig` object.
-
 Changed
 =======
-
-- Breaking change: Refactored the :class:`.MQTTConfig` object. It now has `auth` (:class:`.MQTTAuthConfig`) and `tls` (:class:`.MQTTTLSConfig`) attributes for the authentication and TLS settings, respectively.
 
 Deprecated
 ==========
@@ -41,14 +37,33 @@ Removed
 Fixed
 =====
 
+Security
+========
+
+.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.6.0...HEAD
+
+*********************
+`0.6.0`_ - 2019-04-19
+*********************
+
+Added
+=====
+
+- New module :mod:`snipskit.mqtt.client` with helper functions to use the Paho MQTT library with the MQTT broker defined in a :class:`.MQTTConfig` object.
+
+Changed
+=======
+
+- Breaking change: Refactored the :class:`.MQTTConfig` object. It now has `auth` (:class:`.MQTTAuthConfig`) and `tls` (:class:`.MQTTTLSConfig`) attributes for the authentication and TLS settings, respectively.
+
+Fixed
+=====
+
 - :func:`snipskit.services.is_running` sometimes threw a :exc:`psutil.NoSuchProcess` exception when it tried to get the name of a process that no longer existed. Caught by Travis CI in `job #201.4`_.
 
 .. _`job #201.4`: https://travis-ci.com/koenvervloesem/snipskit/jobs/192421610
 
-Security
-========
-
-.. _`Unreleased`: https://github.com/koenvervloesem/snipskit/compare/0.5.4...HEAD
+.. _`0.6.0`: https://github.com/koenvervloesem/snipskit/compare/0.5.4...0.6.0
 
 *********************
 `0.5.4`_ - 2019-04-11
