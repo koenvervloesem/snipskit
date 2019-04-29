@@ -19,6 +19,7 @@ Contents
    usage
    API
    development
+   LICENSE
    CHANGELOG
 
 ******************
