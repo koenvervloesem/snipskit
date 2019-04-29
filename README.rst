@@ -75,6 +75,8 @@ SnipsKit also has decorators for other events, and there's also a class MQTTSnip
 
 .. warning:: SnipsKit is currently alpha software. Anything may change at any time. The public API should not be considered stable.
 
+.. note:: This project is not in any way affiliated to the company Snips.
+
 .. inclusion-marker-end-intro
 
 *******************
