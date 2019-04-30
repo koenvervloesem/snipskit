@@ -18,29 +18,29 @@ class MQTTSnipsApp(SnipsAppMixin, MQTTSnipsComponent):
         mqtt (`paho.mqtt.client.Client`_): The MQTT client object.
 
     .. _`paho.mqtt.client.Client`: https://www.eclipse.org/paho/clients/python/docs/#client
-	
+
     Example:
 
-	.. code-block:: python
+    .. code-block:: python
 
-		from snipskit.mqtt.apps import MQTTSnipsApp
-		from snipskit.mqtt.dialogue import continue_session
+        from snipskit.mqtt.apps import MQTTSnipsApp
+        from snipskit.mqtt.dialogue import continue_session
 
-		app = MQTTSnipsApp()
+        app = MQTTSnipsApp()
 
-		@app.topic('hermes/intent/name')
-		def say_name(topic, payload):
-			name = app.assistant['name']
-			app.publish(*continue_session(payload['sessionId'], name))
+        @app.topic('hermes/intent/name')
+        def say_name(topic, payload):
+            name = app.assistant['name']
+            app.publish(*continue_session(payload['sessionId'], name))
 
-		if __name__ == '__main__':
-			app.run()
+        if __name__ == '__main__':
+            app.run()
 
-	.. note::
-	If you want to communicate with Snips and don't need access to an
-	assistant's nor to a configuration for an app, you can instantiate a
-	:class:`.MQTTSnipsComponent` object, which doesn't have `assistant` and
-	`config` attributes.
+    .. note::
+    If you want to communicate with Snips and don't need access to an
+    assistant's nor to a configuration for an app, you can instantiate a
+    :class:`.MQTTSnipsComponent` object, which doesn't have `assistant` and
+    `config` attributes.
     """
 
     def __init__(self, snips=None, config=None):
