@@ -1,26 +1,5 @@
 """This module contains a class to create components to communicate with Snips
 using the MQTT protocol directly.
-
-.. note::
-   If you want to create a Snips app with access to an assistant's
-   configuration and a configuration for the app, you need to instantiate a
-   :class:`.MQTTSnipsApp` object, which is a subclass of
-   :class:`.MQTTSnipsComponent` and adds `assistant` and `config` attributes.
-
-Example:
-
-.. code-block:: python
-
-    from snipskit.mqtt.components import MQTTSnipsComponent
-
-    component = MQTTSnipsComponent()
-
-    @component.topic('hermes/hotword/toggleOn')
-    def hotword_on(topic, payload):
-        print('Hotword on site {} is toggled on.'.format(payload['siteId']))
-
-    if __name__ == '__main__':
-        component.run()
 """
 import json
 
@@ -37,6 +16,27 @@ class MQTTSnipsComponent(SnipsComponent):
         mqtt (`paho.mqtt.client.Client`_): The MQTT client object.
 
     .. _`paho.mqtt.client.Client`: https://www.eclipse.org/paho/clients/python/docs/#client
+
+    Example:
+
+    .. code-block:: python
+
+        from snipskit.mqtt.components import MQTTSnipsComponent
+
+        component = MQTTSnipsComponent()
+
+        @component.topic('hermes/hotword/toggleOn')
+        def hotword_on(topic, payload):
+            print('Hotword on site {} is toggled on.'.format(payload['siteId']))
+
+        if __name__ == '__main__':
+            component.run()
+
+    .. note::
+    If you want to create a Snips app with access to an assistant's
+    configuration and a configuration for the app, you need to instantiate a
+    :class:`.MQTTSnipsApp` object, which is a subclass of
+    :class:`.MQTTSnipsComponent` and adds `assistant` and `config` attributes.
     """
 
     def __init__(self, snips=None):
