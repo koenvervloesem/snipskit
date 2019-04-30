@@ -12,17 +12,15 @@ Example:
 .. code-block:: python
 
     from snipskit.mqtt.components import MQTTSnipsComponent
-    from snipskit.mqtt.decorators import topic
 
+    component = MQTTSnipsComponent()
 
-    class SimpleSnipsComponent(MQTTSnipsComponent):
+    @component.topic('hermes/hotword/toggleOn')
+    def hotword_on(topic, payload):
+        print('Hotword on site {} is toggled on.'.format(payload['siteId']))
 
-        def initialize(self):
-            print('Component initialized')
-
-        @topic('hermes/hotword/toggleOn')
-        def hotword_on(self, topic, payload):
-            print('Hotword on {} is toggled on.'.format(payload['siteId']))
+    if __name__ == '__main__':
+        component.run()
 """
 import json
 
@@ -41,11 +39,27 @@ class MQTTSnipsComponent(SnipsComponent):
     .. _`paho.mqtt.client.Client`: https://www.eclipse.org/paho/clients/python/docs/#client
     """
 
+    def __init__(self, snips=None):
+        """Initialize an :class:`.MQTTSnipsComponent` object.
+
+        Args:
+            snips (:class:`.SnipsConfig`, optional): a Snips configuration.
+                If the argument is not specified, a default
+                :class:`.SnipsConfig` object is created for a locally installed
+                instance of Snips.
+        """
+        SnipsComponent.__init__(self, snips)
+
+        self.mqtt = Client()
+
+        # This will contain a dict of the topic (str) -> callbacks (list)
+        # function mappings.
+        self._callbacks_topic = {}
+
     def _connect(self):
         """Connect with the MQTT broker referenced in the Snips configuration
         file.
         """
-        self.mqtt = Client()
         self.mqtt.on_connect = self._subscribe_topics
         connect(self.mqtt, self.snips.mqtt)
 
@@ -58,19 +72,17 @@ class MQTTSnipsComponent(SnipsComponent):
     def _subscribe_topics(self, client, userdata, flags, connection_result):
         """Subscribe to the MQTT topics we're interested in.
 
-        Each method with an attribute set by a
-        :func:`snipskit.decorators.mqtt.topic` decorator is registered as a
-        callback for the corresponding topic.
+        Each function decorated by :meth:`.MQTTSnipsComponent.topic` is
+        registered as a callback for the corresponding topic.
         """
-        for name in dir(self):
-            callable_name = getattr(self, name)
-            if hasattr(callable_name, 'topic'):
-                self.mqtt.subscribe(getattr(callable_name, 'topic'))
-                self.mqtt.message_callback_add(getattr(callable_name, 'topic'),
-                                               callable_name)
+        for topic, callbacks in self._callbacks_topic.items():
+            self.mqtt.subscribe(topic)
+            for callback in callbacks:
+                self.mqtt.message_callback_add(topic, callback)
 
     def publish(self, topic, payload, json_encode=True):
-        """Publish a payload on an MQTT topic on the MQTT broker of this object.
+        """Publish a payload on an MQTT topic on the MQTT broker of this
+        object.
 
         Args:
             topic (str): The MQTT topic to publish the payload on.
@@ -90,3 +102,42 @@ class MQTTSnipsComponent(SnipsComponent):
             payload = json.dumps(payload)
 
         return self.mqtt.publish(topic, payload)
+
+    def topic(self, topic_name, json_decode=True):
+        """Apply this decorator to a function to register it as a callback to
+        be triggered when the MQTT topic `topic_name` is published.
+
+        The callback needs to have the following signature:
+
+        function(topic, payload)
+
+        Args:
+            topic_name (str): The MQTT topic you want to subscribe to.
+            json_decode (bool, optional): Whether or not the payload will be
+                decoded as JSON to a dict. The default value is True. Set this
+                to False if you want to subscribe to a topic with a binary
+                payload.
+        
+        .. versionadded:: 0.7.0
+        """
+        def wrapper(function):
+            def wrapped(client, userdata, msg):
+                """This is the callback with the signature that Paho MQTT
+                   expects.
+                """
+                if json_decode:
+                    payload = json.loads(msg.payload.decode('utf-8'))
+                else:
+                    payload = msg.payload
+
+                # This is the callback with the signature that SnipsKit
+                # expects.
+                function(msg.topic, payload)
+
+            try:
+                self._callbacks_topic[topic_name].append(wrapped)
+            except KeyError:
+                self._callbacks_topic[topic_name] = [wrapped]
+
+            return wrapped
+        return wrapper

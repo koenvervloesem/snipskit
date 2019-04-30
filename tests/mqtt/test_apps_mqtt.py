@@ -4,13 +4,6 @@ from snipskit.mqtt.apps import MQTTSnipsApp
 from snipskit.config import AppConfig, SnipsConfig
 
 
-class SimpleMQTTApp(MQTTSnipsApp):
-    """A simple Snips app using MQTT directly to test."""
-
-    def initialize(self):
-        pass
-
-
 def test_snips_app_mqtt_default(fs, mocker):
     """Test whether a `MQTTSnipsApp` object with the default parameters is set
     up correctly.
@@ -26,9 +19,10 @@ def test_snips_app_mqtt_default(fs, mocker):
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTApp, 'initialize')
+    mocker.patch.object(MQTTSnipsApp, 'initialize')
 
-    app = SimpleMQTTApp()
+    app = MQTTSnipsApp()
+    app.run()
 
     # Check Snips configuration
     assert app.snips.mqtt.broker_address == 'localhost:1883'
@@ -65,9 +59,10 @@ def test_snips_app_mqtt_default_with_assistant_path(fs, mocker):
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTApp, 'initialize')
+    mocker.patch.object(MQTTSnipsApp, 'initialize')
 
-    app = SimpleMQTTApp()
+    app = MQTTSnipsApp()
+    app.run()
 
     # Check Snips configuration
     assert app.snips.mqtt.broker_address == 'localhost:1883'
@@ -104,10 +99,11 @@ def test_snips_app_mqtt_snips_config(fs, mocker):
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTApp, 'initialize')
+    mocker.patch.object(MQTTSnipsApp, 'initialize')
 
     snips_config = SnipsConfig(config_file)
-    app = SimpleMQTTApp(snips=snips_config)
+    app = MQTTSnipsApp(snips=snips_config)
+    app.run()
 
     # Check Snips configuration
     assert app.snips == snips_config
@@ -148,10 +144,11 @@ def test_snips_app_mqtt_config(fs, mocker):
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTApp, 'initialize')
+    mocker.patch.object(MQTTSnipsApp, 'initialize')
 
     app_config = AppConfig()
-    app = SimpleMQTTApp(config=app_config)
+    app = MQTTSnipsApp(config=app_config)
+    app.run()
 
     # Check Snips configuration
     assert app.snips.mqtt.broker_address == 'localhost:1883'

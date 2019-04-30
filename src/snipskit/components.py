@@ -37,7 +37,7 @@ class SnipsComponent(metaclass=ABCMeta):
     """
 
     def __init__(self, snips=None):
-        """Initialize a Snips component.
+        """Initialize a :class:`.SnipsComponent` object.
 
         Args:
             snips (:class:`.SnipsConfig`, optional): a Snips configuration.
@@ -49,6 +49,14 @@ class SnipsComponent(metaclass=ABCMeta):
             snips = SnipsConfig()
         self.snips = snips
 
+    def run(self):
+        """Start the component.
+
+        This connects with Snips, initializes the component and starts the
+        event loop.
+
+        .. versionadded:: 0.7.0
+        """
         self._connect()
         self.initialize()
         self._start()
@@ -69,7 +77,7 @@ class SnipsComponent(metaclass=ABCMeta):
 
     @abstractmethod
     def _start(self):
-        """Connect with Snips.
+        """Start the event loop.
 
         This method should be implemented in a subclass of
         :class:`.SnipsComponent`.

@@ -28,6 +28,11 @@ Added
 Changed
 =======
 
+- The API of SnipsKit behaves more Flask-like now.
+- Breaking change: An :class:`.SnipsComponent` object no longer connects to the MQTT broker when initialized. You now have to do this explicitly by calling :meth:`.SnipsComponent.run`. The same holds for all subclasses of :class:`.SnipsComponent`.
+- Breaking change: moved the `topic` decorator to :meth:`.MQTTSnipsComponent.topic`.
+- Breaking change: the decorator :meth:`.MQTTSnipsComponent.topic` no longer expects a method, but a function.
+
 Deprecated
 ==========
 

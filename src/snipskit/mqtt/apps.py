@@ -6,17 +6,17 @@ Example:
 .. code-block:: python
 
     from snipskit.mqtt.apps import MQTTSnipsApp
-    from snipskit.mqtt.decorators import topic
+    from snipskit.mqtt.dialogue import continue_session
 
+    app = MQTTSnipsApp()
 
-    class SimpleSnipsApp(MQTTSnipsApp):
+    @app.topic('hermes/intent/name')
+    def say_name(topic, payload):
+        name = app.assistant['name']
+        app.publish(*continue_session(payload['sessionId'], name))
 
-        def initialize(self):
-            print('App initialized')
-
-        @topic('hermes/hotword/toggleOn')
-        def hotword_on(self, topic, payload):
-            print('Hotword on {} is toggled on.'.format(payload['siteId']))
+    if __name__ == '__main__':
+        app.run()
 """
 
 from snipskit.apps import SnipsAppMixin

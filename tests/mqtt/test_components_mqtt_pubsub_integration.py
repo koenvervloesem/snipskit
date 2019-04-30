@@ -15,7 +15,6 @@ import paho.mqtt.subscribe as subscribe
 import pytest
 
 from snipskit.mqtt.components import MQTTSnipsComponent
-from snipskit.mqtt.decorators import topic
 
 # Only run these tests if the environment variable INTEGRATION_TESTS is set.
 pytestmark = pytest.mark.skipif(not os.environ.get('INTEGRATION_TESTS'),
@@ -24,23 +23,32 @@ pytestmark = pytest.mark.skipif(not os.environ.get('INTEGRATION_TESTS'),
 DELAY=1
 
 
-class DecoratedMQTTComponentPubSub(MQTTSnipsComponent):
-    """A simple Snips component using MQTT directly to test."""
+def publish_audio():
+    publish.single('hermes/audioServer/default/playBytes/1234', 'foobar')
 
-    @topic('hermes/hotword/+/detected')
-    def handle_hotword(self, topic, payload):
-        hotword = re.search('^hermes/hotword/(.*)/detected$', topic).group(1)
-        siteId = payload['siteId']
-        result_sentence = 'I detected the hotword {} on site ID {}.'.format(hotword, siteId)
-        self.publish('hermes-test/tts/say', {'siteId': siteId, 'text': result_sentence})
 
-    @topic('hermes/audioServer/+/playBytes/+', json_decode=False)
-    def handle_audio(self, topic, payload):
-        parsed_topic = re.search('^hermes/audioServer/(.*)/playBytes/(.*)$', topic)
-        siteId = parsed_topic.group(1)
-        requestId = parsed_topic.group(2)
-        result_sentence = 'I detected audio with request ID {} and payload {} on site ID {}.'.format(requestId, payload.decode('utf-8'), siteId)
-        self.publish('hermes-test/tts/say', {'siteId': siteId, 'text': result_sentence})
+def publish_hotword():
+    publish.single('hermes/hotword/hey_snips/detected', '{"siteId": "default"}')
+
+
+component = MQTTSnipsComponent()
+
+
+@component.topic('hermes/hotword/+/detected')
+def handle_hotword(topic, payload):
+    hotword = re.search('^hermes/hotword/(.*)/detected$', topic).group(1)
+    siteId = payload['siteId']
+    result_sentence = 'I detected the hotword {} on site ID {}.'.format(hotword, siteId)
+    component.publish('hermes-test/tts/say', {'siteId': siteId, 'text': result_sentence})
+
+
+@component.topic('hermes/audioServer/+/playBytes/+', json_decode=False)
+def handle_audio(topic, payload):
+    parsed_topic = re.search('^hermes/audioServer/(.*)/playBytes/(.*)$', topic)
+    siteId = parsed_topic.group(1)
+    requestId = parsed_topic.group(2)
+    result_sentence = 'I detected audio with request ID {} and payload {} on site ID {}.'.format(requestId, payload.decode('utf-8'), siteId)
+    component.publish('hermes-test/tts/say', {'siteId': siteId, 'text': result_sentence})
 
 
 def test_snips_component_mqtt_pubsub(mqtt_server):
@@ -49,14 +57,8 @@ def test_snips_component_mqtt_pubsub(mqtt_server):
     and publishes the right payload.
     """
 
-    def publish_audio():
-        publish.single('hermes/audioServer/default/playBytes/1234', 'foobar')
-
-    def publish_hotword():
-        publish.single('hermes/hotword/hey_snips/detected', '{"siteId": "default"}')
-
     # Test handle_hotword method: JSON payload
-    threading.Thread(target=DecoratedMQTTComponentPubSub, daemon=True).start()
+    threading.Thread(target=component.run).start()
 
     threading.Timer(DELAY, publish_hotword).start()
 

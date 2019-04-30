@@ -117,12 +117,6 @@ snipskit.mqtt.components
 .. autoclass:: snipskit.mqtt.components.MQTTSnipsComponent
    :members:
 
-snipskit.mqtt.decorators
-========================
-
-.. automodule:: snipskit.mqtt.decorators
-   :members:
-
 snipskit.mqtt.dialogue
 ======================
 

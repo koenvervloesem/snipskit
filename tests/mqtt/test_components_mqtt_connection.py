@@ -4,13 +4,6 @@ from snipskit.mqtt.components import MQTTSnipsComponent
 from snipskit.config import SnipsConfig
 
 
-class SimpleMQTTComponent(MQTTSnipsComponent):
-    """A simple Snips component using MQTT directly to test."""
-
-    def initialize(self):
-        pass
-
-
 def test_snips_component_mqtt_connection_default(fs, mocker):
     """Test whether a `MQTTSnipsComponent` object with the default MQTT
     connection settings connects to the MQTT broker correctly.
@@ -23,9 +16,10 @@ def test_snips_component_mqtt_connection_default(fs, mocker):
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTComponent, 'initialize')
+    mocker.patch.object(MQTTSnipsComponent, 'initialize')
 
-    component = SimpleMQTTComponent()
+    component = MQTTSnipsComponent()
+    component.run()
 
     # Check configuration
     assert component.snips.mqtt.broker_address == 'localhost:1883'
@@ -53,10 +47,11 @@ def test_snips_component_mqtt_with_snips_config(fs, mocker):
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTComponent, 'initialize')
+    mocker.patch.object(MQTTSnipsComponent, 'initialize')
 
     snips_config = SnipsConfig(config_file)
-    component = SimpleMQTTComponent(snips_config)
+    component = MQTTSnipsComponent(snips_config)
+    component.run()
 
     # Check configuration
     assert component.snips == snips_config
@@ -88,9 +83,10 @@ def test_snips_component_mqtt_connection_with_authentication(fs, mocker):
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTComponent, 'initialize')
+    mocker.patch.object(MQTTSnipsComponent, 'initialize')
 
-    component = SimpleMQTTComponent()
+    component = MQTTSnipsComponent()
+    component.run()
 
     # Check configuration
     assert component.snips.mqtt.broker_address == 'mqtt.example.com:8883'
@@ -127,9 +123,10 @@ def test_snips_component_mqtt_connection_with_tls_and_authentication(fs, mocker)
     mocker.patch('paho.mqtt.client.Client.loop_forever')
     mocker.patch('paho.mqtt.client.Client.tls_set')
     mocker.patch('paho.mqtt.client.Client.username_pw_set')
-    mocker.patch.object(SimpleMQTTComponent, 'initialize')
+    mocker.patch.object(MQTTSnipsComponent, 'initialize')
 
-    component = SimpleMQTTComponent()
+    component = MQTTSnipsComponent()
+    component.run()
 
     # Check configuration
     assert component.snips.mqtt.broker_address == 'mqtt.example.com:4883'
