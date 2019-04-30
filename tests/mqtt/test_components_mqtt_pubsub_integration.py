@@ -58,7 +58,7 @@ def test_snips_component_mqtt_pubsub(mqtt_server):
     """
 
     # Test handle_hotword method: JSON payload
-    threading.Thread(target=component.run).start()
+    threading.Thread(target=component.run, daemon=True).start()
 
     threading.Timer(DELAY, publish_hotword).start()
 
