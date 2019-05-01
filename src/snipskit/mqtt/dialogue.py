@@ -27,16 +27,16 @@ def continue_session(session_id, text):
        helper function: it's aimed at just the simplest use cases.
 
     Example:
-        You would use this function like this in a callback method of an
-        :class:`.MQTTSnipsApp` object:
+        You would use this function like this in an :class:`.MQTTSnipsApp`
+        object:
 
-        >>> self.publish(*continue_session('mySessionId', 'myText'))
+        >>> app.publish(*continue_session('mySessionId', 'myText'))
 
         This is equivalent to the much more wordy:
 
-        >>> self.publish('hermes/dialogueManager/continueSession',
-                         {'sessionId': 'mySessionId',
-                          'text': 'myText'})
+        >>> app.publish('hermes/dialogueManager/continueSession',
+                        {'sessionId': 'mySessionId',
+                         'text': 'myText'})
 
         .. versionadded:: 0.5.2
     """
@@ -60,16 +60,16 @@ def end_session(session_id, text=None):
         :meth:`.MQTTSnipsComponent.publish` with.
 
     Example:
-        You would use this function like this in a callback method of an
-        :class:`.MQTTSnipsApp` object:
+        You would use this function like this in an :class:`.MQTTSnipsApp`
+        object:
 
-        >>> self.publish(*end_session('mySessionId', 'myText'))
+        >>> app.publish(*end_session('mySessionId', 'myText'))
 
         This is equivalent to the much more wordy:
 
-        >>> self.publish('hermes/dialogueManager/endSession',
-                         {'sessionId': 'mySessionId',
-                          'text': 'myText'})
+        >>> app.publish('hermes/dialogueManager/endSession',
+                        {'sessionId': 'mySessionId',
+                         'text': 'myText'})
 
         .. versionadded:: 0.5.2
     """

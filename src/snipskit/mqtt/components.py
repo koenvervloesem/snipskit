@@ -65,7 +65,7 @@ class MQTTSnipsComponent(SnipsComponent):
 
     def _start(self):
         """Start the event loop to the MQTT broker so the component starts
-        listening to MQTT topics and the callback methods are called.
+        listening to MQTT topics and the callback functions are called.
         """
         self.mqtt.loop_forever()
 
