@@ -36,7 +36,7 @@ SnipsKit
 
 .. inclusion-marker-start-intro
 
-**Important information: Following the acquisition of Snips by Sonos, the Snips Console is not available anymore after January 31 2020. As such, I have archived this project. If you're searching for an alternative to Snips, I believe that `Rhasspy`_ is currently the best choice for an offline open source voice assistant.**
+**Important information: Following the acquisition of Snips by Sonos, the Snips Console is not available anymore after January 31 2020. As such, I have archived this project. If you're searching for an alternative to Snips, I believe that** Rhasspy_ **is currently the best choice for an offline open source voice assistant.**
 
 .. _Rhasspy: https://rhasspy.readthedocs.io/
 
